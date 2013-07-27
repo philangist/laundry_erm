@@ -1,0 +1,169 @@
+2013-07-23 22:18:13,351 - views - INFO: method: POST
+2013-07-23 22:18:13,351 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'9021'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberton'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-23 22:18:13,351 - views - INFO: entered try clause
+2013-07-23 22:18:13,351 - views - INFO: getting wash_fold_class_instance
+2013-07-23 22:18:13,354 - views - INFO: updating wash_fold_class_instance
+2013-07-23 22:18:13,354 - views - INFO: entered make_wash_fold_class_instance
+2013-07-23 22:18:13,354 - views - INFO: wash_fold_class_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0x99552ac>, 'payment_method': u'CREDIT', 'payment_finalized': False, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2}
+2013-07-23 22:18:13,354 - views - INFO: wash_fold_class_instance created
+2013-07-23 22:18:13,354 - views - INFO: wash_fold_class_instance.__dict__: {'phone_number': (u'9021',), 'first_name': (u'Johnny',), 'last_name': (u'Pemberton',), 'total_cost': (u'12',), '_state': <django.db.models.base.ModelState object at 0x99552ac>, 'payment_method': (u'CASH',), 'payment_finalized': u'True', 'address': (u'123 anywhere but here',), 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2}
+2013-07-23 22:18:13,356 - views - INFO: entered except clause
+2013-07-23 22:18:13,356 - views - INFO: New WashFoldOrder order addition failed
+2013-07-23 22:18:32,140 - views - INFO: method: POST
+2013-07-23 22:18:32,140 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'201555555'], u'first_name': [u'Joe'], u'last_name': [u'Schmoe'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere street '], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-23 22:18:32,141 - views - INFO: entered try clause
+2013-07-23 22:18:32,141 - views - INFO: getting wash_fold_class_instance
+2013-07-23 22:18:32,142 - views - INFO: updating wash_fold_class_instance
+2013-07-23 22:18:32,142 - views - INFO: entered make_wash_fold_class_instance
+2013-07-23 22:18:32,143 - views - INFO: wash_fold_class_instance.__dict__: {'phone_number': u'2015555555', 'first_name': u'Joe', 'last_name': u'Schmoe', 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0x995ff6c>, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere street ', 'date': datetime.datetime(2013, 7, 9, 6, 29, 23, 94133, tzinfo=<UTC>), 'id': 1}
+2013-07-23 22:18:32,143 - views - INFO: wash_fold_class_instance created
+2013-07-23 22:18:32,143 - views - INFO: wash_fold_class_instance.__dict__: {'phone_number': (u'201555555',), 'first_name': (u'Joe',), 'last_name': (u'Schmoe',), 'total_cost': (u'12',), '_state': <django.db.models.base.ModelState object at 0x995ff6c>, 'payment_method': (u'CASH',), 'payment_finalized': u'True', 'address': (u'123 anywhere street ',), 'date': datetime.datetime(2013, 7, 9, 6, 29, 23, 94133, tzinfo=<UTC>), 'id': 1}
+2013-07-23 22:18:32,144 - views - INFO: entered except clause
+2013-07-23 22:18:32,144 - views - INFO: New WashFoldOrder order addition failed
+2013-07-23 22:18:57,020 - views - INFO: method: POST
+2013-07-23 22:18:57,020 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'201555555'], u'first_name': [u'Joe'], u'last_name': [u'Schmo'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere street '], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-23 22:18:57,020 - views - INFO: entered try clause
+2013-07-23 22:18:57,020 - views - INFO: getting wash_fold_class_instance
+2013-07-23 22:18:57,022 - views - INFO: updating wash_fold_class_instance
+2013-07-23 22:18:57,022 - views - INFO: entered make_wash_fold_class_instance
+2013-07-23 22:18:57,022 - views - INFO: wash_fold_class_instance.__dict__: {'phone_number': u'2015555555', 'first_name': u'Joe', 'last_name': u'Schmoe', 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0x9970e0c>, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere street ', 'date': datetime.datetime(2013, 7, 9, 6, 29, 23, 94133, tzinfo=<UTC>), 'id': 1}
+2013-07-23 22:18:57,022 - views - INFO: wash_fold_class_instance created
+2013-07-23 22:18:57,023 - views - INFO: wash_fold_class_instance.__dict__: {'phone_number': (u'201555555',), 'first_name': (u'Joe',), 'last_name': (u'Schmo',), 'total_cost': (u'12',), '_state': <django.db.models.base.ModelState object at 0x9970e0c>, 'payment_method': (u'CASH',), 'payment_finalized': u'True', 'address': (u'123 anywhere street ',), 'date': datetime.datetime(2013, 7, 9, 6, 29, 23, 94133, tzinfo=<UTC>), 'id': 1}
+2013-07-23 22:18:57,024 - views - INFO: entered except clause
+2013-07-23 22:18:57,024 - views - INFO: New WashFoldOrder order addition failed
+2013-07-23 22:34:27,145 - views - INFO: method: POST
+2013-07-23 22:34:27,146 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210123'], u'first_name': [u'Joey'], u'last_name': [u'Pemberton'], u'total_cost': [u'267.99'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'11'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-23 22:34:27,146 - views - INFO: entered try clause
+2013-07-23 22:34:27,146 - views - INFO: entered make_wash_fold_class_instance
+2013-07-23 22:34:27,146 - views - INFO: wash_fold_class_instance.__dict__: {'phone_number': u'', 'first_name': u'', 'last_name': u'', 'total_cost': None, '_state': <django.db.models.base.ModelState object at 0x994c08c>, 'payment_method': u'', 'payment_finalized': False, 'address': u'', 'date': None, 'id': None}
+2013-07-23 22:34:27,146 - views - INFO: wash_fold_class_instance created
+2013-07-23 22:34:27,146 - views - INFO: wash_fold_class_instance.__dict__: {'phone_number': (u'90210123',), 'first_name': (u'Joey',), 'last_name': (u'Pemberton',), 'total_cost': (u'267.99',), '_state': <django.db.models.base.ModelState object at 0x994c08c>, 'payment_method': (u'CASH',), 'payment_finalized': u'True', 'address': (u'11',), 'date': None, 'id': None}
+2013-07-23 22:34:27,146 - views - INFO: entered except clause
+2013-07-23 22:34:27,147 - views - INFO: New WashFoldOrder order addition failed
+2013-07-24 21:44:34,722 - views - INFO: method: POST
+2013-07-24 21:44:34,722 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'201555555'], u'first_name': [u'Joe'], u'last_name': [u'Schmoe'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'134 thataway blvd'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 21:44:34,722 - views - INFO: entered try clause
+2013-07-24 21:44:34,722 - views - INFO: getting wash_fold_class_instance
+2013-07-24 21:44:34,724 - views - INFO: updating wash_fold_class_instance
+2013-07-24 21:44:34,724 - views - INFO: entered make_wash_fold_class_instance
+2013-07-24 21:44:34,724 - views - INFO: wash_fold_class_instance.__dict__: {'phone_number': u'2015555555', 'first_name': u'Joe', 'last_name': u'Schmoe', 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0x9b817ac>, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'134 thataway blvd', 'date': datetime.datetime(2013, 7, 9, 6, 29, 23, 94133, tzinfo=<UTC>), 'id': 1}
+2013-07-24 21:44:34,724 - views - INFO: wash_fold_class_instance created
+2013-07-24 21:44:34,724 - views - INFO: wash_fold_class_instance.__dict__: {'phone_number': (u'201555555',), 'first_name': (u'Joe',), 'last_name': (u'Schmoe',), 'total_cost': (u'12',), '_state': <django.db.models.base.ModelState object at 0x9b817ac>, 'payment_method': (u'CASH',), 'payment_finalized': u'True', 'address': (u'134 thataway blvd',), 'date': datetime.datetime(2013, 7, 9, 6, 29, 23, 94133, tzinfo=<UTC>), 'id': 1}
+2013-07-24 21:44:34,726 - views - INFO: entered except clause
+2013-07-24 21:44:34,726 - views - INFO: New WashFoldOrder order addition failed
+2013-07-24 21:45:49,801 - views - INFO: method: POST
+2013-07-24 21:45:49,802 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberton'], u'total_cost': [u'12.00'], u'payment_method': [u'CREDIT'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 21:45:49,802 - views - INFO: entered try clause
+2013-07-24 21:45:49,802 - views - INFO: entered make_wash_fold_class_instance
+2013-07-24 21:45:49,802 - views - INFO: wash_fold_class_instance.__dict__: {'phone_number': u'', 'first_name': u'', 'last_name': u'', 'total_cost': None, '_state': <django.db.models.base.ModelState object at 0xab29fec>, 'payment_method': u'', 'payment_finalized': False, 'address': u'', 'date': None, 'id': None}
+2013-07-24 21:45:49,802 - views - INFO: wash_fold_class_instance created
+2013-07-24 21:45:49,802 - views - INFO: new wash_fold_class_instance.__dict__: {'phone_number': (u'90210',), 'first_name': (u'Johnny',), 'last_name': (u'Pemberton',), 'total_cost': (u'12.00',), '_state': <django.db.models.base.ModelState object at 0xab29fec>, 'payment_method': (u'CREDIT',), 'payment_finalized': u'True', 'address': (u'123 anywhere but here',), 'date': None, 'id': None}
+2013-07-24 21:45:49,803 - views - INFO: entered except clause
+2013-07-24 21:45:49,803 - views - INFO: New WashFoldOrder order addition failed
+2013-07-24 23:07:36,865 - views - INFO: method: POST
+2013-07-24 23:07:36,865 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberton'], u'total_cost': [u'420.00'], u'payment_method': [u'CREDIT'], u'payment_finalized': [u'False'], u'address': [u'123 anywhere street'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:07:36,865 - views - INFO: entered try clause
+2013-07-24 23:07:36,865 - views - INFO: entered make_wash_fold_instance
+2013-07-24 23:07:36,866 - views - INFO: wash_fold_instance created
+2013-07-24 23:07:36,867 - views - INFO: entered except clause
+2013-07-24 23:07:36,867 - views - INFO: New WashFoldOrder order addition failed
+2013-07-24 23:08:52,224 - views - INFO: method: POST
+2013-07-24 23:08:52,225 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberton'], u'total_cost': [u'12.00'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:08:52,225 - views - INFO: entered try clause
+2013-07-24 23:08:52,225 - views - INFO: entered make_wash_fold_instance
+2013-07-24 23:08:52,225 - views - INFO: wash_fold_instance created
+2013-07-24 23:08:52,227 - views - INFO: entered except clause
+2013-07-24 23:08:52,227 - views - INFO: New WashFoldOrder order addition failed
+2013-07-24 23:10:46,529 - views - INFO: method: POST
+2013-07-24 23:10:46,529 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'first_name': [u''], u'last_name': [u'Pemberton'], u'total_cost': [u'12.00'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:10:46,529 - views - INFO: entered try clause
+2013-07-24 23:10:46,529 - views - INFO: entered make_wash_fold_instance
+2013-07-24 23:10:46,530 - views - INFO: wash_fold_instance created
+2013-07-24 23:10:46,532 - views - INFO: entered except clause
+2013-07-24 23:10:46,532 - views - INFO: New WashFoldOrder order addition failed
+2013-07-24 23:10:46,849 - views - INFO: method: POST
+2013-07-24 23:10:46,849 - views - INFO: POST params: <QueryDict: {u'phone_number': [u''], u'first_name': [u''], u'last_name': [u''], u'total_cost': [u''], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u''], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:10:46,849 - views - INFO: entered try clause
+2013-07-24 23:10:46,849 - views - INFO: entered make_wash_fold_instance
+2013-07-24 23:10:46,849 - views - INFO: wash_fold_instance created
+2013-07-24 23:10:46,850 - views - INFO: entered except clause
+2013-07-24 23:10:46,850 - views - INFO: New WashFoldOrder order addition failed
+2013-07-24 23:11:03,883 - views - INFO: method: POST
+2013-07-24 23:11:03,884 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'garment_type': [u'M SUITS'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberton'], u'total_cost': [u'12.00'], u'garment_amount': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:11:03,884 - views - INFO: entered try clause
+2013-07-24 23:11:03,884 - views - INFO: entered make_dry_clean_instance
+2013-07-24 23:11:03,884 - views - INFO: dry_cleaning_instance created
+2013-07-24 23:11:03,886 - views - INFO: New DryCleaning instance saved
+2013-07-24 23:11:53,270 - views - INFO: method: POST
+2013-07-24 23:11:53,270 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'garment_type': [u'M SUITS'], u'first_name': [u'Jo'], u'last_name': [u'Pemberton'], u'total_cost': [u'12.00'], u'garment_amount': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:11:53,270 - views - INFO: entered try clause
+2013-07-24 23:11:53,270 - views - INFO: entered make_dry_clean_instance
+2013-07-24 23:11:53,270 - views - INFO: dry_cleaning_instance created
+2013-07-24 23:11:53,272 - views - INFO: New DryCleaning instance saved
+2013-07-24 23:13:31,941 - views - INFO: method: POST
+2013-07-24 23:13:31,941 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'garment_type': [u'M SUITS'], u'first_name': [u'Jo'], u'last_name': [u'Pemberton'], u'total_cost': [u'12.00'], u'garment_amount': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:13:31,941 - views - INFO: entered try clause
+2013-07-24 23:13:31,941 - views - INFO: entered make_dry_clean_instance
+2013-07-24 23:13:31,942 - views - INFO: dry_cleaning_instance created
+2013-07-24 23:13:31,943 - views - INFO: entered except clause
+2013-07-24 23:13:31,943 - views - INFO: New DryCleaning order addition failed
+2013-07-24 23:14:45,807 - views - INFO: method: POST
+2013-07-24 23:14:45,807 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'garment_type': [u'M SUITS'], u'first_name': [u'Jo'], u'last_name': [u'Pemberton'], u'total_cost': [u'12.00'], u'garment_amount': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:14:45,807 - views - INFO: entered try clause
+2013-07-24 23:14:45,807 - views - INFO: entered make_dry_clean_instance
+2013-07-24 23:14:45,807 - views - INFO: entered except clause
+2013-07-24 23:14:45,807 - views - INFO: New DryCleaning order addition failed
+2013-07-24 23:15:27,748 - views - INFO: method: POST
+2013-07-24 23:15:27,748 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'garment_type': [u'M SUITS'], u'first_name': [u'Jo'], u'last_name': [u'Pembertn'], u'total_cost': [u'12.00'], u'garment_amount': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:15:27,748 - views - INFO: entered try clause
+2013-07-24 23:15:27,748 - views - INFO: entered make_dry_clean_instance
+2013-07-24 23:15:27,749 - views - INFO: entered except clause
+2013-07-24 23:15:27,749 - views - INFO: New DryCleaning order addition failed
+2013-07-24 23:16:25,477 - views - INFO: method: POST
+2013-07-24 23:16:25,477 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'garment_type': [u'M SUITS'], u'first_name': [u'Jo'], u'last_name': [u'Pembertn'], u'total_cost': [u'12.00'], u'garment_amount': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:16:25,477 - views - INFO: entered try clause
+2013-07-24 23:16:25,477 - views - INFO: entered make_dry_clean_instance
+2013-07-24 23:16:25,477 - views - INFO: dry_cleaning_instance created
+2013-07-24 23:16:25,479 - views - INFO: entered except clause
+2013-07-24 23:16:25,479 - views - INFO: New DryCleaning order addition failed
+2013-07-24 23:17:03,213 - views - INFO: method: POST
+2013-07-24 23:17:03,213 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'garment_type': [u'M SUITS'], u'first_name': [u'Jo'], u'last_name': [u'Pembertn'], u'total_cost': [u'12.00'], u'garment_amount': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:17:03,213 - views - INFO: entered try clause
+2013-07-24 23:17:03,213 - views - INFO: entered make_dry_clean_instance
+2013-07-24 23:17:03,213 - views - INFO: dry_cleaning_instance created
+2013-07-24 23:17:03,215 - views - INFO: entered except clause
+2013-07-24 23:17:03,215 - views - INFO: New DryCleaning order addition failed
+2013-07-24 23:17:53,952 - views - INFO: method: POST
+2013-07-24 23:17:53,952 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'garment_type': [u'M SUITS'], u'first_name': [u'Jo'], u'last_name': [u'Pembertn'], u'total_cost': [u'12.00'], u'garment_amount': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:17:53,952 - views - INFO: entered try clause
+2013-07-24 23:17:53,953 - views - INFO: entered make_dry_clean_instance
+2013-07-24 23:17:53,953 - views - INFO: dry_cleaning_instance created
+2013-07-24 23:17:53,954 - views - INFO: entered except clause
+2013-07-24 23:17:53,954 - views - INFO: New DryCleaning order addition failed
+2013-07-24 23:18:50,836 - views - INFO: method: POST
+2013-07-24 23:18:50,836 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'garment_type': [u'M SUITS'], u'first_name': [u'Jo'], u'last_name': [u'Pembertn'], u'total_cost': [u'12.00'], u'garment_amount': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:18:50,836 - views - INFO: entered try clause
+2013-07-24 23:18:50,837 - views - INFO: entered make_dry_clean_instance
+2013-07-24 23:18:50,837 - views - INFO: entered except clause
+2013-07-24 23:18:50,837 - views - INFO: New DryCleaning order addition failed
+2013-07-24 23:19:18,340 - views - INFO: method: POST
+2013-07-24 23:19:18,340 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'garment_type': [u'M SUITS'], u'first_name': [u'Jo'], u'last_name': [u'Pembertn'], u'total_cost': [u'12.00'], u'garment_amount': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:19:18,340 - views - INFO: entered try clause
+2013-07-24 23:19:18,340 - views - INFO: entered make_dry_clean_instance
+2013-07-24 23:19:18,341 - views - INFO: dry_cleaning_instance created: {'phone_number': (u'90210',), 'garment_type': (u'M SUITS',), 'first_name': (u'Jo',), 'last_name': (u'Pembertn',), 'total_cost': (u'12.00',), 'garment_amount': (u'12',), '_state': <django.db.models.base.ModelState object at 0x9170dac>, 'payment_method': (u'CASH',), 'payment_finalized': u'True', 'address': (u'123 anywhere but here',), 'date': None, 'id': None}
+2013-07-24 23:19:18,342 - views - INFO: entered except clause
+2013-07-24 23:19:18,342 - views - INFO: New DryCleaning order addition failed
+2013-07-24 23:26:02,742 - views - INFO: method: POST
+2013-07-24 23:26:02,742 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'garment_type': [u'M SUITS'], u'first_name': [u'Jo'], u'last_name': [u'Pembertn'], u'total_cost': [u'12.00'], u'garment_amount': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:26:02,742 - views - INFO: entered try clause
+2013-07-24 23:26:02,742 - views - INFO: entered make_dry_clean_instance
+2013-07-24 23:26:02,742 - views - INFO: dry_cleaning_instance created: {'phone_number': (u'90210',), 'garment_type': (u'M SUITS',), 'first_name': (u'Jo',), 'last_name': (u'Pembertn',), 'total_cost': (12.0,), 'garment_amount': (u'12',), '_state': <django.db.models.base.ModelState object at 0x904ddac>, 'payment_method': (u'CASH',), 'payment_finalized': u'True', 'address': (u'123 anywhere but here',), 'date': None, 'id': None}
+2013-07-24 23:26:02,743 - views - INFO: entered except clause
+2013-07-24 23:26:02,743 - views - INFO: New DryCleaning order addition failed
+2013-07-24 23:26:44,661 - views - INFO: method: POST
+2013-07-24 23:26:44,661 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'garment_type': [u'M SUITS'], u'first_name': [u'Jo'], u'last_name': [u'Pembertn'], u'total_cost': [u'12.00'], u'garment_amount': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-24 23:26:44,662 - views - INFO: entered try clause
+2013-07-24 23:26:44,662 - views - INFO: entered make_dry_clean_instance
+2013-07-24 23:26:44,662 - views - INFO: dry_cleaning_instance created: {'phone_number': (u'90210',), 'garment_type': (u'M SUITS',), 'first_name': (u'Jo',), 'last_name': (u'Pembertn',), 'total_cost': (12.0,), 'garment_amount': (12,), '_state': <django.db.models.base.ModelState object at 0x9ebcdac>, 'payment_method': (u'CASH',), 'payment_finalized': u'True', 'address': (u'123 anywhere but here',), 'date': None, 'id': None}
+2013-07-24 23:26:44,663 - views - INFO: entered except clause
+2013-07-24 23:26:44,663 - views - INFO: New DryCleaning order addition failed

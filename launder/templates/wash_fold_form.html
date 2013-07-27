@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<head><title>New Wash and Fold Order</title></head>
+<body>
+<h1>Add a new wash and fold order Here</h1>
+
+{% if wash_fold_order %}
+    <form action="/wash_fold/add/{{ wash_fold_order.id }}/" method="post">
+{% else %}
+    <form action="/wash_fold/add/" method="post">
+{% endif %}
+
+{% csrf_token  %}
+	First name: <input type="text" name="first_name" value="{{ wash_fold_order.first_name }}"><br>
+	Last name: <input type="text" name="last_name" value="{{ wash_fold_order.last_name }}"><br>
+	Phone number: <input type="text" name="phone_number" value="{{ wash_fold_order.phone_number }}"><br>
+	Address: <input type="text" name="address" value="{{ wash_fold_order.address }}"><br>
+	Total Cost: <input type="text" name="total_cost" value="{{ wash_fold_order.total_cost }}"><br>
+	Payment Method: <select name="payment_method" value="{{ wash_fold_order.payment_method }}">
+						<option value="CASH">Cash</option>
+						<option value="CREDIT">Credit</option>
+						<option value="CHECK">Check</option>
+					</select><br>
+	Payment Finalized:<select name="payment_finalized" value="{{ wash_fold_order.payment_finalized }}">
+						<option value="True">Finalized</option>
+						<option value="False">Not Finalized</option>
+					</select><br>
+	<input type="submit" value="submit">
+</form>
+</body>
+</html>

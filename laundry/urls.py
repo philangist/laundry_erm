@@ -8,10 +8,22 @@ admin.autodiscover()
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-
 	url(r'^admin/', include(admin.site.urls)),
-    url(r'^wash_fold/', 'launder.views.wash_fold_view'),
-    url(r'^dry_clean/', 'launder.views.dry_clean_view'),
-    url(r'^shirts/', 'launder.views.shirts_view'),
+	url(r'^dry_clean_form/$', 'launder.views.dry_clean_add_form'),
+	url(r'^dry_clean_form/(?P<dry_clean_order>\d+)/$', 'launder.views.dry_clean_add_form'),
+    url(r'^dry_clean/add/$', 'launder.views.dry_clean_add'),
+    url(r'^dry_clean/$', 'launder.views.dry_clean'),
+	url(r'^dry_clean/(?P<dry_clean_order>\d+)/$', 'launder.views.dry_clean_detail'),
+	url(r'^wash_fold_form/$', 'launder.views.wash_fold_add_form'),
+	url(r'^wash_fold_form/(?P<wash_fold_order>\d+)/$', 'launder.views.wash_fold_add_form'),
+	url(r'^wash_fold/add/(?P<wash_fold_id>\d+)/$', 'launder.views.wash_fold_add'),
+	url(r'^wash_fold/add/$', 'launder.views.wash_fold_add'),
+	url(r'^wash_fold/$', 'launder.views.wash_fold'),
+	url(r'^wash_fold/(?P<wash_fold_order>\d+)/$', 'launder.views.wash_fold_detail'),
+	url(r'^shirts_form/$', 'launder.views.shirts_add_form'),
+	url(r'^shirts_form/(?P<shirt_order>\d+)/$', 'launder.views.shirts_add_form'),
+    url(r'^shirts/$', 'launder.views.shirts'),
+	url(r'^shirts/(?P<shirt_order>\d+)/$', 'launder.views.shirts_detail'),
+	url(r'^shirts/add/$', 'launder.views.shirts_add'),
 	url(r'^$', 'launder.views.index')
 )

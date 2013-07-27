@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head><title>New Shirt Order</title></head>
+<body>
+<h1>Add A new shirt order Here</h1>
+
+<form action="/shirts/add/" method="post">
+{% csrf_token  %}
+	First name: <input type="text" name="first_name" value="{{ shirt_order.first_name }}"><br>
+	Last name: <input type="text" name="last_name"><br>
+	Phone number: <input type="text" name="phone_number"><br>
+	Address: <input type="text" name="address"><br>
+	Amount: <input type="text" name="shirts_amount"><br>
+	Shirts Price: <input type="text" name="shirts_price"><br>
+	Starched:<select name="starched">
+						<option value="True">Starched</option>
+						<option value="False">Not Starched</option>
+						</select><br>
+	Total Cost: <input type="text" name="total_cost"><br>
+	Payment Method: <select name="payment_method">
+						<option value="CASH">Cash</option>
+						<option value="CREDIT">Credit</option>
+						<option value="CHECK">Check</option>
+					</select><br>
+	Payment Finalized:<select name="payment_finalized">
+						<option value="True">Finalized</option>
+						<option value="False">Not Finalized</option>
+					</select><br>
+	<input type="submit" value="submit">
+</form>
+</body>
+</html>

@@ -1,17 +1,6 @@
 from django.db import models
 
 class WashFoldOrder(models.Model):
-	"""
-	order number(primary key)
-	customer's name,
-	customer's Phone number
-	customer's address
-	date the order came in
-	amount of laundry
-	total_cost based on price list entered on data base.
-	payment_method
-	payment_finalized
-	"""
 
 	PAYMENT_METHODS = (
 		('CASH', 'Cash'),
@@ -20,17 +9,16 @@ class WashFoldOrder(models.Model):
 	)
 
 	id = models.AutoField(primary_key=True)
-	first_name = models.CharField(max_length=50)
-	last_name = models.CharField(max_length=50)
-	phone_number = models.CharField(max_length=15)
-	address = models.CharField(max_length=50)
+	first_name = models.CharField(max_length=50, blank=False)
+	last_name = models.CharField(max_length=50, blank=False)
+	phone_number = models.CharField(max_length=15, blank=False)
+	address = models.CharField(max_length=50, blank=False)
 	date = models.DateTimeField(auto_now_add=True)
-	#amount
 	total_cost = models.DecimalField(max_digits=5, decimal_places=2)
 	payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
 	payment_finalized = models.BooleanField()
 
-class DryCleaningForm(models.Model):
+class DryCleaning(models.Model):
 
 	PAYMENT_METHODS = (
 		('CASH', 'Cash'),
@@ -56,10 +44,10 @@ class DryCleaningForm(models.Model):
 	)
 
 	id = models.AutoField(primary_key=True)
-	first_name = models.CharField(max_length=50)
-	last_name = models.CharField(max_length=50)
-	phone_number = models.CharField(max_length=15)
-	address = models.CharField(max_length=50)
+	first_name = models.CharField(max_length=50, blank=False)
+	last_name = models.CharField(max_length=50, blank=False)
+	phone_number = models.CharField(max_length=15, blank=False)
+	address = models.CharField(max_length=50, blank=False)
 	date = models.DateTimeField(auto_now_add=True)
 	garment_type = models.TextField(max_length=12, choices=GARMENT_OPTIONS)
 	garment_amount = models.IntegerField()
@@ -68,17 +56,6 @@ class DryCleaningForm(models.Model):
 	payment_finalized = models.BooleanField()
 
 class LaundryShirtsOrder(models.Model):
-	"""
-	order number(primary key)
-	customer's name,
-	customer's Phone number
-	customer's address
-	date the order came in
-	amount of laundry
-	total_cost based on price list entered on data base.
-	payment_method
-	payment_finalized
-	"""
 
 	PAYMENT_METHODS = (
 		('CASH', 'Cash'),
@@ -87,10 +64,10 @@ class LaundryShirtsOrder(models.Model):
 	)
 
 	id = models.AutoField(primary_key=True)
-	first_name = models.CharField(max_length=50)
-	last_name = models.CharField(max_length=50)
-	phone_number = models.CharField(max_length=15)
-	address = models.CharField(max_length=50)
+	first_name = models.CharField(max_length=50, blank=False)
+	last_name = models.CharField(max_length=50, blank=False)
+	phone_number = models.CharField(max_length=15, blank=False)
+	address = models.CharField(max_length=50, blank=False)
 	date = models.DateTimeField(auto_now_add=True)
 	shirts_amount = models.IntegerField()
 	shirts_price = models.DecimalField(max_digits=5, decimal_places=2)

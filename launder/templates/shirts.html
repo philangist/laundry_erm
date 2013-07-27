@@ -1,1 +1,11 @@
-b
+shirts
+{% if orders %}
+    <ul>
+    {% for order in orders %}
+        <a href="/shirts/{{order.id}}">{{ order.first_name }} {{ order.last_name }} {{ order.phone_number }} </a>
+	<br>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No orders are available.</p>
+{% endif %}

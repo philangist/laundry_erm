@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<head><title>Wash and Fold -- Detailed Paged</title></head>
+<body>
+<h1>Wash and Fold</h1>
+
+{% if wash_fold_order %}
+    <h2>Order #{{ wash_fold_order.id }} Details:</h2>
+    <ul>
+    <li>First name: {{ wash_fold_order.first_name }}</br>
+    <li>Last name: {{ wash_fold_order.last_name }}</br>
+    <li>Phone number: {{ wash_fold_order.phone_number }}</br>
+    <li>Address: {{ wash_fold_order.address }}</br>
+    <li>Date: {{ wash_fold_order.date }}</br>
+    <li>Total Cost: {{ wash_fold_order.total_cost }}</br>
+    <li>Payment Method: {{ wash_fold_order.payment_method }}</br>
+    <li>Payment Finalized: {{ wash_fold_order.payment_finalized }}</br>
+    </ul>
+{% elif not wash_fold_order %}
+    <p>No details are available.</p>
+{% endif %}
+
+</form>
+</body>
+</html>
