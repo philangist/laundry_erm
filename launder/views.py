@@ -10,16 +10,17 @@ logger = logger_factory.logger_factory('views')
 
 def make_dry_clean_instance(request):
 	logger.info('entered make_dry_clean_instance')
-	dry_cleaning_instance = DryCleaning()
-	dry_cleaning_instance.first_name = request.POST['first_name'],
-	dry_cleaning_instance.last_name = request.POST['last_name'],
-	dry_cleaning_instance.phone_number = request.POST['phone_number'],
-	dry_cleaning_instance.address = request.POST['address'],
-	dry_cleaning_instance.garment_type = request.POST['garment_type'],
-	dry_cleaning_instance.garment_amount= int(request.POST['garment_amount']),
-	dry_cleaning_instance.total_cost = float(request.POST['total_cost']),
-	dry_cleaning_instance.payment_method = request.POST['payment_method'],
-	dry_cleaning_instance.payment_finalized = request.POST['payment_finalized']
+	dry_cleaning_instance = DryCleaning(
+		first_name = request.POST['first_name'],
+		last_name = request.POST['last_name'],
+		phone_number = request.POST['phone_number'],
+		address = request.POST['address'],
+		garment_type = request.POST['garment_type'],
+		garment_amount= int(request.POST['garment_amount']),
+		total_cost = float(request.POST['total_cost']),
+		payment_method = request.POST['payment_method'],
+		payment_finalized = request.POST['payment_finalized']
+	)
 	logger.info('dry_cleaning_instance created: %s' % str(dry_cleaning_instance.__dict__))
 	return dry_cleaning_instance
 
@@ -27,12 +28,12 @@ def edit_wash_fold_instance(request, wash_fold_id):
 	logger.info('entered edit_wash_fold_instance')
 	wash_fold_instance = WashFoldOrder.objects.get(pk=wash_fold_id)
 	logger.info('wash_fold_instance.__dict__: %s' % str(wash_fold_instance.__dict__))
-	wash_fold_instance.first_name = request.POST['first_name'],
-	wash_fold_instance.last_name = request.POST['last_name'],
-	wash_fold_instance.phone_number = request.POST['phone_number'],
-	wash_fold_instance.address = request.POST['address'],
-	wash_fold_instance.total_cost = request.POST['total_cost'],
-	wash_fold_instance.payment_method = request.POST['payment_method'],
+	wash_fold_instance.first_name = request.POST['first_name']
+	wash_fold_instance.last_name = request.POST['last_name']
+	wash_fold_instance.phone_number = request.POST['phone_number']
+	wash_fold_instance.address = request.POST['address']
+	wash_fold_instance.total_cost = float(request.POST['total_cost'])
+	wash_fold_instance.payment_method = request.POST['payment_method']
 	wash_fold_instance.payment_finalized = request.POST['payment_finalized']
 	logger.info('wash_fold_instance edited')
 	logger.info('edited wash_fold_instance.__dict__: %s' % str(wash_fold_instance.__dict__))
@@ -40,12 +41,12 @@ def edit_wash_fold_instance(request, wash_fold_id):
 
 def make_wash_fold_instance(request):
 	logger.info('entered make_wash_fold_instance')
-	wash_fold_instance = DryCleaning(
+	wash_fold_instance = WashFoldOrder(
 		first_name = request.POST['first_name'],
 		last_name = request.POST['last_name'],
 		phone_number = request.POST['phone_number'],
 		address = request.POST['address'],
-		total_cost = request.POST['total_cost'],
+		total_cost = float(request.POST['total_cost']),
 		payment_method = request.POST['payment_method'],
 		payment_finalized = request.POST['payment_finalized']
 	)
@@ -130,10 +131,11 @@ def wash_fold_add(request, wash_fold_id=None):
 		logger.info("POST params: %s" % str(request.POST))
 		try:
 			logger.info('entered try clause')
-			if wash_fold_id != None:
-				logger.info('getting wash_fold_instance')
+			if wash_fold_id is not None:
 				logger.info('updating wash_fold_instance')
+				logger.info('wash_fold_id = %d, type = %s' % (int(wash_fold_id), str(type(wash_fold_id))))
 				wash_fold_instance = edit_wash_fold_instance(request, wash_fold_id)
+				logger.info('wash_fold_instance edited')
 			else:
 				wash_fold_instance = make_wash_fold_instance(request)
 			wash_fold_instance.save()
@@ -181,6 +183,7 @@ def shirts_add(request):
 			return HttpResponseRedirect(reverse(shirts_add_form))
 	logger.info("shirts_add not a POST request")
 	return HttpResponseRedirect('/')
+
 
 def index(request):
 	return render_to_response('index.html')
