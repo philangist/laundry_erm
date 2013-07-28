@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 
-<head><title>New Shirt Order</title></head>
+<head><title>Shirt Order</title></head>
 <body>
-<h1>Add A new shirt order Here</h1>
 
-<form action="/shirts/add/" method="post">
-{% csrf_token  %}
+{% if shirt_order %}
+	<h1>Edit shirt order here</h1>
+	<form action="/shirts/add/{{ shirt_order.id }}/" method="post">
+{% else %}
+	<h1>Add a new shirt order here</h1>
+	<form action="/shirts/add/" method="post">
+{% endif %}
+
+{% csrf_token %}
 	First name: <input type="text" name="first_name" value="{{ shirt_order.first_name }}"><br>
-	Last name: <input type="text" name="last_name"><br>
-	Phone number: <input type="text" name="phone_number"><br>
-	Address: <input type="text" name="address"><br>
-	Amount: <input type="text" name="shirts_amount"><br>
-	Shirts Price: <input type="text" name="shirts_price"><br>
-	Starched:<select name="starched">
+	Last name: <input type="text" name="last_name" value="{{ shirt_order.last_name }}"><br>
+	Phone number: <input type="text" name="phone_number" value="{{ shirt_order.phone_number }}"><br>
+	Address: <input type="text" name="address" value="{{ shirt_order.address }}"><br>
+	Amount: <input type="text" name="shirts_amount" value="{{ shirt_order.shirts_amount }}"><br>
+	Shirts Price: <input type="text" name="shirts_price" value="{{ shirt_order.shirts_price }}"><br>
+	Starched:<select name="starched" value="{{ shirt_order.starched }}">
 						<option value="True">Starched</option>
 						<option value="False">Not Starched</option>
 						</select><br>
-	Total Cost: <input type="text" name="total_cost"><br>
-	Payment Method: <select name="payment_method">
+	Total Cost: <input type="text" name="total_cost" value="{{ shirt_order.total_cost }}"><br>
+	Payment Method: <select name="payment_method" value="{{ shirt_order.payment_method }}">
 						<option value="CASH">Cash</option>
 						<option value="CREDIT">Credit</option>
 						<option value="CHECK">Check</option>
 					</select><br>
-	Payment Finalized:<select name="payment_finalized">
+	Payment Finalized:<select name="payment_finalized" value="{{ shirt_order.payment_finalized }}">
 						<option value="True">Finalized</option>
 						<option value="False">Not Finalized</option>
 					</select><br>

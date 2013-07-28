@@ -336,3 +336,210 @@
 2013-07-27 21:52:49,875 - views - INFO: edited wash_fold_instance.__dict__: {'phone_number': u'9021', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0x92f328c>, 'payment_method': u'CASH', 'payment_finalized': u'True', 'address': u'10', 'date': datetime.datetime(2013, 7, 27, 22, 2, 53, 314532, tzinfo=<UTC>), 'id': 16}
 2013-07-27 21:52:49,875 - views - INFO: wash_fold_instance edited
 2013-07-27 21:52:49,878 - views - INFO: New WashFoldOrder instance saved
+2013-07-27 23:01:03,419 - views - INFO: method: GET
+2013-07-27 23:01:03,419 - views - INFO: shirts_add not a POST request
+2013-07-27 23:02:04,484 - views - INFO: method: POST
+2013-07-27 23:02:04,484 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'9021'], u'first_name': [u'Johnn'], u'last_name': [u'Pemberton'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'10'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-27 23:02:04,484 - views - INFO: entered try clause
+2013-07-27 23:02:04,484 - views - INFO: updating wash_fold_instance
+2013-07-27 23:02:04,484 - views - INFO: wash_fold_id = 16, type = <type 'unicode'>
+2013-07-27 23:02:04,484 - views - INFO: entered edit_wash_fold_instance
+2013-07-27 23:02:04,486 - views - INFO: wash_fold_instance.__dict__: {'phone_number': u'9021', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0x9c01f6c>, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'10', 'date': datetime.datetime(2013, 7, 27, 22, 2, 53, 314532, tzinfo=<UTC>), 'id': 16}
+2013-07-27 23:02:04,486 - views - INFO: wash_fold_instance edited
+2013-07-27 23:02:04,486 - views - INFO: edited wash_fold_instance.__dict__: {'phone_number': u'9021', 'first_name': u'Johnn', 'last_name': u'Pemberton', 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0x9c01f6c>, 'payment_method': u'CASH', 'payment_finalized': u'True', 'address': u'10', 'date': datetime.datetime(2013, 7, 27, 22, 2, 53, 314532, tzinfo=<UTC>), 'id': 16}
+2013-07-27 23:02:04,486 - views - INFO: wash_fold_instance edited
+2013-07-27 23:02:04,489 - views - INFO: New WashFoldOrder instance saved
+2013-07-27 23:59:46,860 - views - INFO: method: POST
+2013-07-27 23:59:46,860 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'first_name': [u'Johnn'], u'last_name': [u'Pemberton'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-27 23:59:46,861 - views - INFO: entered try clause
+2013-07-27 23:59:46,861 - views - INFO: updating wash_fold_instance
+2013-07-27 23:59:46,861 - views - INFO: wash_fold_id = 2, type = <type 'unicode'>
+2013-07-27 23:59:46,861 - views - INFO: entered edit_wash_fold_instance
+2013-07-27 23:59:46,863 - views - INFO: wash_fold_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0xb5b2e14c>, 'payment_method': u'CREDIT', 'payment_finalized': False, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2}
+2013-07-27 23:59:46,863 - views - INFO: wash_fold_instance edited
+2013-07-27 23:59:46,863 - views - INFO: edited wash_fold_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnn', 'last_name': u'Pemberton', 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0xb5b2e14c>, 'payment_method': u'CASH', 'payment_finalized': u'True', 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2}
+2013-07-27 23:59:46,863 - views - INFO: wash_fold_instance edited
+2013-07-27 23:59:46,866 - views - INFO: New WashFoldOrder instance saved
+2013-07-28 00:11:57,628 - views - INFO: method: POST
+2013-07-28 00:11:57,629 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'0210'], u'first_name': [u'Johnn'], u'last_name': [u'Pemberton'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-28 00:11:57,629 - views - INFO: entered try clause
+2013-07-28 00:11:57,629 - views - INFO: updating wash_fold_instance
+2013-07-28 00:11:57,629 - views - INFO: wash_fold_id = 2, type = <type 'unicode'>
+2013-07-28 00:11:57,629 - views - INFO: entered edit_wash_fold_instance
+2013-07-28 00:11:57,631 - views - INFO: wash_fold_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnn', 'last_name': u'Pemberton', 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0xb5b937ac>, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2}
+2013-07-28 00:11:57,631 - views - INFO: wash_fold_instance edited
+2013-07-28 00:11:57,631 - views - INFO: edited wash_fold_instance.__dict__: {'phone_number': u'0210', 'first_name': u'Johnn', 'last_name': u'Pemberton', 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0xb5b937ac>, 'payment_method': u'CASH', 'payment_finalized': u'True', 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2}
+2013-07-28 00:11:57,631 - views - INFO: wash_fold_instance edited
+2013-07-28 00:11:57,634 - views - INFO: New WashFoldOrder instance saved
+2013-07-28 00:18:34,568 - views - INFO: method: POST
+2013-07-28 00:18:34,568 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'9021'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberton'], u'shirts_amount': [u'1'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k'], u'shirts_price': [u'12.34'], u'starched': [u'True']}>
+2013-07-28 00:18:34,568 - views - INFO: entered try clause
+2013-07-28 00:18:34,568 - views - INFO: updating shirts
+2013-07-28 00:18:34,568 - views - INFO: shirt_id = 2, type = <type 'unicode'>
+2013-07-28 00:18:34,568 - views - INFO: entered edit_shirt_instance
+2013-07-28 00:18:34,571 - views - INFO: shirt_instance.__dict__: {'phone_number': u'0210', 'first_name': u'Johnn', 'last_name': u'Pemberton', 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0xa092d4c>, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2}
+2013-07-28 00:18:34,572 - views - INFO: shirt_instance edited
+2013-07-28 00:18:34,572 - views - INFO: edited shirt_instance.__dict__: {'phone_number': u'9021', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'shirts_amount': u'1', 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0xa092d4c>, 'shirts_price': u'12.34', 'payment_method': u'CASH', 'payment_finalized': u'True', 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2, 'starched': u'True'}
+2013-07-28 00:18:34,572 - views - INFO: shirts edited
+2013-07-28 00:18:34,572 - views - INFO: entered except clause
+2013-07-28 00:18:34,572 - views - INFO: New LaundryShirtsOrder order addition failed
+2013-07-28 00:21:20,246 - views - INFO: method: POST
+2013-07-28 00:21:20,246 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'9021'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberton'], u'shirts_amount': [u'1'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k'], u'shirts_price': [u'12.34'], u'starched': [u'True']}>
+2013-07-28 00:21:20,246 - views - INFO: entered try clause
+2013-07-28 00:21:20,246 - views - INFO: updating shirts
+2013-07-28 00:21:20,246 - views - INFO: shirt_id = 2, type = <type 'unicode'>
+2013-07-28 00:21:20,247 - views - INFO: entered edit_shirt_instance
+2013-07-28 00:21:20,248 - views - INFO: shirt_instance.__dict__: {'phone_number': u'0210', 'first_name': u'Johnn', 'last_name': u'Pemberton', 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0xa0a9e6c>, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2}
+2013-07-28 00:21:20,249 - views - INFO: shirt_instance edited
+2013-07-28 00:21:20,249 - views - INFO: edited shirt_instance.__dict__: {'phone_number': u'9021', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'shirts_amount': u'1', 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0xa0a9e6c>, 'shirts_price': u'12.34', 'payment_method': u'CASH', 'payment_finalized': u'True', 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2, 'starched': u'True'}
+2013-07-28 00:21:20,249 - views - INFO: shirts edited
+2013-07-28 00:21:20,249 - views - INFO: entered except clause
+2013-07-28 00:21:20,249 - views - INFO: New LaundryShirtsOrder order addition failed
+2013-07-28 00:22:12,175 - views - INFO: method: POST
+2013-07-28 00:22:12,175 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'201555555'], u'first_name': [u'Joe'], u'last_name': [u'Schmoe'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'134 thataway blvd'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-28 00:22:12,175 - views - INFO: entered try clause
+2013-07-28 00:22:12,175 - views - INFO: updating wash_fold_instance
+2013-07-28 00:22:12,175 - views - INFO: wash_fold_id = 1, type = <type 'unicode'>
+2013-07-28 00:22:12,175 - views - INFO: entered edit_wash_fold_instance
+2013-07-28 00:22:12,177 - views - INFO: wash_fold_instance.__dict__: {'phone_number': u'2015555555', 'first_name': u'Joe', 'last_name': u'Schmoe', 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0xa0ae1ac>, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'134 thataway blvd', 'date': datetime.datetime(2013, 7, 9, 6, 29, 23, 94133, tzinfo=<UTC>), 'id': 1}
+2013-07-28 00:22:12,177 - views - INFO: wash_fold_instance edited
+2013-07-28 00:22:12,177 - views - INFO: edited wash_fold_instance.__dict__: {'phone_number': u'201555555', 'first_name': u'Joe', 'last_name': u'Schmoe', 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0xa0ae1ac>, 'payment_method': u'CASH', 'payment_finalized': u'True', 'address': u'134 thataway blvd', 'date': datetime.datetime(2013, 7, 9, 6, 29, 23, 94133, tzinfo=<UTC>), 'id': 1}
+2013-07-28 00:22:12,177 - views - INFO: wash_fold_instance edited
+2013-07-28 00:22:12,180 - views - INFO: New WashFoldOrder instance saved
+2013-07-28 00:22:30,414 - views - INFO: method: POST
+2013-07-28 00:22:30,414 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'9021'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberton'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k']}>
+2013-07-28 00:22:30,414 - views - INFO: entered try clause
+2013-07-28 00:22:30,414 - views - INFO: updating wash_fold_instance
+2013-07-28 00:22:30,415 - views - INFO: wash_fold_id = 4, type = <type 'unicode'>
+2013-07-28 00:22:30,415 - views - INFO: entered edit_wash_fold_instance
+2013-07-28 00:22:30,416 - views - INFO: wash_fold_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0xa0a178c>, 'payment_method': u'CREDIT', 'payment_finalized': False, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 40, 15, 990913, tzinfo=<UTC>), 'id': 4}
+2013-07-28 00:22:30,417 - views - INFO: wash_fold_instance edited
+2013-07-28 00:22:30,417 - views - INFO: edited wash_fold_instance.__dict__: {'phone_number': u'9021', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0xa0a178c>, 'payment_method': u'CASH', 'payment_finalized': u'True', 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 40, 15, 990913, tzinfo=<UTC>), 'id': 4}
+2013-07-28 00:22:30,417 - views - INFO: wash_fold_instance edited
+2013-07-28 00:22:30,419 - views - INFO: New WashFoldOrder instance saved
+2013-07-28 00:30:31,520 - views - INFO: method: POST
+2013-07-28 00:30:31,521 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberto'], u'shirts_amount': [u'1'], u'total_cost': [u'2'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k'], u'shirts_price': [u'12.34'], u'starched': [u'True']}>
+2013-07-28 00:30:31,521 - views - INFO: entered try clause
+2013-07-28 00:30:31,521 - views - INFO: updating shirts
+2013-07-28 00:30:31,521 - views - INFO: shirt_id = 2, type = <type 'unicode'>
+2013-07-28 00:30:31,521 - views - INFO: entered edit_shirt_instance
+2013-07-28 00:30:31,523 - views - INFO: shirt_instance.__dict__: {'phone_number': u'0210', 'first_name': u'Johnn', 'last_name': u'Pemberton', 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0xa0a16ac>, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2}
+2013-07-28 00:30:31,523 - views - INFO: shirt_instance edited
+2013-07-28 00:30:31,523 - views - INFO: edited shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberto', 'shirts_amount': u'1', 'total_cost': 2.0, '_state': <django.db.models.base.ModelState object at 0xa0a16ac>, 'shirts_price': u'12.34', 'payment_method': u'CASH', 'payment_finalized': u'True', 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2, 'starched': u'True'}
+2013-07-28 00:30:31,523 - views - INFO: shirts edited
+2013-07-28 00:30:31,523 - views - INFO: entered except clause
+2013-07-28 00:30:31,523 - views - INFO: New LaundryShirtsOrder order addition failed
+2013-07-28 00:30:47,758 - views - INFO: method: POST
+2013-07-28 00:30:47,758 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'9021'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberton'], u'shirts_amount': [u'1'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k'], u'shirts_price': [u'12.34'], u'starched': [u'True']}>
+2013-07-28 00:30:47,758 - views - INFO: entered try clause
+2013-07-28 00:30:47,758 - views - INFO: updating shirts
+2013-07-28 00:30:47,758 - views - INFO: shirt_id = 2, type = <type 'unicode'>
+2013-07-28 00:30:47,758 - views - INFO: entered edit_shirt_instance
+2013-07-28 00:30:47,760 - views - INFO: shirt_instance.__dict__: {'phone_number': u'0210', 'first_name': u'Johnn', 'last_name': u'Pemberton', 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0xa0b194c>, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2}
+2013-07-28 00:30:47,760 - views - INFO: shirt_instance edited
+2013-07-28 00:30:47,760 - views - INFO: edited shirt_instance.__dict__: {'phone_number': u'9021', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'shirts_amount': u'1', 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0xa0b194c>, 'shirts_price': u'12.34', 'payment_method': u'CASH', 'payment_finalized': u'True', 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 4, 37, 31, 820732, tzinfo=<UTC>), 'id': 2, 'starched': u'True'}
+2013-07-28 00:30:47,760 - views - INFO: shirts edited
+2013-07-28 00:30:47,761 - views - INFO: entered except clause
+2013-07-28 00:30:47,761 - views - INFO: New LaundryShirtsOrder order addition failed
+2013-07-28 00:34:28,498 - views - INFO: method: POST
+2013-07-28 00:34:28,499 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'9021'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberton'], u'shirts_amount': [u'1'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k'], u'shirts_price': [u'12.34'], u'starched': [u'True']}>
+2013-07-28 00:34:28,499 - views - INFO: entered try clause
+2013-07-28 00:34:28,499 - views - INFO: updating shirts
+2013-07-28 00:34:28,499 - views - INFO: shirt_id = 2, type = <type 'unicode'>
+2013-07-28 00:34:28,499 - views - INFO: entered edit_shirt_instance
+2013-07-28 00:34:28,502 - views - INFO: shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'shirts_amount': 1, 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0xa10760c>, 'shirts_price': Decimal('12.34'), 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 22, 53, 40, 814785, tzinfo=<UTC>), 'id': 2, 'starched': True}
+2013-07-28 00:34:28,502 - views - INFO: shirt_instance edited
+2013-07-28 00:34:28,502 - views - INFO: edited shirt_instance.__dict__: {'phone_number': u'9021', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'shirts_amount': u'1', 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0xa10760c>, 'shirts_price': u'12.34', 'payment_method': u'CASH', 'payment_finalized': u'True', 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 22, 53, 40, 814785, tzinfo=<UTC>), 'id': 2, 'starched': u'True'}
+2013-07-28 00:34:28,502 - views - INFO: shirts edited
+2013-07-28 00:34:28,502 - views - INFO: entered except clause
+2013-07-28 00:34:28,502 - views - INFO: New LaundryShirtsOrder order addition failed
+2013-07-28 00:35:41,828 - views - INFO: method: POST
+2013-07-28 00:35:41,829 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'9021'], u'first_name': [u'Johnny'], u'last_name': [u'Pember'], u'shirts_amount': [u'1'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k'], u'shirts_price': [u'12.34'], u'starched': [u'True']}>
+2013-07-28 00:35:41,829 - views - INFO: entered try clause
+2013-07-28 00:35:41,829 - views - INFO: updating shirts
+2013-07-28 00:35:41,829 - views - INFO: shirt_id = 2, type = <type 'unicode'>
+2013-07-28 00:35:41,829 - views - INFO: entered edit_shirt_instance
+2013-07-28 00:35:41,832 - views - INFO: shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'shirts_amount': 1, 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0x9e5462c>, 'shirts_price': Decimal('12.34'), 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 22, 53, 40, 814785, tzinfo=<UTC>), 'id': 2, 'starched': True}
+2013-07-28 00:35:41,832 - views - INFO: shirt_instance edited
+2013-07-28 00:35:41,832 - views - INFO: edited shirt_instance.__dict__: {'phone_number': u'9021', 'first_name': u'Johnny', 'last_name': u'Pember', 'shirts_amount': u'1', 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0x9e5462c>, 'shirts_price': u'12.34', 'payment_method': u'CASH', 'payment_finalized': u'True', 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 22, 53, 40, 814785, tzinfo=<UTC>), 'id': 2, 'starched': u'True'}
+2013-07-28 00:35:41,832 - views - INFO: shirts edited
+2013-07-28 00:35:41,836 - views - INFO: New LaundryShirtsOrder instance saved
+2013-07-28 00:35:41,836 - views - INFO: entered except clause
+2013-07-28 00:35:41,836 - views - INFO: New LaundryShirtsOrder order addition failed
+2013-07-28 00:39:56,811 - views - INFO: method: POST
+2013-07-28 00:39:56,811 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'first_name': [u'Johnny'], u'last_name': [u'Pember'], u'shirts_amount': [u'1'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k'], u'shirts_price': [u'12.34'], u'starched': [u'True']}>
+2013-07-28 00:39:56,811 - views - INFO: entered try clause
+2013-07-28 00:39:56,811 - views - INFO: updating shirts
+2013-07-28 00:39:56,811 - views - INFO: shirt_id = 2, type = <type 'unicode'>
+2013-07-28 00:39:56,811 - views - INFO: entered edit_shirt_instance
+2013-07-28 00:39:56,814 - views - INFO: shirt_instance.__dict__: {'phone_number': u'9021', 'first_name': u'Johnny', 'last_name': u'Pember', 'shirts_amount': 1, 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0xa4c962c>, 'shirts_price': Decimal('12.34'), 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 22, 53, 40, 814785, tzinfo=<UTC>), 'id': 2, 'starched': True}
+2013-07-28 00:39:56,814 - views - INFO: shirt_instance edited
+2013-07-28 00:39:56,814 - views - INFO: edited shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pember', 'shirts_amount': 1, 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0xa4c962c>, 'shirts_price': 12.34, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 22, 53, 40, 814785, tzinfo=<UTC>), 'id': 2, 'starched': True}
+2013-07-28 00:39:56,815 - views - INFO: shirts edited
+2013-07-28 00:39:56,817 - views - INFO: New LaundryShirtsOrder instance saved
+2013-07-28 00:39:56,817 - views - INFO: entered except clause
+2013-07-28 00:39:56,818 - views - INFO: New LaundryShirtsOrder order addition failed
+2013-07-28 00:40:13,551 - views - INFO: method: POST
+2013-07-28 00:40:13,551 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberton'], u'shirts_amount': [u'1'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k'], u'shirts_price': [u'12.34'], u'starched': [u'True']}>
+2013-07-28 00:40:13,551 - views - INFO: entered try clause
+2013-07-28 00:40:13,551 - views - INFO: updating shirts
+2013-07-28 00:40:13,551 - views - INFO: shirt_id = 2, type = <type 'unicode'>
+2013-07-28 00:40:13,551 - views - INFO: entered edit_shirt_instance
+2013-07-28 00:40:13,553 - views - INFO: shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pember', 'shirts_amount': 1, 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0xa4dc82c>, 'shirts_price': Decimal('12.34'), 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 22, 53, 40, 814785, tzinfo=<UTC>), 'id': 2, 'starched': True}
+2013-07-28 00:40:13,553 - views - INFO: shirt_instance edited
+2013-07-28 00:40:13,553 - views - INFO: edited shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'shirts_amount': 1, 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0xa4dc82c>, 'shirts_price': 12.34, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 21, 22, 53, 40, 814785, tzinfo=<UTC>), 'id': 2, 'starched': True}
+2013-07-28 00:40:13,553 - views - INFO: shirts edited
+2013-07-28 00:40:13,556 - views - INFO: New LaundryShirtsOrder instance saved
+2013-07-28 00:40:13,556 - views - INFO: entered except clause
+2013-07-28 00:40:13,556 - views - INFO: New LaundryShirtsOrder order addition failed
+2013-07-28 00:42:13,662 - views - INFO: method: POST
+2013-07-28 00:42:13,662 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberto'], u'shirts_amount': [u'1'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but here'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k'], u'shirts_price': [u'12.34'], u'starched': [u'True']}>
+2013-07-28 00:42:13,662 - views - INFO: entered try clause
+2013-07-28 00:42:13,662 - views - INFO: updating shirts
+2013-07-28 00:42:13,662 - views - INFO: shirt_id = 5, type = <type 'unicode'>
+2013-07-28 00:42:13,663 - views - INFO: entered edit_shirt_instance
+2013-07-28 00:42:13,664 - views - INFO: shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberton', 'shirts_amount': 1, 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0xa4dc84c>, 'shirts_price': Decimal('12.34'), 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 23, 4, 36, 0, 21112, tzinfo=<UTC>), 'id': 5, 'starched': True}
+2013-07-28 00:42:13,665 - views - INFO: shirt_instance edited
+2013-07-28 00:42:13,665 - views - INFO: edited shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberto', 'shirts_amount': 1, 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0xa4dc84c>, 'shirts_price': 12.34, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 23, 4, 36, 0, 21112, tzinfo=<UTC>), 'id': 5, 'starched': True}
+2013-07-28 00:42:13,665 - views - INFO: shirts edited
+2013-07-28 00:42:13,667 - views - INFO: New LaundryShirtsOrder instance saved
+2013-07-28 00:42:13,667 - views - INFO: entered except clause
+2013-07-28 00:42:13,668 - views - INFO: New LaundryShirtsOrder order addition failed
+2013-07-28 00:44:02,042 - views - INFO: method: POST
+2013-07-28 00:44:02,042 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberto'], u'shirts_amount': [u'1'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but her'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k'], u'shirts_price': [u'12.34'], u'starched': [u'True']}>
+2013-07-28 00:44:02,042 - views - INFO: entered try clause
+2013-07-28 00:44:02,042 - views - INFO: updating shirts
+2013-07-28 00:44:02,042 - views - INFO: shirt_id = 5, type = <type 'unicode'>
+2013-07-28 00:44:02,042 - views - INFO: entered edit_shirt_instance
+2013-07-28 00:44:02,045 - views - INFO: shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberto', 'shirts_amount': 1, 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0x992c62c>, 'shirts_price': Decimal('12.34'), 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but here', 'date': datetime.datetime(2013, 7, 23, 4, 36, 0, 21112, tzinfo=<UTC>), 'id': 5, 'starched': True}
+2013-07-28 00:44:02,046 - views - INFO: shirt_instance edited
+2013-07-28 00:44:02,046 - views - INFO: edited shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberto', 'shirts_amount': 1, 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0x992c62c>, 'shirts_price': 12.34, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but her', 'date': datetime.datetime(2013, 7, 23, 4, 36, 0, 21112, tzinfo=<UTC>), 'id': 5, 'starched': True}
+2013-07-28 00:44:02,046 - views - INFO: shirts edited
+2013-07-28 00:44:02,048 - views - INFO: New LaundryShirtsOrder instance saved
+2013-07-28 00:44:02,049 - views - INFO: entered except clause
+2013-07-28 00:44:02,049 - views - INFO: New LaundryShirtsOrder order addition failed
+2013-07-28 00:48:16,540 - views - INFO: method: POST
+2013-07-28 00:48:16,540 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'first_name': [u'Johnny'], u'last_name': [u'Pemberto'], u'shirts_amount': [u'1'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but her'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k'], u'shirts_price': [u'12.30'], u'starched': [u'True']}>
+2013-07-28 00:48:16,540 - views - INFO: entered try clause
+2013-07-28 00:48:16,540 - views - INFO: updating shirts
+2013-07-28 00:48:16,540 - views - INFO: shirt_id = 5, type = <type 'unicode'>
+2013-07-28 00:48:16,540 - views - INFO: entered edit_shirt_instance
+2013-07-28 00:48:16,543 - views - INFO: shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberto', 'shirts_amount': 1, 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0x965662c>, 'shirts_price': Decimal('12.34'), 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but her', 'date': datetime.datetime(2013, 7, 23, 4, 36, 0, 21112, tzinfo=<UTC>), 'id': 5, 'starched': True}
+2013-07-28 00:48:16,543 - views - INFO: shirt_instance edited
+2013-07-28 00:48:16,543 - views - INFO: edited shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberto', 'shirts_amount': 1, 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0x965662c>, 'shirts_price': 12.3, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but her', 'date': datetime.datetime(2013, 7, 23, 4, 36, 0, 21112, tzinfo=<UTC>), 'id': 5, 'starched': True}
+2013-07-28 00:48:16,543 - views - INFO: shirts edited
+2013-07-28 00:48:16,546 - views - INFO: New LaundryShirtsOrder instance saved
+2013-07-28 00:48:16,546 - views - INFO: reverse(shirts)
+2013-07-28 00:48:16,546 - views - INFO: entered except clause
+2013-07-28 00:48:16,546 - views - INFO: New LaundryShirtsOrder order addition failed
+2013-07-28 00:51:03,851 - views - INFO: method: POST
+2013-07-28 00:51:03,851 - views - INFO: POST params: <QueryDict: {u'phone_number': [u'90210'], u'first_name': [u'Quentin'], u'last_name': [u'Pemberton'], u'shirts_amount': [u'1'], u'total_cost': [u'12'], u'payment_method': [u'CASH'], u'payment_finalized': [u'True'], u'address': [u'123 anywhere but her'], u'csrfmiddlewaretoken': [u'NYNyRCJwMYyv205w9uHectd0z8xb2x3k'], u'shirts_price': [u'12.30'], u'starched': [u'True']}>
+2013-07-28 00:51:03,852 - views - INFO: entered try clause
+2013-07-28 00:51:03,852 - views - INFO: updating shirt
+2013-07-28 00:51:03,852 - views - INFO: shirt_id = 5, type = <type 'unicode'>
+2013-07-28 00:51:03,852 - views - INFO: entered edit_shirt_instance
+2013-07-28 00:51:03,855 - views - INFO: shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Johnny', 'last_name': u'Pemberto', 'shirts_amount': 1, 'total_cost': Decimal('12'), '_state': <django.db.models.base.ModelState object at 0x8f3c64c>, 'shirts_price': Decimal('12.3'), 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but her', 'date': datetime.datetime(2013, 7, 23, 4, 36, 0, 21112, tzinfo=<UTC>), 'id': 5, 'starched': True}
+2013-07-28 00:51:03,855 - views - INFO: shirt_instance edited
+2013-07-28 00:51:03,855 - views - INFO: edited shirt_instance.__dict__: {'phone_number': u'90210', 'first_name': u'Quentin', 'last_name': u'Pemberton', 'shirts_amount': 1, 'total_cost': 12.0, '_state': <django.db.models.base.ModelState object at 0x8f3c64c>, 'shirts_price': 12.3, 'payment_method': u'CASH', 'payment_finalized': True, 'address': u'123 anywhere but her', 'date': datetime.datetime(2013, 7, 23, 4, 36, 0, 21112, tzinfo=<UTC>), 'id': 5, 'starched': True}
+2013-07-28 00:51:03,855 - views - INFO: shirts edited
+2013-07-28 00:51:03,858 - views - INFO: New LaundryShirtsOrder instance saved
