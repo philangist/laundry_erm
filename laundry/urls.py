@@ -19,6 +19,7 @@ urlpatterns = patterns('',
 	#dry_clean urls
 	url(r'^dry_clean_form/$', 'launder.views.dry_clean_add_form'),
 	url(r'^dry_clean_form/(?P<dry_clean_order>\d+)/$', 'launder.views.dry_clean_add_form'),
+    url(r'^dry_clean/add/(?P<dry_clean_id>\d+)/$', 'launder.views.dry_clean_add'),
     url(r'^dry_clean/add/$', 'launder.views.dry_clean_add'),
     url(r'^dry_clean/$', 'launder.views.dry_clean'),
 	url(r'^dry_clean/(?P<dry_clean_order>\d+)/$', 'launder.views.dry_clean_detail'),

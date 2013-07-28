@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 
-<head><title>New Dry Cleaning Order</title></head>
+<head><title>Dry Cleaning Order</title></head>
 <body>
-<h1>Add A new dry cleaning order Here</h1>
 
-<form action="/dry_clean/add/" method="post">
+{% if dry_clean_order %}
+	<h1>Edit dry cleaning order here</h1>
+	<form action="/dry_clean/add/{{ dry_clean_order.id }}/" method="post">
+{% else %}
+	<h1>Add a new dry cleaning order here</h1>
+	<form action="/dry_clean/add/" method="post">
+{% endif %}
+
 {% csrf_token  %}
 	First name: <input type="text" name="first_name" value="{{ dry_clean_order.first_name }}"><br>
-	Last name: <input type="text" name="last_name"><br>
-	Phone number: <input type="text" name="phone_number"><br>
-	Address: <input type="text" name="address"><br>
-	Garment Type:   <select name="garment_type">
+	Last name: <input type="text" name="last_name" value="{{ dry_clean_order.last_name }}"><br>
+	Phone number: <input type="text" name="phone_number" value="{{ dry_clean_order.phone_number }}"><br>
+	Address: <input type="text" name="address" value="{{ dry_clean_order.address }}"><br>
+	Garment Type:   <select name="garment_type" value="{{ dry_clean_order.garment_type }}">
 						<option value="TROUSERS">Trousers</option>
 						<option value="M SUITS">Mens Suits</option>
 						<option value="TOP O COAT">Top Coat</option>
 						<option value="SHIRTS">Shirts</option>
-				    </select>
-	Amount: <input type="text" name="garment_amount"><br>
-	Total Cost: <input type="text" name="total_cost"><br>
-	Payment Method: <select name="payment_method">
+				    </select><br>
+	Amount: <input type="text" name="garment_amount" value="{{ dry_clean_order.garment_amount }}"><br>
+	Total Cost: <input type="text" name="total_cost" value="{{ dry_clean_order.total_cost }}"><br>
+	Payment Method: <select name="payment_method" value="{{ dry_clean_order.payment_method }}">
 						<option value="CASH">Cash</option>
 						<option value="CREDIT">Credit</option>
 						<option value="CHECK">Check</option>
 					</select><br>
-	Payment Finalized:<select name="payment_finalized">
+	Payment Finalized:<select name="payment_finalized" value="{{ dry_clean_order.payment_finalized }}">
 						<option value="True">Finalized</option>
 						<option value="False">Not Finalized</option>
 					</select><br>
