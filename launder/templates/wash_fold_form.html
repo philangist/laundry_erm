@@ -4,7 +4,7 @@
 <body>
 
 {% if wash_fold_order %}
-	<h1>Edit wash and fold order here</h1>
+	<h1>Edit wash and fold order #{{ wash_fold_order.id }} here</h1>
 	<form action="/wash_fold/add/{{ wash_fold_order.id }}/" method="post">
 {% else %}
 	<h1>Add a new wash and fold order here</h1>

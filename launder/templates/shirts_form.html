@@ -4,7 +4,7 @@
 <body>
 
 {% if shirt_order %}
-	<h1>Edit shirt order here</h1>
+	<h1>Edit shirt order #{{ shirt_order.id }} here</h1>
 	<form action="/shirts/add/{{ shirt_order.id }}/" method="post">
 {% else %}
 	<h1>Add a new shirt order here</h1>

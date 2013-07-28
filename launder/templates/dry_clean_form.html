@@ -4,7 +4,7 @@
 <body>
 
 {% if dry_clean_order %}
-	<h1>Edit dry cleaning order here</h1>
+	<h1>Edit dry cleaning order #{{ dry_clean_order.id }} here</h1>
 	<form action="/dry_clean/add/{{ dry_clean_order.id }}/" method="post">
 {% else %}
 	<h1>Add a new dry cleaning order here</h1>
@@ -21,6 +21,15 @@
 						<option value="M SUITS">Mens Suits</option>
 						<option value="TOP O COAT">Top Coat</option>
 						<option value="SHIRTS">Shirts</option>
+						<option value="SPORTS COATS">Sports Coats</option>
+						<option value="NECKTIES">Neckties - Hats</option>
+						<option value="DRESS">Dress</option>
+						<option value="L SUITS">L Suits</option>
+						<option value="SKIRTS">Skirts</option>
+						<option value="BLOUSE">Blouse</option>
+						<option value="TOP 3/4 COAT">Top 3/4 Coat</option>
+						<option value="CAR COAT">Car Coat</option>
+						<option value="SLACKS">Slacks</option>
 				    </select><br>
 	Amount: <input type="text" name="garment_amount" value="{{ dry_clean_order.garment_amount }}"><br>
 	Total Cost: <input type="text" name="total_cost" value="{{ dry_clean_order.total_cost }}"><br>
