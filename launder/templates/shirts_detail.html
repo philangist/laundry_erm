@@ -6,19 +6,23 @@
 
 {% if shirt_order %}
     <h2>Order #{{ shirt_order.id }} Details:</h2>
+    Created on {{ shirt_order.date }}
     <ul>
     <li>First name: {{ shirt_order.first_name }}</br>
     <li>Last name: {{ shirt_order.last_name }}</br>
     <li>Phone number: {{ shirt_order.phone_number }}</br>
     <li>Address: {{ shirt_order.address }}</br>
-    <li>Date: {{ shirt_order.date }}</br>
     <li>Amount: {{ shirt_order.shirts_amount }}</br>
     <li>Price: {{ shirt_order.shirts_price }}</br>
     <li>Starched: {{ shirt_order.starched }}</br>
     <li>Total Cost: {{ shirt_order.total_cost }}</br>
     <li>Payment Method: {{ shirt_order.payment_method }}</br>
     <li>Payment Finalized: {{ shirt_order.payment_finalized }}</br>
+    {% if shirt_order.payment_finalized %}
+        <li>Payment Date: {{ shirt_order.payment_date }}</br>
+    {% endif %}
     </ul>
+    <a href="/shirts_form/{{ shirt_order.id }}">Edit order</a>
 {% elif not shirt_order %}
     <p>No details are available.</p>
 {% endif %}
