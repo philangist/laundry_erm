@@ -22,8 +22,8 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'launder', ['WashFoldOrder'])
 
-        # Adding model 'DryCleaningForm'
-        db.create_table(u'launder_drycleaningform', (
+        # Adding model 'DryCleaning'
+        db.create_table(u'launder_drycleaning', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('first_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
@@ -36,7 +36,7 @@ class Migration(SchemaMigration):
             ('payment_method', self.gf('django.db.models.fields.CharField')(max_length=6)),
             ('payment_finalized', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
-        db.send_create_signal(u'launder', ['DryCleaningForm'])
+        db.send_create_signal(u'launder', ['DryCleaning'])
 
         # Adding model 'LaundryShirtsOrder'
         db.create_table(u'launder_laundryshirtsorder', (
@@ -60,16 +60,16 @@ class Migration(SchemaMigration):
         # Deleting model 'WashFoldOrder'
         db.delete_table(u'launder_washfoldorder')
 
-        # Deleting model 'DryCleaningForm'
-        db.delete_table(u'launder_drycleaningform')
+        # Deleting model 'DryCleaning'
+        db.delete_table(u'launder_drycleaning')
 
         # Deleting model 'LaundryShirtsOrder'
         db.delete_table(u'launder_laundryshirtsorder')
 
 
     models = {
-        u'launder.drycleaningform': {
-            'Meta': {'object_name': 'DryCleaningForm'},
+        u'launder.drycleaning': {
+            'Meta': {'object_name': 'DryCleaning'},
             'address': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),

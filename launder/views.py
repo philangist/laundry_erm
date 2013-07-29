@@ -1,6 +1,7 @@
+from datetime import datetime
 from django.shortcuts import get_object_or_404, render_to_response, render
 from django.http import HttpResponseRedirect, HttpResponse
-from  django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse
 
 from launder.forms import WashFoldOrderForm
 from launder.models import WashFoldOrder, DryCleaning, LaundryShirtsOrder
@@ -18,8 +19,12 @@ def make_wash_fold_instance(request):
         address = request.POST['address'],
         total_cost = float(request.POST['total_cost']),
         payment_method = request.POST['payment_method'],
-        payment_finalized = request.POST['payment_finalized']
+        payment_finalized = (request.POST['payment_finalized'] == 'True'),
+        comments = request.POST['comments']
     )
+    logger.info('wash_fold_instance.payment_finalized: %s' % str(wash_fold_instance.payment_finalized))
+    if wash_fold_instance.payment_finalized:
+        wash_fold_instance.payment_date = datetime.now()
     logger.info('wash_fold_instance created')
     return wash_fold_instance
 
@@ -33,7 +38,11 @@ def edit_wash_fold_instance(request, wash_fold_id):
     wash_fold_instance.address = request.POST['address']
     wash_fold_instance.total_cost = float(request.POST['total_cost'])
     wash_fold_instance.payment_method = request.POST['payment_method']
-    wash_fold_instance.payment_finalized = request.POST['payment_finalized']
+    wash_fold_instance.payment_finalized = (request.POST['payment_finalized'] == 'True')
+    logger.info('payment_finalized: %s' % str(wash_fold_instance.payment_finalized))
+    wash_fold_instance.comments = request.POST['comments']
+    if wash_fold_instance.payment_finalized == True:
+        wash_fold_instance.payment_date = datetime.now()
     logger.info('wash_fold_instance edited')
     logger.info('edited wash_fold_instance.__dict__: %s' % str(wash_fold_instance.__dict__))
     return wash_fold_instance
@@ -49,8 +58,11 @@ def make_dry_clean_instance(request):
         garment_amount= int(request.POST['garment_amount']),
         total_cost = float(request.POST['total_cost']),
         payment_method = request.POST['payment_method'],
-        payment_finalized = request.POST['payment_finalized']
+        payment_finalized = (request.POST['payment_finalized'] == 'True')
     )
+    logger.info('dry_cleaning_instance.payment_finalized: %s' % str(dry_cleaning_instance.payment_finalized))
+    if dry_cleaning_instance.payment_finalized:
+        dry_cleaning_instance.payment_date = datetime.now()
     logger.info('dry_cleaning_instance created: %s' % str(dry_cleaning_instance.__dict__))
     return dry_cleaning_instance
 
@@ -66,7 +78,9 @@ def edit_dry_clean_instance(request, dry_clean_id):
     dry_clean_instance.garment_amount = int(request.POST['garment_amount'])
     dry_clean_instance.total_cost = float(request.POST['total_cost'])
     dry_clean_instance.payment_method = request.POST['payment_method']
-    dry_clean_instance.payment_finalized = bool(request.POST['payment_finalized'])
+    dry_clean_instance.payment_finalized = (request.POST['payment_finalized'] == 'True')
+    if dry_clean_instance.payment_finalized == True:
+        dry_clean_instance.payment_date = datetime.now()
     logger.info('dry_clean_instance edited')
     logger.info('edited dry_clean_instance.__dict__: %s' % str(dry_clean_instance.__dict__))
     return dry_clean_instance
@@ -80,11 +94,13 @@ def make_shirts_instance(request):
         address = request.POST['address'],
         shirts_amount = int(request.POST['shirts_amount']),
         shirts_price = float(request.POST['shirts_price']),
-        starched = bool(request.POST['starched']),
+        starched = (request.POST['starched'] == 'True'),
         total_cost = float(request.POST['total_cost']),
         payment_method = request.POST['payment_method'],
-        payment_finalized = bool(request.POST['payment_finalized'])
+        payment_finalized = (request.POST['payment_finalized'] == 'True')
     )
+    if shirts_instance.payment_finalized:
+        shirts_instance.payment_date = datetime.now()
     logger.info('shirts_instance created')
     return shirts_instance
 
@@ -98,10 +114,13 @@ def edit_shirts_instance(request, shirt_id):
     shirt_instance.address = request.POST['address']
     shirt_instance.shirts_amount = int(request.POST['shirts_amount'])
     shirt_instance.shirts_price = float(request.POST['shirts_price'])
-    shirt_instance.starched = bool(request.POST['starched'])
+    shirt_instance.starched = (request.POST['starched'] == 'True')
     shirt_instance.total_cost = float(request.POST['total_cost'])
     shirt_instance.payment_method = request.POST['payment_method']
-    shirt_instance.payment_finalized = bool(request.POST['payment_finalized'])
+    shirt_instance.payment_finalized = (request.POST['payment_finalized'] == 'True')
+    logger.info('shirts_instance.payment_finalized: %s' % str(shirt_instance.payment_finalized))
+    if shirt_instance.payment_finalized:
+        shirt_instance.payment_date = datetime.now()
     logger.info('shirt_instance edited')
     logger.info('edited shirt_instance.__dict__: %s' % str(shirt_instance.__dict__))
     return shirt_instance
@@ -133,7 +152,6 @@ def wash_fold_add(request, wash_fold_id=None):
             logger.info('entered try clause')
             if wash_fold_id is not None:
                 logger.info('updating wash_fold_instance')
-                logger.info('wash_fold_id = %d, type = %s' % (int(wash_fold_id), str(type(wash_fold_id))))
                 wash_fold_instance = edit_wash_fold_instance(request, wash_fold_id)
                 logger.info('wash_fold_instance edited')
             else:

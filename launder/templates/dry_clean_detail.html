@@ -17,6 +17,9 @@
     <li>Total Cost: {{ dry_clean_order.total_cost }}</br>
     <li>Payment Method: {{ dry_clean_order.payment_method }}</br>
     <li>Payment Finalized: {{ dry_clean_order.payment_finalized }}</br>
+    {% if dry_clean_order.payment_finalized %}
+        <li>Payment Date: {{ dry_clean_order.payment_date }}</br>
+    {% endif %}
     </ul>
 {% elif not dry_clean_order %}
     <p>No details are available.</p>

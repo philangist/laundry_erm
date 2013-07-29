@@ -18,6 +18,9 @@
     <li>Total Cost: {{ shirt_order.total_cost }}</br>
     <li>Payment Method: {{ shirt_order.payment_method }}</br>
     <li>Payment Finalized: {{ shirt_order.payment_finalized }}</br>
+    {% if shirt_order.payment_finalized %}
+        <li>Payment Date: {{ shirt_order.payment_date }}</br>
+    {% endif %}
     </ul>
 {% elif not shirt_order %}
     <p>No details are available.</p>

@@ -15,6 +15,10 @@
     <li>Total Cost: {{ wash_fold_order.total_cost }}</br>
     <li>Payment Method: {{ wash_fold_order.payment_method }}</br>
     <li>Payment Finalized: {{ wash_fold_order.payment_finalized }}</br>
+    <li>Comments: {{ wash_fold_order.comments }}</br>
+    {% if wash_fold_order.payment_finalized %}
+        <li>Payment Date: {{ wash_fold_order.payment_date }}</br>
+    {% endif %}
     </ul>
 {% elif not wash_fold_order %}
     <p>No details are available.</p>

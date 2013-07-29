@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 
 class WashFoldOrder(models.Model):
@@ -16,7 +17,9 @@ class WashFoldOrder(models.Model):
 	date = models.DateTimeField(auto_now_add=True)
 	total_cost = models.DecimalField(max_digits=5, decimal_places=2)
 	payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
-	payment_finalized = models.BooleanField()
+	payment_finalized = models.BooleanField(default=False)
+	payment_date = models.DateTimeField(default=datetime.date.today)
+	comments = models.TextField(default='')
 
 class DryCleaning(models.Model):
 
@@ -54,6 +57,7 @@ class DryCleaning(models.Model):
 	total_cost = models.DecimalField(max_digits=5, decimal_places=2)
 	payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
 	payment_finalized = models.BooleanField()
+	payment_date = models.DateTimeField(default=datetime.date.today)
 
 class LaundryShirtsOrder(models.Model):
 
@@ -75,3 +79,4 @@ class LaundryShirtsOrder(models.Model):
 	total_cost = models.DecimalField(max_digits=5, decimal_places=2)
 	payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
 	payment_finalized = models.BooleanField()
+	payment_date = models.DateTimeField(default=datetime.date.today)
