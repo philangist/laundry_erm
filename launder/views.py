@@ -2,6 +2,7 @@ from datetime import datetime
 from django.shortcuts import get_object_or_404, render_to_response, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
+from django.template import RequestContext
 
 from launder.forms import WashFoldOrderForm
 from launder.models import WashFoldOrder, DryCleaning, LaundryShirtsOrder
@@ -158,7 +159,7 @@ def wash_fold_add(request, wash_fold_id=None):
                 wash_fold_instance = make_wash_fold_instance(request)
             wash_fold_instance.save()
             logger.info("New WashFoldOrder instance saved")
-            return HttpResponseRedirect(reverse(wash_fold_detail, kwargs={'wash_fold_order' : wash_fold_id}))
+            return HttpResponseRedirect(reverse(wash_fold_detail, kwargs={'wash_fold_order' : wash_fold_instance.id}))
         except:
             logger.info('entered except clause')
             logger.info("New WashFoldOrder order addition failed")
@@ -170,7 +171,8 @@ def dry_clean(request):
     logger.info('showing dry cleaning order')
     orders = DryCleaning.objects.all()
     return render_to_response('dry_clean.html', 
-        {'orders' : orders}
+        {'orders' : orders},
+        context_instance=RequestContext(request)
     )
 
 def dry_clean_detail(request, dry_clean_order):
@@ -199,8 +201,7 @@ def dry_clean_add(request, dry_clean_id=None):
                 dry_cleaning_instance = make_dry_clean_instance(request)
             dry_cleaning_instance.save()
             logger.info("New DryCleaning instance saved")
-            return HttpResponseRedirect(reverse(dry_clean_detail, kwargs={'dry_clean_order' : dry_clean_id}))
-            return HttpResponseRedirect(reverse(dry_clean))
+            return HttpResponseRedirect(reverse(dry_clean_detail, kwargs={'dry_clean_order' : dry_cleaning_instance.id}))
         except:
             logger.info('entered except clause')
             logger.info("New DryCleaning order addition failed")
@@ -242,7 +243,7 @@ def shirts_add(request, shirt_id=None):
                 shirt = make_shirts_instance(request)
             shirt.save()
             logger.info("New LaundryShirtsOrder instance saved")
-            return HttpResponseRedirect(reverse(shirts_detail, kwargs={'shirt_order' : shirt_id}))
+            return HttpResponseRedirect(reverse(shirts_detail, kwargs={'shirt_order' : shirt.id}))
         except:
             logger.info('entered except clause')
             logger.info("New LaundryShirtsOrder order addition failed")
