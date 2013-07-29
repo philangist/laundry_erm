@@ -17,14 +17,14 @@
 	Phone number: <input type="text" name="phone_number" value="{{ wash_fold_order.phone_number }}"><br>
 	Address: <input type="text" name="address" value="{{ wash_fold_order.address }}"><br>
 	Total Cost: <input type="text" name="total_cost" value="{{ wash_fold_order.total_cost }}"><br>
-	Payment Method: <select name="payment_method" value="{{ wash_fold_order.payment_method }}">
-						<option value="CASH">Cash</option>
-						<option value="CREDIT">Credit</option>
-						<option value="CHECK">Check</option>
+	Payment Method: <select name="payment_method">
+						<option value="CASH" {% ifequal wash_fold_order.payment_method "CASH" %} selected="CASH" {% endifequal %} >Cash</option>
+						<option value="CREDIT" {% ifequal wash_fold_order.payment_method "CREDIT" %} selected="CREDIT" {% endifequal %} >Credit</option>
+						<option value="CHECK" {% ifequal wash_fold_order.payment_method "CHECK" %} selected="CHECK" {% endifequal %} >Check</option>
 					</select><br>
-	Payment Finalized:<select name="payment_finalized" value="{{ wash_fold_order.payment_finalized }}">
-						<option value="False">Not Finalized</option>
-						<option value="True">Finalized</option>
+	Payment Finalized:<select name="payment_finalized">
+					   <option value="False" {% ifequal wash_fold_order.payment_finalized False %} selected {% endifequal %} >Not Finalized</option>
+					   <option value="True" {% ifequal wash_fold_order.payment_finalized True %} selected {% endifequal %} >Finalized</option>
 					</select><br>
 	Comments:<br><textarea name="comments" rows="15" cols="50">{{ wash_fold_order.comments }}</textarea><br>
 	<input type="submit" value="submit">
