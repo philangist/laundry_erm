@@ -1,0 +1,508 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"re",
+				"recc"
+			],
+			[
+				"s",
+				"smallest_element"
+			],
+			[
+				"la",
+				"largest_element"
+			],
+			[
+				"sma",
+				"smallest_element"
+			],
+			[
+				"ran",
+				"random"
+			],
+			[
+				"lar",
+				"largest_array"
+			],
+			[
+				"sm",
+				"smallest_array"
+			],
+			[
+				"au",
+				"AutoField"
+			],
+			[
+				"i",
+				"info"
+			],
+			[
+				"e",
+				"else"
+			],
+			[
+				"pay",
+				"payment_method"
+			],
+			[
+				"was",
+				"wash_fold_order"
+			],
+			[
+				"dr",
+				"dry_clean_id"
+			],
+			[
+				"m",
+				"make_dry_clean_instance"
+			],
+			[
+				"c",
+				"core"
+			],
+			[
+				"sh",
+				"shirt_id"
+			],
+			[
+				"shirt_",
+				"shirt_id"
+			],
+			[
+				"starch",
+				"starched"
+			],
+			[
+				"d",
+				"dry_cleaning_instance"
+			],
+			[
+				"__",
+				"__dict__"
+			],
+			[
+				"wa",
+				"wash_fold_class_instance"
+			],
+			[
+				"N",
+				"None"
+			],
+			[
+				"h",
+				"href	Attr"
+			],
+			[
+				"df",
+				"dry_clean_add_form"
+			],
+			[
+				"dry",
+				"dry_cleaning_instance"
+			],
+			[
+				"cl",
+				"clause"
+			],
+			[
+				"lo",
+				"logger"
+			],
+			[
+				"payment_f",
+				"payment_finalized"
+			],
+			[
+				"payment_m",
+				"payment_method"
+			],
+			[
+				"g",
+				"garment_amount"
+			],
+			[
+				"gar",
+				"garment_type"
+			],
+			[
+				"cas",
+				"CASH"
+			],
+			[
+				"pa",
+				"payment_finalized"
+			],
+			[
+				"for",
+				"form	Tag"
+			],
+			[
+				"HTT",
+				"HttpResponseRedirect"
+			],
+			[
+				"p",
+				"phone_number"
+			],
+			[
+				"fi",
+				"first_name"
+			],
+			[
+				"Mo",
+				"ModelForm"
+			],
+			[
+				"a",
+				"amount"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 264.0,
+		"selected_items":
+		[
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				":W",
+				":w - Save"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/ubuntu/test/laundry/TODO:",
+		"/home/ubuntu/reccomender/cluster_utils.py",
+		"/home/ubuntu/reccomender/logger_factory.py",
+		"/home/ubuntu/reccomender/reccomendations.py",
+		"/home/ubuntu/reccomender/viewlist_manager.py",
+		"/home/ubuntu/reccomender/get_reccomendations.py",
+		"/home/ubuntu/test/laundry/We need 4 forms",
+		"/home/ubuntu/test/laundry/launder/models.py",
+		"/home/ubuntu/Desktop/fix db problems.text",
+		"/home/ubuntu/test/laundry/launder/views.py",
+		"/home/ubuntu/test/laundry/launder/templates/shirts_detail.html",
+		"/home/ubuntu/test/laundry/launder/templates/shirts_form.html",
+		"/home/ubuntu/test/laundry/launder/templates/wash_fold_form.html",
+		"/home/ubuntu/test/laundry/launder/templates/wash_fold_detail.html",
+		"/home/ubuntu/test/laundry/launder/templates/base.html",
+		"/home/ubuntu/test/laundry/launder/templates/dry_clean_detail.html",
+		"/home/ubuntu/test/laundry/launder/templates/index.html",
+		"/home/ubuntu/test/laundry/launder/templates/shirts.html",
+		"/home/ubuntu/test/laundry/launder/templates/wash_fold.html",
+		"/home/ubuntu/test/laundry/launder/templates/dry_clean.html",
+		"/home/ubuntu/test/laundry/launder/templates/dry_clean_form.html",
+		"/home/ubuntu/test/laundry/laundry/settings.py",
+		"/home/ubuntu/test/laundry/views.log",
+		"/home/ubuntu/test/laundry/static/css/bootstrap.css",
+		"/home/ubuntu/test/laundry/laundry/urls.py",
+		"/home/ubuntu/test/laundry/manage.py",
+		"/home/ubuntu/test/laundry/launder/urls.py",
+		"/home/ubuntu/test/laundry/launder/migrations/0002_auto__del_drycleaningform__add_drycleaning.py",
+		"/home/ubuntu/test/laundry/launder/migrations/0001_initial.py",
+		"/home/ubuntu/test/laundry/logger_factory.py",
+		"/home/ubuntu/test/laundry_project/laundry/settings.py",
+		"/home/ubuntu/laundry/schema.db",
+		"/home/ubuntu/test/laundry_project/schema.db",
+		"/home/ubuntu/test/django_blog/mysite/blog/models.py",
+		"/home/ubuntu/test/django_blog/mysite/blog/templates/blog.html",
+		"/home/ubuntu/test/django_blog/mysite/mysite/settings.py",
+		"/home/ubuntu/test/django_blog/mysite/blog/admin.py",
+		"/home/ubuntu/test/django_blog/mysite/mysite/urls.py",
+		"/home/ubuntu/test/django_blog/mysite/blog/urls.py",
+		"/home/ubuntu/test/django_blog/mysite/blog/templates/base.html",
+		"/home/ubuntu/test/laundry_project/launder/views.py",
+		"/home/ubuntu/test/laundry_project/launder/urls.py",
+		"/home/ubuntu/test/laundry_project/launder/tests.py",
+		"/home/ubuntu/test/laundry_project/launder/models.py",
+		"/home/ubuntu/test/laundry_project/launder/forms.py",
+		"/home/ubuntu/test/laundry_project/launder/admin.py",
+		"/home/ubuntu/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/ubuntu/test/laundry_project/laundry/wsgi.py",
+		"/home/ubuntu/test/laundry_project/laundry/urls.py",
+		"/home/ubuntu/test/laundry_project/laundry/__init__.py",
+		"/home/ubuntu/test/laundry/launder/admin.py",
+		"/home/ubuntu/test/laundry/schema.db",
+		"/home/ubuntu/test/laundry/__init__.py"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/home/ubuntu/reccomender",
+			"/home/ubuntu/test/laundry",
+			"/home/ubuntu/test/laundry/launder",
+			"/home/ubuntu/test/laundry"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"filter_clusters",
+			"[0]",
+			"smallest",
+			"dry_clean_add_f",
+			"template",
+			"\\n",
+			"dry_clean",
+			"wash_fold",
+			"HttpResponseRedirect",
+			"wash_fold_detail",
+			"reverse",
+			"payment_method",
+			"CASH",
+			"wash_fold_order",
+			"shirt_order",
+			"False",
+			"CREDIT",
+			"wash_fold_order",
+			"bool",
+			"wash_fold_instance",
+			"request.POST['payment_finalized']",
+			"logger.info('payment_finalized",
+			"payment_finalized",
+			"TextField",
+			"\\t\\t",
+			"-",
+			"wash_fold",
+			"_detail",
+			"wash_fold_detail",
+			"\"><br>",
+			"!= None",
+			"make_shirts_instance",
+			"reverse",
+			"wash_fold",
+			"wash_fold_instance(",
+			"wash_fold_instance edited",
+			"wash_fold",
+			"def wash_fold_add_form(request, wash_fold_order=None):\n	if wash_fold_order is not None:\n		wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)\n	return render(request, 'wash_fold_form.html', \n		{'wash_fold_order' : wash_fold_order}\n	)",
+			"def wash_fold_add_form(request, wash_fold_order=None):\n	if wash_fold_order is not None:\n		wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)\n	return render(request, 'wash_fold_form.html', \n		{'wash_fold_order' : wash_fold_order}\n	)\n",
+			"def wash_fold_add_form(request, wash_fold_order=None):\n	if wash_fold_order is not None:\n		wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)",
+			"def wash_fold_add_form(request, wash_fold_order=None):",
+			"shirts_",
+			"shirt_",
+			"shirt",
+			"shirts_add",
+			"return render_to_response(request, 'wash_fold_form.html', ",
+			"return render(request, 'wash_fold_form.html', ",
+			"wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)",
+			"def wash_fold_add_form(request, wash_fold_order=None):\n	if wash_fold_order is not None:\n		wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)\n	return render(request, 'wash_fold_form.html', \n		{'wash_fold_order' : wash_fold_order}\n	)",
+			"		wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)",
+			"	if wash_fold_order is not None:",
+			"def wash_fold_add_form(request, wash_fold_order=None):",
+			"def wash_fold_add_form(request, wash_fold_order=None):\n	if wash_fold_order is not None:\n		wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)\n	return render(request, 'wash_fold_form.html', \n		{'wash_fold_order' : wash_fold_order}\n	)",
+			"\n		{'wash_fold_order' : wash_fold_order}\n	)",
+			"{'wash_fold_order' : wash_fold_order}",
+			"{'wash_fold_order' : wash_fold_order }\n	)",
+			"wash_fold_add_form",
+			"wash_fold_add_form(request, ",
+			"shirt_",
+			"shirts_",
+			"shirts_add_form",
+			"wash_fold_order",
+			"/add(?P<wash_fold_id>\\d+",
+			"shirts/add(?P<wash_fold_id>\\d+",
+			"wash_fold_instance",
+			"wash_fold_id",
+			"wash_fold_instance",
+			"queryd",
+			"edit_wash_fold_instance",
+			"entered edit_wash_fold_instance",
+			"edit_wash_fold_instance",
+			"make_wash_fold_instance",
+			"wash_fold_instance",
+			"make_dry_clean_instance",
+			"wash_fold_class_instance",
+			"make_wash_fold_class_instance",
+			"make_shirts_instance",
+			"_form.html",
+			"form.html",
+			"shirt_order",
+			"Shirts",
+			"dry_clean_order",
+			"Dry Cleaning",
+			"%}</br>",
+			"{% d",
+			"launder_drycleaningform",
+			"LaundryShirtsOrder",
+			"make_shirts_instance",
+			"make_wash_fold_order_instance",
+			"launder_shirts_add",
+			"\"",
+			"dry_clean_view",
+			"dry_clean_form",
+			"dry_clean_add_form",
+			"request.POST",
+			"\n",
+			"max_lengtfdhjhvbh",
+			"max_length",
+			"DryCleaningForm",
+			"DecimalField()"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			", ",
+			"\\t",
+			"",
+			"\" value=\"{{ dry_clean_order. }}\"><br>",
+			"wash_fold_",
+			"wash_fold_instance",
+			"/",
+			"wash_fold_order",
+			"Wash and Fold",
+			"shirt_order",
+			"Shirts",
+			"}}</br>",
+			"{{ d",
+			"",
+			"request",
+			"DryCleaning",
+			"DecimalField(max_digits=5, decimal_places=2)"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			0.449856984375,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"project": "laundry-erm.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"~/test/books/books.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 161.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

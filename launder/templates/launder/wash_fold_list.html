@@ -1,0 +1,8 @@
+{% block content %}
+    <h2>Wash And Fold Orders</h2>
+    <ul>
+        {% for order in object_list %}
+            <li>{{ order.first_name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

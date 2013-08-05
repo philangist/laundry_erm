@@ -3,6 +3,8 @@ from django.shortcuts import get_object_or_404, render_to_response, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView
 
 from launder.forms import WashFoldOrderForm
 from launder.models import WashFoldOrder, DryCleaning, LaundryShirtsOrder
@@ -10,6 +12,14 @@ from launder.models import WashFoldOrder, DryCleaning, LaundryShirtsOrder
 import logger_factory
 
 logger = logger_factory.logger_factory('views')
+
+class WashFoldCreate(CreateView):
+    template_name = 'launder/wash_fold_form.html'
+    model = WashFoldOrder
+
+class WashFoldList(ListView):
+    template_name = 'launder/wash_fold_list.html'
+    model = WashFoldOrder
 
 def make_wash_fold_instance(request):
     logger.info('entered make_wash_fold_instance')
@@ -132,7 +142,7 @@ def wash_fold(request):
         {'orders' : orders}
     )
 
-def wash_fold_detail(request, wash_fold_order):
+def wash_fold_detail(request, wash_fold_order=None):
     wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)
     return render_to_response('wash_fold_detail.html',
         {'wash_fold_order' : wash_fold_order}

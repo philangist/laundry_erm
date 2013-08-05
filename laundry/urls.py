@@ -1,7 +1,8 @@
 from django.conf.urls import patterns, include, url
-
 from django.contrib import admin
 admin.autodiscover()
+
+from launder.views import WashFoldCreate, WashFoldList
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -9,6 +10,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 	url(r'^admin/', include(admin.site.urls)),
+	#wash_fold_generic_views
+	url(r'^g_wash_fold/add/$', WashFoldCreate.as_view(), name='wash_fold_add'),
+	url(r'^g_wash_fold/$', WashFoldList.as_view()),
 	#wash_fold urls
 	url(r'^wash_fold_form/$', 'launder.views.wash_fold_add_form'),
 	url(r'^wash_fold_form/(?P<wash_fold_order>\d+)/$', 'launder.views.wash_fold_add_form'),
