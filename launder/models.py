@@ -26,7 +26,7 @@ class WashFoldOrder(models.Model):
         return "%s %s" % (self.first_name, self.last_name)
 
     def get_absolute_url(self):
-        return '/wash_fold/%i/' % self.pk
+        return reverse('wash_fold_detail', kwargs={'wash_fold_order': self.pk})
 
 class DryCleaning(models.Model):
 
@@ -87,3 +87,7 @@ class LaundryShirtsOrder(models.Model):
     payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
     payment_finalized = models.BooleanField()
     payment_date = models.DateTimeField(default=datetime.date.today)
+
+class DailyOperationsList(models.Model):
+
+    date = models.DateTimeField(datetime.datetime.today())

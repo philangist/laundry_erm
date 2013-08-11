@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from launder.forms import WashFoldOrderForm
 from launder.models import WashFoldOrder, DryCleaning, LaundryShirtsOrder
@@ -14,12 +14,17 @@ import logger_factory
 logger = logger_factory.logger_factory('views')
 
 class WashFoldCreate(CreateView):
-    template_name = 'launder/wash_fold_form.html'
     model = WashFoldOrder
+    form_class = WashFoldOrderForm
+    template_name = 'launder/wash_fold_form.html'
 
 class WashFoldList(ListView):
     template_name = 'launder/wash_fold_list.html'
     model = WashFoldOrder
+
+class WashFoldUpdate(UpdateView):
+    model = WashFoldOrder
+    form_class = WashFoldOrderForm
 
 def make_wash_fold_instance(request):
     logger.info('entered make_wash_fold_instance')

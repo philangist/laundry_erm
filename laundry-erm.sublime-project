@@ -12,6 +12,10 @@
 		{
 			"follow_symlinks": true,
 			"path": "/home/ubuntu/reccomender"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/home/ubuntu/test/scrud/cbv_scrud"
 		}
 	]
 }

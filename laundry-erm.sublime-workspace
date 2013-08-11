@@ -4,12 +4,92 @@
 		"selected_items":
 		[
 			[
-				"re",
-				"recc"
+				"s",
+				"string"
 			],
 			[
-				"s",
-				"smallest_element"
+				"Re",
+				"Request"
+			],
+			[
+				"vi",
+				"viewHandler"
+			],
+			[
+				"Pa",
+				"Page"
+			],
+			[
+				"e",
+				"err"
+			],
+			[
+				"S",
+				"StatusFound"
+			],
+			[
+				"err",
+				"err"
+			],
+			[
+				"t",
+				"title"
+			],
+			[
+				"er",
+				"err"
+			],
+			[
+				"ht",
+				"http"
+			],
+			[
+				"P",
+				"Path"
+			],
+			[
+				"save",
+				"saveHandler"
+			],
+			[
+				"tp",
+				"tmpl"
+			],
+			[
+				"title",
+				"title"
+			],
+			[
+				"R",
+				"Request"
+			],
+			[
+				"ed",
+				"editHandler"
+			],
+			[
+				"len",
+				"lenPath"
+			],
+			[
+				"f",
+				"fmt"
+			],
+			[
+				"b",
+				"Body"
+			],
+			[
+				"io",
+				"ioutil"
+			],
+			[
+				"was",
+				"wash_fold"
+			],
+			[
+				"re",
+				"recc"
 			],
 			[
 				"la",
@@ -40,16 +120,8 @@
 				"info"
 			],
 			[
-				"e",
-				"else"
-			],
-			[
 				"pay",
 				"payment_method"
-			],
-			[
-				"was",
-				"wash_fold_order"
 			],
 			[
 				"dr",
@@ -163,13 +235,38 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "http://stackoverflow.com/questions/5773724/how-do-i-use-createview-with-a-modelform\nhttp://catherinetenajeros.blogspot.com/2013/03/django-15-how-to-create-and-update-form.html\nhttp://blog.headspin.com/?p=581\nhttp://blog.headspin.com/?p=532\nhttp://catherinetenajeros.blogspot.com/2013/03/django-15-how-to-create-and-update-form.html",
+			"settings":
+			{
+				"buffer_size": 331,
+				"line_ending": "Unix",
+				"name": "http://stackoverflow.com/questions/5773724/how-do-"
+			}
+		},
+		{
+			"file": "/home/ubuntu/golang/gowiki/wiki.go",
+			"settings":
+			{
+				"buffer_size": 2381,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 264.0,
+		"height": 33.0,
 		"selected_items":
 		[
+			[
+				"package",
+				"Preferences: Browse Packages"
+			],
+			[
+				"Pack",
+				"Preferences: Browse Packages"
+			],
 			[
 				":w",
 				":w - Save"
@@ -179,13 +276,18 @@
 				":w - Save"
 			]
 		],
-		"width": 392.0
+		"width": 449.0
 	},
 	"console":
 	{
-		"height": 0.0,
+		"height": 139.0,
 		"history":
 		[
+			"import urllib3,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib3.install_opener(urllib3.build_opener(urllib3.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib3.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print('Please restart Sublime Text to finish installation')",
+			"import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print('Please restart Sublime Text to finish installation')",
+			"import urllib,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib.install_opener(urllib.build_opener(urllib.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print('Please restart Sublime Text to finish installation')",
+			"python",
+			"import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print('Please restart Sublime Text to finish installation')"
 		]
 	},
 	"distraction_free":
@@ -199,6 +301,20 @@
 	},
 	"file_history":
 	[
+		"/home/ubuntu/.config/sublime-text-3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/home/ubuntu/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings",
+		"/home/ubuntu/golang/gowiki/view.html",
+		"/home/ubuntu/golang/gowiki/edit.html",
+		"/home/ubuntu/golang/gowiki/simple_http_server.go",
+		"/home/ubuntu/golang/gowiki/test.txt",
+		"/home/ubuntu/test/laundry/launder/templates/launder/wash_fold_form.html",
+		"/home/ubuntu/test/laundry/laundry/urls.py",
+		"/home/ubuntu/test/laundry/launder/templates/launder/wash_fold_list.html",
+		"/home/ubuntu/test/laundry/launder/forms.py",
+		"/home/ubuntu/test/laundry/launder/templates/launder/wash_fold_update_form.html",
+		"/home/ubuntu/test/laundry/launder/views.py",
+		"/home/ubuntu/test/laundry/launder/models.py",
+		"/home/ubuntu/test/laundry/views.log",
 		"/home/ubuntu/test/laundry/TODO:",
 		"/home/ubuntu/reccomender/cluster_utils.py",
 		"/home/ubuntu/reccomender/logger_factory.py",
@@ -206,9 +322,7 @@
 		"/home/ubuntu/reccomender/viewlist_manager.py",
 		"/home/ubuntu/reccomender/get_reccomendations.py",
 		"/home/ubuntu/test/laundry/We need 4 forms",
-		"/home/ubuntu/test/laundry/launder/models.py",
 		"/home/ubuntu/Desktop/fix db problems.text",
-		"/home/ubuntu/test/laundry/launder/views.py",
 		"/home/ubuntu/test/laundry/launder/templates/shirts_detail.html",
 		"/home/ubuntu/test/laundry/launder/templates/shirts_form.html",
 		"/home/ubuntu/test/laundry/launder/templates/wash_fold_form.html",
@@ -221,9 +335,7 @@
 		"/home/ubuntu/test/laundry/launder/templates/dry_clean.html",
 		"/home/ubuntu/test/laundry/launder/templates/dry_clean_form.html",
 		"/home/ubuntu/test/laundry/laundry/settings.py",
-		"/home/ubuntu/test/laundry/views.log",
 		"/home/ubuntu/test/laundry/static/css/bootstrap.css",
-		"/home/ubuntu/test/laundry/laundry/urls.py",
 		"/home/ubuntu/test/laundry/manage.py",
 		"/home/ubuntu/test/laundry/launder/urls.py",
 		"/home/ubuntu/test/laundry/launder/migrations/0002_auto__del_drycleaningform__add_drycleaning.py",
@@ -273,6 +385,22 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"urllib",
+			"urllib2",
+			" title string",
+			"Handler",
+			"view",
+			" ",
+			"\\",
+			"\"",
+			"%s",
+			"s",
+			"+",
+			"edit",
+			"error",
+			"err",
+			"fields",
+			"List",
 			"filter_clusters",
 			"[0]",
 			"smallest",
@@ -407,13 +535,69 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 331,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								331,
+								331
+							]
+						],
+						"settings":
+						{
+							"auto_name": "http://stackoverflow.com/questions/5773724/how-do-",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 1,
+					"file": "/home/ubuntu/golang/gowiki/wiki.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2381,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1385,
+								1385
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Go/Go.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 938.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -500,7 +684,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 161.0,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
