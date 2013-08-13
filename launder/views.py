@@ -1,18 +1,31 @@
 from datetime import datetime
+import datetime as dt
+from itertools import chain
+
 from django.shortcuts import get_object_or_404, render_to_response, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.views.generic import ListView
+<<<<<<< HEAD
 from django.views.generic.edit import CreateView, UpdateView
 
 from launder.forms import WashFoldOrderForm
 from launder.models import WashFoldOrder, DryCleaning, LaundryShirtsOrder
 
+=======
+>>>>>>> add_daily_operations
 import logger_factory
+from launder.models import (
+    WashFoldOrder,
+    DryCleaning,
+    LaundryShirtsOrder,
+    DailyOperations,
+)
 
 logger = logger_factory.logger_factory('views')
 
+<<<<<<< HEAD
 class WashFoldCreate(CreateView):
     model = WashFoldOrder
     form_class = WashFoldOrderForm
@@ -25,6 +38,23 @@ class WashFoldList(ListView):
 class WashFoldUpdate(UpdateView):
     model = WashFoldOrder
     form_class = WashFoldOrderForm
+=======
+class DailyOperationsView(ListView):
+    context_object_name = 'daily_orders_list'
+    todays_date = dt.date.today()
+    wash_fold_set = WashFoldOrder.objects.all()#filter(pk=-1)#date=todays_date)
+    dry_clean_set = DryCleaning.objects.all()#filter(pk=-1)#date=todays_date)
+    shirts_set = LaundryShirtsOrder.objects.all()#filter(pk=-1)#date=todays_date)
+    queryset =  list(chain(
+        wash_fold_set,
+        dry_clean_set,
+        shirts_set,
+        )
+    )
+    logger.debug('queryset: %s' % str (queryset))
+    template_name = 'index.html'
+
+>>>>>>> add_daily_operations
 
 def make_wash_fold_instance(request):
     logger.info('entered make_wash_fold_instance')
@@ -265,7 +295,6 @@ def shirts_add(request, shirt_id=None):
             return HttpResponseRedirect(reverse(shirts_add_form))
     logger.info("shirts_add not a POST request")
     return HttpResponseRedirect('/')
-
 
 def index(request):
     return render_to_response('index.html')

@@ -2,3 +2,5 @@
 *.pyc
 *.db
 *.sublime-workspace
+*.pyo
+launder/migrations/*

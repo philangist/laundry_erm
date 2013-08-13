@@ -1,4 +1,8 @@
 from django.conf.urls import patterns, include, url
+<<<<<<< HEAD
+=======
+from launder.views import DailyOperationsView
+>>>>>>> add_daily_operations
 from django.contrib import admin
 admin.autodiscover()
 
@@ -10,6 +14,8 @@ from launder.views import WashFoldCreate, WashFoldUpdate, WashFoldList
 
 urlpatterns = patterns('',
 	url(r'^admin/', include(admin.site.urls)),
+	#daily_operations urls
+	url(r'^$', DailyOperationsView.as_view()),
 	#wash_fold_generic_views
 	url(r'^g_wash_fold/add/(?P<pk>\d+)/$', WashFoldCreate.as_view(), name='wash_fold_update'),
 	url(r'^g_wash_fold/add/$', WashFoldCreate.as_view(), name='wash_fold_add'),
@@ -36,5 +42,5 @@ urlpatterns = patterns('',
     url(r'^shirts/$', 'launder.views.shirts'),
 	url(r'^shirts/(?P<shirt_order>\d+)/$', 'launder.views.shirts_detail'),
 	#index
-	url(r'^$', 'launder.views.index')
+	#url(r'^$', 'launder.views.index')
 )
