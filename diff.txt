@@ -1,0 +1,532 @@
+diff --git a/.gitignore b/.gitignore
+index 0d99ffa..5252a6e 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,3 +1,5 @@
+ *.log
+ *.pyc
+ *.db
++*.pyo
++launder/migrations/*
+diff --git a/launder/migrations/0001_initial.py b/launder/migrations/0001_initial.py
+index 01dac22..627ce7e 100644
+--- a/launder/migrations/0001_initial.py
++++ b/launder/migrations/0001_initial.py
+@@ -11,50 +11,64 @@ class Migration(SchemaMigration):
+         # Adding model 'WashFoldOrder'
+         db.create_table(u'launder_washfoldorder', (
+             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
++            ('daily_operations', self.gf('django.db.models.fields.related.ForeignKey')(default=-1, to=orm['launder.DailyOperations'])),
+             ('first_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
+             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
+             ('phone_number', self.gf('django.db.models.fields.CharField')(max_length=15)),
+             ('address', self.gf('django.db.models.fields.CharField')(max_length=50)),
+-            ('date', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
++            ('date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.date.today)),
+             ('total_cost', self.gf('django.db.models.fields.DecimalField')(max_digits=5, decimal_places=2)),
+             ('payment_method', self.gf('django.db.models.fields.CharField')(max_length=6)),
+             ('payment_finalized', self.gf('django.db.models.fields.BooleanField')(default=False)),
++            ('payment_date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.date.today)),
++            ('comments', self.gf('django.db.models.fields.TextField')(default='')),
+         ))
+         db.send_create_signal(u'launder', ['WashFoldOrder'])
+ 
+         # Adding model 'DryCleaning'
+         db.create_table(u'launder_drycleaning', (
+             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
++            ('daily_operations', self.gf('django.db.models.fields.related.ForeignKey')(default=-1, to=orm['launder.DailyOperations'])),
+             ('first_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
+             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
+             ('phone_number', self.gf('django.db.models.fields.CharField')(max_length=15)),
+             ('address', self.gf('django.db.models.fields.CharField')(max_length=50)),
+-            ('date', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
++            ('date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.date.today)),
+             ('garment_type', self.gf('django.db.models.fields.TextField')(max_length=12)),
+             ('garment_amount', self.gf('django.db.models.fields.IntegerField')()),
+             ('total_cost', self.gf('django.db.models.fields.DecimalField')(max_digits=5, decimal_places=2)),
+             ('payment_method', self.gf('django.db.models.fields.CharField')(max_length=6)),
+             ('payment_finalized', self.gf('django.db.models.fields.BooleanField')(default=False)),
++            ('payment_date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.date.today)),
+         ))
+         db.send_create_signal(u'launder', ['DryCleaning'])
+ 
+         # Adding model 'LaundryShirtsOrder'
+         db.create_table(u'launder_laundryshirtsorder', (
+             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
++            ('daily_operations', self.gf('django.db.models.fields.related.ForeignKey')(default=-1, to=orm['launder.DailyOperations'])),
+             ('first_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
+             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
+             ('phone_number', self.gf('django.db.models.fields.CharField')(max_length=15)),
+             ('address', self.gf('django.db.models.fields.CharField')(max_length=50)),
+-            ('date', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
++            ('date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.date.today)),
+             ('shirts_amount', self.gf('django.db.models.fields.IntegerField')()),
+             ('shirts_price', self.gf('django.db.models.fields.DecimalField')(max_digits=5, decimal_places=2)),
+             ('starched', self.gf('django.db.models.fields.BooleanField')(default=False)),
+             ('total_cost', self.gf('django.db.models.fields.DecimalField')(max_digits=5, decimal_places=2)),
+             ('payment_method', self.gf('django.db.models.fields.CharField')(max_length=6)),
+             ('payment_finalized', self.gf('django.db.models.fields.BooleanField')(default=False)),
++            ('payment_date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.date.today)),
+         ))
+         db.send_create_signal(u'launder', ['LaundryShirtsOrder'])
+ 
++        # Adding model 'DailyOperations'
++        db.create_table(u'launder_dailyoperations', (
++            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
++            ('date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.date.today)),
++        ))
++        db.send_create_signal(u'launder', ['DailyOperations'])
++
+ 
+     def backwards(self, orm):
+         # Deleting model 'WashFoldOrder'
+@@ -66,17 +80,27 @@ class Migration(SchemaMigration):
+         # Deleting model 'LaundryShirtsOrder'
+         db.delete_table(u'launder_laundryshirtsorder')
+ 
++        # Deleting model 'DailyOperations'
++        db.delete_table(u'launder_dailyoperations')
++
+ 
+     models = {
++        u'launder.dailyoperations': {
++            'Meta': {'object_name': 'DailyOperations'},
++            'date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.date.today'}),
++            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
++        },
+         u'launder.drycleaning': {
+             'Meta': {'object_name': 'DryCleaning'},
+             'address': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
++            'daily_operations': ('django.db.models.fields.related.ForeignKey', [], {'default': '-1', 'to': u"orm['launder.DailyOperations']"}),
++            'date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.date.today'}),
+             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+             'garment_amount': ('django.db.models.fields.IntegerField', [], {}),
+             'garment_type': ('django.db.models.fields.TextField', [], {'max_length': '12'}),
+             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
++            'payment_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.date.today'}),
+             'payment_finalized': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+             'payment_method': ('django.db.models.fields.CharField', [], {'max_length': '6'}),
+             'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+@@ -85,10 +109,12 @@ class Migration(SchemaMigration):
+         u'launder.laundryshirtsorder': {
+             'Meta': {'object_name': 'LaundryShirtsOrder'},
+             'address': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
++            'daily_operations': ('django.db.models.fields.related.ForeignKey', [], {'default': '-1', 'to': u"orm['launder.DailyOperations']"}),
++            'date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.date.today'}),
+             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
++            'payment_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.date.today'}),
+             'payment_finalized': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+             'payment_method': ('django.db.models.fields.CharField', [], {'max_length': '6'}),
+             'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+@@ -100,10 +126,13 @@ class Migration(SchemaMigration):
+         u'launder.washfoldorder': {
+             'Meta': {'object_name': 'WashFoldOrder'},
+             'address': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
++            'comments': ('django.db.models.fields.TextField', [], {'default': "''"}),
++            'daily_operations': ('django.db.models.fields.related.ForeignKey', [], {'default': '-1', 'to': u"orm['launder.DailyOperations']"}),
++            'date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.date.today'}),
+             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
++            'payment_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.date.today'}),
+             'payment_finalized': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+             'payment_method': ('django.db.models.fields.CharField', [], {'max_length': '6'}),
+             'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+diff --git a/launder/migrations/0001_initial.pyc b/launder/migrations/0001_initial.pyc
+index 6a61fe9..28c3cb8 100644
+Binary files a/launder/migrations/0001_initial.pyc and b/launder/migrations/0001_initial.pyc differ
+diff --git a/launder/migrations/0002_auto__add_field_washfoldorder_comments.py b/launder/migrations/0002_auto__add_field_washfoldorder_comments.py
+deleted file mode 100644
+index 13ccb50..0000000
+--- a/launder/migrations/0002_auto__add_field_washfoldorder_comments.py
++++ /dev/null
+@@ -1,67 +0,0 @@
+-# -*- coding: utf-8 -*-
+-import datetime
+-from south.db import db
+-from south.v2 import SchemaMigration
+-from django.db import models
+-
+-
+-class Migration(SchemaMigration):
+-
+-    def forwards(self, orm):
+-        # Adding field 'WashFoldOrder.comments'
+-        db.add_column(u'launder_washfoldorder', 'comments',
+-                      self.gf('django.db.models.fields.TextField')(default=''),
+-                      keep_default=False)
+-
+-
+-    def backwards(self, orm):
+-        # Deleting field 'WashFoldOrder.comments'
+-        db.delete_column(u'launder_washfoldorder', 'comments')
+-
+-
+-    models = {
+-        u'launder.drycleaning': {
+-            'Meta': {'object_name': 'DryCleaning'},
+-            'address': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'garment_amount': ('django.db.models.fields.IntegerField', [], {}),
+-            'garment_type': ('django.db.models.fields.TextField', [], {'max_length': '12'}),
+-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'payment_finalized': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+-            'payment_method': ('django.db.models.fields.CharField', [], {'max_length': '6'}),
+-            'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+-            'total_cost': ('django.db.models.fields.DecimalField', [], {'max_digits': '5', 'decimal_places': '2'})
+-        },
+-        u'launder.laundryshirtsorder': {
+-            'Meta': {'object_name': 'LaundryShirtsOrder'},
+-            'address': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'payment_finalized': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+-            'payment_method': ('django.db.models.fields.CharField', [], {'max_length': '6'}),
+-            'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+-            'shirts_amount': ('django.db.models.fields.IntegerField', [], {}),
+-            'shirts_price': ('django.db.models.fields.DecimalField', [], {'max_digits': '5', 'decimal_places': '2'}),
+-            'starched': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+-            'total_cost': ('django.db.models.fields.DecimalField', [], {'max_digits': '5', 'decimal_places': '2'})
+-        },
+-        u'launder.washfoldorder': {
+-            'Meta': {'object_name': 'WashFoldOrder'},
+-            'address': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'comments': ('django.db.models.fields.TextField', [], {'default': "''"}),
+-            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'payment_finalized': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+-            'payment_method': ('django.db.models.fields.CharField', [], {'max_length': '6'}),
+-            'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+-            'total_cost': ('django.db.models.fields.DecimalField', [], {'max_digits': '5', 'decimal_places': '2'})
+-        }
+-    }
+-
+-    complete_apps = ['launder']
+\ No newline at end of file
+diff --git a/launder/migrations/0003_auto__add_field_washfoldorder_payment_date.py b/launder/migrations/0003_auto__add_field_washfoldorder_payment_date.py
+deleted file mode 100644
+index 3661998..0000000
+--- a/launder/migrations/0003_auto__add_field_washfoldorder_payment_date.py
++++ /dev/null
+@@ -1,68 +0,0 @@
+-# -*- coding: utf-8 -*-
+-import datetime
+-from south.db import db
+-from south.v2 import SchemaMigration
+-from django.db import models
+-
+-
+-class Migration(SchemaMigration):
+-
+-    def forwards(self, orm):
+-        # Adding field 'WashFoldOrder.payment_date'
+-        db.add_column(u'launder_washfoldorder', 'payment_date',
+-                      self.gf('django.db.models.fields.DateTimeField')(default=datetime.date.today),
+-                      keep_default=False)
+-
+-
+-    def backwards(self, orm):
+-        # Deleting field 'WashFoldOrder.payment_date'
+-        db.delete_column(u'launder_washfoldorder', 'payment_date')
+-
+-
+-    models = {
+-        u'launder.drycleaning': {
+-            'Meta': {'object_name': 'DryCleaning'},
+-            'address': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'garment_amount': ('django.db.models.fields.IntegerField', [], {}),
+-            'garment_type': ('django.db.models.fields.TextField', [], {'max_length': '12'}),
+-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'payment_finalized': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+-            'payment_method': ('django.db.models.fields.CharField', [], {'max_length': '6'}),
+-            'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+-            'total_cost': ('django.db.models.fields.DecimalField', [], {'max_digits': '5', 'decimal_places': '2'})
+-        },
+-        u'launder.laundryshirtsorder': {
+-            'Meta': {'object_name': 'LaundryShirtsOrder'},
+-            'address': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'payment_finalized': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+-            'payment_method': ('django.db.models.fields.CharField', [], {'max_length': '6'}),
+-            'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+-            'shirts_amount': ('django.db.models.fields.IntegerField', [], {}),
+-            'shirts_price': ('django.db.models.fields.DecimalField', [], {'max_digits': '5', 'decimal_places': '2'}),
+-            'starched': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+-            'total_cost': ('django.db.models.fields.DecimalField', [], {'max_digits': '5', 'decimal_places': '2'})
+-        },
+-        u'launder.washfoldorder': {
+-            'Meta': {'object_name': 'WashFoldOrder'},
+-            'address': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'comments': ('django.db.models.fields.TextField', [], {'default': "''"}),
+-            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'payment_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.date.today'}),
+-            'payment_finalized': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+-            'payment_method': ('django.db.models.fields.CharField', [], {'max_length': '6'}),
+-            'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+-            'total_cost': ('django.db.models.fields.DecimalField', [], {'max_digits': '5', 'decimal_places': '2'})
+-        }
+-    }
+-
+-    complete_apps = ['launder']
+\ No newline at end of file
+diff --git a/launder/migrations/0004_auto__add_field_drycleaning_payment_date__add_field_laundryshirtsorder.py b/launder/migrations/0004_auto__add_field_drycleaning_payment_date__add_field_laundryshirtsorder.py
+deleted file mode 100644
+index dc45c43..0000000
+--- a/launder/migrations/0004_auto__add_field_drycleaning_payment_date__add_field_laundryshirtsorder.py
++++ /dev/null
+@@ -1,78 +0,0 @@
+-# -*- coding: utf-8 -*-
+-import datetime
+-from south.db import db
+-from south.v2 import SchemaMigration
+-from django.db import models
+-
+-
+-class Migration(SchemaMigration):
+-
+-    def forwards(self, orm):
+-        # Adding field 'DryCleaning.payment_date'
+-        db.add_column(u'launder_drycleaning', 'payment_date',
+-                      self.gf('django.db.models.fields.DateTimeField')(default=datetime.date.today),
+-                      keep_default=False)
+-
+-        # Adding field 'LaundryShirtsOrder.payment_date'
+-        db.add_column(u'launder_laundryshirtsorder', 'payment_date',
+-                      self.gf('django.db.models.fields.DateTimeField')(default=datetime.date.today),
+-                      keep_default=False)
+-
+-
+-    def backwards(self, orm):
+-        # Deleting field 'DryCleaning.payment_date'
+-        db.delete_column(u'launder_drycleaning', 'payment_date')
+-
+-        # Deleting field 'LaundryShirtsOrder.payment_date'
+-        db.delete_column(u'launder_laundryshirtsorder', 'payment_date')
+-
+-
+-    models = {
+-        u'launder.drycleaning': {
+-            'Meta': {'object_name': 'DryCleaning'},
+-            'address': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'garment_amount': ('django.db.models.fields.IntegerField', [], {}),
+-            'garment_type': ('django.db.models.fields.TextField', [], {'max_length': '12'}),
+-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'payment_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.date.today'}),
+-            'payment_finalized': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+-            'payment_method': ('django.db.models.fields.CharField', [], {'max_length': '6'}),
+-            'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+-            'total_cost': ('django.db.models.fields.DecimalField', [], {'max_digits': '5', 'decimal_places': '2'})
+-        },
+-        u'launder.laundryshirtsorder': {
+-            'Meta': {'object_name': 'LaundryShirtsOrder'},
+-            'address': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'payment_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.date.today'}),
+-            'payment_finalized': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+-            'payment_method': ('django.db.models.fields.CharField', [], {'max_length': '6'}),
+-            'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+-            'shirts_amount': ('django.db.models.fields.IntegerField', [], {}),
+-            'shirts_price': ('django.db.models.fields.DecimalField', [], {'max_digits': '5', 'decimal_places': '2'}),
+-            'starched': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+-            'total_cost': ('django.db.models.fields.DecimalField', [], {'max_digits': '5', 'decimal_places': '2'})
+-        },
+-        u'launder.washfoldorder': {
+-            'Meta': {'object_name': 'WashFoldOrder'},
+-            'address': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'comments': ('django.db.models.fields.TextField', [], {'default': "''"}),
+-            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+-            'payment_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.date.today'}),
+-            'payment_finalized': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+-            'payment_method': ('django.db.models.fields.CharField', [], {'max_length': '6'}),
+-            'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+-            'total_cost': ('django.db.models.fields.DecimalField', [], {'max_digits': '5', 'decimal_places': '2'})
+-        }
+-    }
+-
+-    complete_apps = ['launder']
+\ No newline at end of file
+diff --git a/launder/migrations/__init__.pyc b/launder/migrations/__init__.pyc
+index 1a6f86d..088c9e4 100644
+Binary files a/launder/migrations/__init__.pyc and b/launder/migrations/__init__.pyc differ
+diff --git a/launder/models.py b/launder/models.py
+index 62a107e..a55aedb 100644
+--- a/launder/models.py
++++ b/launder/models.py
+@@ -10,11 +10,13 @@ class WashFoldOrder(models.Model):
+ 	)
+ 
+ 	id = models.AutoField(primary_key=True)
++	daily_operations = models.ForeignKey('DailyOperations',
++		default=datetime.date.today())
+ 	first_name = models.CharField(max_length=50, blank=False)
+ 	last_name = models.CharField(max_length=50, blank=False)
+ 	phone_number = models.CharField(max_length=15, blank=False)
+ 	address = models.CharField(max_length=50, blank=False)
+-	date = models.DateTimeField(auto_now_add=True)
++	date = models.DateTimeField(default=datetime.date.today)
+ 	total_cost = models.DecimalField(max_digits=5, decimal_places=2)
+ 	payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
+ 	payment_finalized = models.BooleanField(default=False)
+@@ -47,11 +49,13 @@ class DryCleaning(models.Model):
+ 	)
+ 
+ 	id = models.AutoField(primary_key=True)
++	daily_operations = models.ForeignKey('DailyOperations',
++		default=datetime.date.today())
+ 	first_name = models.CharField(max_length=50, blank=False)
+ 	last_name = models.CharField(max_length=50, blank=False)
+ 	phone_number = models.CharField(max_length=15, blank=False)
+ 	address = models.CharField(max_length=50, blank=False)
+-	date = models.DateTimeField(auto_now_add=True)
++	date = models.DateTimeField(default=datetime.date.today)
+ 	garment_type = models.TextField(max_length=12, choices=GARMENT_OPTIONS)
+ 	garment_amount = models.IntegerField()
+ 	total_cost = models.DecimalField(max_digits=5, decimal_places=2)
+@@ -68,11 +72,13 @@ class LaundryShirtsOrder(models.Model):
+ 	)
+ 
+ 	id = models.AutoField(primary_key=True)
++	daily_operations = models.ForeignKey('DailyOperations',
++		default=datetime.date.today())
+ 	first_name = models.CharField(max_length=50, blank=False)
+ 	last_name = models.CharField(max_length=50, blank=False)
+ 	phone_number = models.CharField(max_length=15, blank=False)
+ 	address = models.CharField(max_length=50, blank=False)
+-	date = models.DateTimeField(auto_now_add=True)
++	date = models.DateTimeField(default=datetime.date.today)
+ 	shirts_amount = models.IntegerField()
+ 	shirts_price = models.DecimalField(max_digits=5, decimal_places=2)
+ 	starched = models.BooleanField()
+@@ -80,3 +86,6 @@ class LaundryShirtsOrder(models.Model):
+ 	payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
+ 	payment_finalized = models.BooleanField()
+ 	payment_date = models.DateTimeField(default=datetime.date.today)
++
++class DailyOperations(models.Model):
++	date = models.DateTimeField(default=datetime.date.today)
+diff --git a/launder/templates/index.html b/launder/templates/index.html
+index 251531e..c9a55ff 100644
+--- a/launder/templates/index.html
++++ b/launder/templates/index.html
+@@ -15,5 +15,11 @@
+ <a href="/wash_fold/">View wash and fold orders</a><br>
+ <a href="/shirts/">View shirt orders</a><br>
+ 
++{% if daily_orders_list %}
++	{% for order in daily_orders_list%}
++		{{order}}
++	{% endfor %}
++{%endif%}
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/launder/views.py b/launder/views.py
+index 12dc799..6d8752c 100644
+--- a/launder/views.py
++++ b/launder/views.py
+@@ -1,16 +1,37 @@
+ from datetime import datetime
++import datetime as dt
++from itertools import chain
++
+ from django.shortcuts import get_object_or_404, render_to_response, render
+ from django.http import HttpResponseRedirect, HttpResponse
+ from django.core.urlresolvers import reverse
+ from django.template import RequestContext
+-
+-from launder.forms import WashFoldOrderForm
+-from launder.models import WashFoldOrder, DryCleaning, LaundryShirtsOrder
+-
++from django.views.generic import ListView
+ import logger_factory
++from launder.models import (
++    WashFoldOrder,
++    DryCleaning,
++    LaundryShirtsOrder,
++    DailyOperations,
++)
+ 
+ logger = logger_factory.logger_factory('views')
+ 
++class DailyOperationsView(ListView):
++    context_object_name = 'daily_orders_list'
++    todays_date = dt.date.today()
++    wash_fold_set = WashFoldOrder.objects.all()#filter(pk=-1)#date=todays_date)
++    dry_clean_set = DryCleaning.objects.all()#filter(pk=-1)#date=todays_date)
++    shirts_set = LaundryShirtsOrder.objects.all()#filter(pk=-1)#date=todays_date)
++    queryset =  list(chain(
++        wash_fold_set,
++        dry_clean_set,
++        shirts_set,
++        )
++    )
++    template_name = 'index.html'
++
++
+ def make_wash_fold_instance(request):
+     logger.info('entered make_wash_fold_instance')
+     wash_fold_instance = WashFoldOrder(
+@@ -251,6 +272,5 @@ def shirts_add(request, shirt_id=None):
+     logger.info("shirts_add not a POST request")
+     return HttpResponseRedirect('/')
+ 
+-
+ def index(request):
+     return render_to_response('index.html')
+diff --git a/laundry/settings.pyc b/laundry/settings.pyc
+index 2f26602..5a86fa1 100644
+Binary files a/laundry/settings.pyc and b/laundry/settings.pyc differ
+diff --git a/laundry/urls.py b/laundry/urls.py
+index 5bf731d..70394ab 100644
+--- a/laundry/urls.py
++++ b/laundry/urls.py
+@@ -1,5 +1,5 @@
+ from django.conf.urls import patterns, include, url
+-
++from launder.views import DailyOperationsView
+ from django.contrib import admin
+ admin.autodiscover()
+ 
+@@ -9,6 +9,8 @@ admin.autodiscover()
+ 
+ urlpatterns = patterns('',
+ 	url(r'^admin/', include(admin.site.urls)),
++	#daily_operations urls
++	url(r'^daily_ops/', DailyOperationsView.as_view()),
+ 	#wash_fold urls
+ 	url(r'^wash_fold_form/$', 'launder.views.wash_fold_add_form'),
+ 	url(r'^wash_fold_form/(?P<wash_fold_order>\d+)/$', 'launder.views.wash_fold_add_form'),
+diff --git a/laundry/urls.pyc b/laundry/urls.pyc
+index d21f441..47f9174 100644
+Binary files a/laundry/urls.pyc and b/laundry/urls.pyc differ

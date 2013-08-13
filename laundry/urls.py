@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-
+from launder.views import DailyOperationsView
 from django.contrib import admin
 admin.autodiscover()
 
@@ -9,6 +9,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 	url(r'^admin/', include(admin.site.urls)),
+	#daily_operations urls
+	url(r'^$', DailyOperationsView.as_view()),
 	#wash_fold urls
 	url(r'^wash_fold_form/$', 'launder.views.wash_fold_add_form'),
 	url(r'^wash_fold_form/(?P<wash_fold_order>\d+)/$', 'launder.views.wash_fold_add_form'),
@@ -31,5 +33,5 @@ urlpatterns = patterns('',
     url(r'^shirts/$', 'launder.views.shirts'),
 	url(r'^shirts/(?P<shirt_order>\d+)/$', 'launder.views.shirts_detail'),
 	#index
-	url(r'^$', 'launder.views.index')
+	#url(r'^$', 'launder.views.index')
 )

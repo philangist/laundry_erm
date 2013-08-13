@@ -15,5 +15,9 @@
 <a href="/wash_fold/">View wash and fold orders</a><br>
 <a href="/shirts/">View shirt orders</a><br>
 
+{% for order in daily_orders_list %}
+	{{order}}
+{% endfor %}
+
 </body>
 </html>
