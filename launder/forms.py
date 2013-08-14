@@ -1,5 +1,9 @@
 from django.forms import ModelForm
-from models import WashFoldOrder, DryCleaning, LaundryShirtsOrder
+from models import (
+	WashFoldOrder,
+	DryCleaning,
+	LaundryShirtsOrder,
+)
 
 
 class WashFoldOrderForm(ModelForm):

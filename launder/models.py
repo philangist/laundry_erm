@@ -28,7 +28,7 @@ class WashFoldOrder(models.Model):
         return '%s %s - %s' % (self.first_name, self.last_name, self.total_cost)
 
     def get_absolute_url(self):
-        return reverse('wash_fold_detail', kwargs={'wash_fold_order': self.pk})
+        return reverse('wash_fold_detail', kwargs={'pk': self.pk})
 
 
 class DryCleaning(models.Model):
@@ -41,7 +41,7 @@ class DryCleaning(models.Model):
 
     GARMENT_OPTIONS = (
         ('TROUSERS', 'Trousers'),
-        ('M SUITS', 'M Suits'),
+        ('M SUITS', 'Men\'s Suits'),
         ('TOP O COAT', 'Top O Coat'),
         ('SHIRTS', 'Shirts'),
         ('SPORTS COATS', 'Sports Coats'),
@@ -64,7 +64,7 @@ class DryCleaning(models.Model):
     phone_number = models.CharField(max_length=15, blank=False)
     address = models.CharField(max_length=50, blank=False)
     date = models.DateTimeField(default=datetime.datetime.today)
-    garment_type = models.TextField(max_length=12, choices=GARMENT_OPTIONS)
+    garment_type = models.CharField(max_length=12, choices=GARMENT_OPTIONS)
     garment_amount = models.IntegerField()
     total_cost = models.DecimalField(max_digits=5, decimal_places=2)
     payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
@@ -73,6 +73,10 @@ class DryCleaning(models.Model):
 
     def __unicode__(self):
         return '%s %s - %s' % (self.first_name, self.last_name, self.total_cost)
+
+    def get_absolute_url(self):
+        return reverse('dry_cleaning_detail', kwargs={'pk': self.pk})
+
 
 
 class LaundryShirtsOrder(models.Model):
@@ -100,6 +104,9 @@ class LaundryShirtsOrder(models.Model):
 
     def __unicode__(self):
         return '%s %s - %s' % (self.first_name, self.last_name, self.total_cost)
+
+    def get_absolute_url(self):
+        return reverse('shirts_detail', kwargs={'pk': self.pk})
 
 class DailyOperations(models.Model):
     date = models.DateTimeField(default=datetime.datetime.today)
