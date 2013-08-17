@@ -1,20 +1,51 @@
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+{% extends "base.html" %}
+{% block content %}
 
-<form method="post" action="/login/">
-{% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
-
-<input type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
+    <div class="" id="loginModal">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>Have an Account?</h3>
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    </div>
+    <div class="modal-body">
+    <div class="well">
+    <ul class="nav nav-tabs">
+    <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+    <div class="tab-pane active in" id="login">
+    <form class="form-horizontal" action='' method="POST">
+    {% csrf_token %}
+    <fieldset>
+    <div id="legend">
+    <legend class="">Login</legend>
+    </div>
+    <div class="control-group">
+    <!-- Username -->
+    <label class="control-label" for="username">Username</label>
+    <div class="controls">
+    <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+    </div>
+    </div>
+    <div class="control-group">
+    <!-- Password-->
+    <label class="control-label" for="password">Password</label>
+    <div class="controls">
+    <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+    </div>
+    </div>
+    <div class="control-group">
+    <!-- Button -->
+    <div class="controls">
+    <button class="btn btn-success">Login</button>
+    </div>
+    </div>
+    </fieldset>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

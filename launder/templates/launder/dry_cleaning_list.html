@@ -1,16 +1,7 @@
-{% load staticfiles %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-   <title>Dry Cleaning</title>
-   <link rel="stylesheet" type="text/css" href=" http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
-   <script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.min.js"></script>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 
 {% url 'dry_cleaning_list' as dry_cleaning_url %}
-{% block content %}
     <h2>Dry Cleaning Orders</h2>
 	{% if object_list %}
 		<table class="table">  
@@ -53,11 +44,10 @@
 	{% else %}
 		<p>No orders are available.</p>
 	{% endif %}
-{% endblock %}
 
 {% url 'dry_cleaning_add' as dry_cleaning_url %}
-<a href="{{ dry_cleaning_url }}">Add new order</a>
+<a href="{{ dry_cleaning_url }}">Add new order</a><br>
+{% url 'daily_ops_dry_cleaning_archive' as dry_cleaning_archive_url %}
+<a href="{{ dry_cleaning_archive_url }}">View archived dry cleaning orders</a><br>
 
-
-</body>
-</html>
+{% endblock %}
