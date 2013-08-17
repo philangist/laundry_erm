@@ -4,8 +4,8 @@ Reread Felix's email
 Change models to more accurately reflect specifications
 Use generic view to create an archived orders page
 Add user authentication and authorization
-
 Add pagination to list views and archive views
+
 Add links to archived orders page on index
 Create base.html template
 Add 2 boys logo
