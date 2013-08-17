@@ -1,13 +1,5 @@
-{% load staticfiles %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-   <title>Dry Cleaning</title>
-   <link rel="stylesheet" type="text/css" href=" http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
-   <script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.min.js"></script>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 
 <h2>Shirt Orders</h2>
 {% if object_list %}
@@ -54,7 +46,8 @@
 {% endif %}
 
 {% url 'shirts_add' as shirts_url %}
-<a href="{{ shirts_url }}">Add new order</a>
+<a href="{{ shirts_url }}">Add new order</a><br>
+{% url 'daily_ops_shirts_archive' as shirts_archive_url %}
+<a href="{{ shirts_archive_url }}">View archived shirt orders</a><br>
 
-</body>
-</html>
+{% endblock %}

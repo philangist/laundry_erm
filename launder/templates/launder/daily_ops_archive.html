@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
 <ul>
     {% for order in latest %}
         <li>{{ order.date }}: {{ order.first_name }}</li>
@@ -19,3 +21,4 @@
         </span>
     </div>
 {% endif %}
+{% endblock %}

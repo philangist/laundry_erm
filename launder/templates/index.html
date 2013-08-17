@@ -1,21 +1,7 @@
-{% load staticfiles %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-   <title>Two Boys Laundromat</title>
-   <link rel="stylesheet" type="text/css" href=" http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
-   <script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.min.js"></script>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 
 <h1>Laundry Management System</h1>
-{% url 'dry_cleaning_list' as dry_cleaning_url %}
-{% url 'wash_fold_list' as wash_fold_url %}
-{% url 'shirts_list' as shirts_url %}
-<a href="{{ dry_cleaning_url }}">View dry cleaning orders</a><br>
-<a href="{{ wash_fold_url }}">View wash and fold orders</a><br>
-<a href="{{ shirts_url }}">View shirt orders</a><br>
 
 {% if daily_orders_list %}
     <table id="orders">
@@ -44,6 +30,4 @@
         </div>
     {% endif %}
 {% endif %}
-
-</body>
-</html>
+{% endblock %}

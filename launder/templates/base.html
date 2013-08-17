@@ -3,16 +3,28 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-   <title>{% block title %}Two Boys{% if title %} - {{ title }}{% endif %}{% endblock %}</title>
-   <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap.min.css"/>
-   <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap-responsive.min.css"/> 
+   <title>{% block title %}Two Boys Laundromat{% if title %} - {{ title }}{% endif %}{% endblock %}</title>
+   <link rel="stylesheet" type="text/css" href=" http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
    <script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.min.js"></script>
    {% block extrahead %}{% endblock %}
 </head>
 <body>
-   {% block body %}
+<div class="container">  
+<div class="row">  
+<ul class="nav nav-tabs">  
+<li class="active">
+{% url 'dry_cleaning_list' as dry_cleaning_url %}
+{% url 'wash_fold_list' as wash_fold_url %}
+{% url 'shirts_list' as shirts_url %}
+<a href="/">Home</a> </li>   
+<li><a href="{{ dry_cleaning_url }}">View dry cleaning orders</a></li>
+<li><a href="{{ wash_fold_url }}">View wash and fold orders</a></li>
+<li><a href="{{ shirts_url }}">View shirt orders</a></li>
+</ul>  
+</div>
+</div>
 
-   <h1>{% block heading %}{{ title }}{% endblock %}</h1>
+   {% block body %}
 
    {% block content %}{% endblock %}
 
