@@ -51,20 +51,17 @@ class DailyOperationsList(ListView):
 
 class DailyOperationsDryCleaningArchive(ArchiveIndexView):
     date_field = 'date'
-    dry_clean_set = DryCleaning.objects.all()
-    queryset = dry_clean_set
+    queryset = DryCleaning.objects.all().filter(payment_finalized=True)
     template_name = 'launder/daily_ops_archive.html'
 
 class DailyOperationsLaundryShirtsArchive(ArchiveIndexView):
     date_field = 'date'
-    shirts_set = LaundryShirtsOrder.objects.all()
-    queryset = shirts_set
+    queryset= LaundryShirtsOrder.objects.all().filter(payment_finalized=True)
     template_name = 'launder/daily_ops_archive.html'
 
 class DailyOperationsWashFoldArchive(ArchiveIndexView):
     date_field = 'date'
-    wash_fold_set = WashFoldOrder.objects.all()
-    queryset = wash_fold_set
+    queryset = WashFoldOrder.objects.all().filter(payment_finalized=True)
     template_name = 'launder/daily_ops_archive.html'
 
 class WashFoldCreate(CreateView):
@@ -78,8 +75,8 @@ class WashFoldUpdate(UpdateView):
     template_name = 'launder/wash_fold_form.html'
 
 class WashFoldList(ListView):
+    queryset= WashFoldOrder.objects.all().filter(payment_finalized=True)
     template_name = 'launder/wash_fold_list.html'
-    model = WashFoldOrder
 
 class WashFoldDetail(DetailView):
     context_object_name = 'wash_fold_order'
@@ -97,8 +94,8 @@ class DryCleaningUpdate(UpdateView):
     template_name = 'launder/dry_cleaning_form.html'
 
 class DryCleaningList(ListView):
+    queryset= DryCleaning.objects.all().filter(payment_finalized=True)
     template_name = 'launder/dry_cleaning_list.html'
-    model = DryCleaning
 
 class DryCleaningDetail(DetailView):
     context_object_name = 'dry_cleaning_order'
@@ -116,8 +113,8 @@ class LaundryShirtsOrderUpdate(UpdateView):
     template_name = 'launder/shirts_form.html'
 
 class LaundryShirtsOrderList(ListView):
+    queryset= LaundryShirtsOrder.objects.all().filter(payment_finalized=True)
     template_name = 'launder/shirts_list.html'
-    model = LaundryShirtsOrder
 
 class LaundryShirtsOrderDetail(DetailView):
     context_object_name = 'shirts_order'
