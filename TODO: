@@ -2,15 +2,18 @@ TODO:
 
 Reread Felix's email
 Change models to more accurately reflect specifications
-
 Use generic view to create an archived orders page
+Add user authentication and authorization
+
 Add pagination
+Add links to archived orders page to index
 Create base.html template
+Add 2 boys logo
 Prettify list views
 Prettify forms
-Fix up index page
-Add user authentication and authorization
+Prettify index page
 Autofill based on name
+Price autofill (js)
 Wash and Fold - Total number of pounds
 Wash and Fold - Comments appears in Daily Ops Form
 Wash and Fold - Add Field for comforters ($10 per)

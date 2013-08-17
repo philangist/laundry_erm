@@ -1,8 +1,6 @@
 from datetime import datetime
 import datetime as dt
 from itertools import chain
-from django.db.models import Q
-
 from django.shortcuts import get_object_or_404, render_to_response, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
