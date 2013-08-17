@@ -1,0 +1,5 @@
+<ul>
+    {% for order in latest %}
+        <li>{{ order.date }}: {{ order.first_name }}</li>
+    {% endfor %}
+</ul>

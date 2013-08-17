@@ -3,10 +3,6 @@
 	[
 		{
 			"follow_symlinks": true,
-			"path": "/home/ubuntu/test/laundry"
-		},
-		{
-			"follow_symlinks": true,
 			"path": "/home/ubuntu/test/django_blog"
 		},
 		{
@@ -16,6 +12,10 @@
 		{
 			"follow_symlinks": true,
 			"path": "/home/ubuntu/test/scrud/cbv_scrud"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/home/ubuntu/test/laundry"
 		}
 	]
 }

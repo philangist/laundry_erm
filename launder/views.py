@@ -1,11 +1,17 @@
 from datetime import datetime
 import datetime as dt
 from itertools import chain
+from django.db.models import Q
 
 from django.shortcuts import get_object_or_404, render_to_response, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
+from django.views.generic.dates import (
+    DayArchiveView,
+    ArchiveIndexView,
+)
+
 from django.views.generic import (
     ListView,
     DetailView,
@@ -30,20 +36,36 @@ import logger_factory
 
 logger = logger_factory.logger_factory('views')
 
-class DailyOperationsView(ListView):
+class DailyOperationsList(ListView):
     context_object_name = 'daily_orders_list'
-    todays_date = dt.date.today()
-    wash_fold_set = WashFoldOrder.objects.all()#filter(pk=-1)#date=todays_date)
-    dry_clean_set = DryCleaning.objects.all()#filter(pk=-1)#date=todays_date)
-    shirts_set = LaundryShirtsOrder.objects.all()#filter(pk=-1)#date=todays_date)
+    wash_fold_set = WashFoldOrder.objects.all()
+    dry_clean_set = DryCleaning.objects.all()
+    shirts_set = LaundryShirtsOrder.objects.all()
     queryset =  list(chain(
         wash_fold_set,
         dry_clean_set,
         shirts_set,
         )
     )
-    logger.debug('queryset: %s' % str (queryset))
     template_name = 'index.html'
+
+class DailyOperationsDryCleaningArchive(ArchiveIndexView):
+    date_field = 'date'
+    dry_clean_set = DryCleaning.objects.all()
+    queryset = dry_clean_set
+    template_name = 'launder/daily_ops_archive.html'
+
+class DailyOperationsLaundryShirtsArchive(ArchiveIndexView):
+    date_field = 'date'
+    shirts_set = LaundryShirtsOrder.objects.all()
+    queryset = shirts_set
+    template_name = 'launder/daily_ops_archive.html'
+
+class DailyOperationsWashFoldArchive(ArchiveIndexView):
+    date_field = 'date'
+    wash_fold_set = WashFoldOrder.objects.all()
+    queryset = wash_fold_set
+    template_name = 'launder/daily_ops_archive.html'
 
 class WashFoldCreate(CreateView):
     model = WashFoldOrder

@@ -3,7 +3,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 from launder.views import (
-	DailyOperationsView,
+	DailyOperationsList,
+	DailyOperationsDryCleaningArchive,
+	DailyOperationsLaundryShirtsArchive,
+	DailyOperationsWashFoldArchive,
 	WashFoldCreate,
 	WashFoldUpdate,
 	WashFoldList,
@@ -24,13 +27,25 @@ admin.autodiscover()
 urlpatterns = patterns('',
 	url(r'^admin/', include(admin.site.urls)),
 	#daily_operations urls
-	url(r'^$', DailyOperationsView.as_view()),
-	#wash_fold_generic_views
+	url(r'^$', DailyOperationsList.as_view(), name='daily_ops_list'),
+	url(r'^daily_ops/dry_cleaning/',
+		DailyOperationsDryCleaningArchive.as_view(),
+		name='daily_ops_dry_cleaning_archive'),
+	
+	url(r'^daily_ops/shirts/$',
+		DailyOperationsLaundryShirtsArchive.as_view(),
+		name='daily_ops_shirts_archive'),
+	
+	url(r'^daily_ops/wash_fold/',
+		DailyOperationsWashFoldArchive.as_view(),
+		name='daily_ops_wash_fold_archive'),
+
+	#wash and fold urls
 	url(r'^wash_fold/add/(?P<pk>\d+)/$', WashFoldUpdate.as_view(), name='wash_fold_update'),
 	url(r'^wash_fold/add/$', WashFoldCreate.as_view(), name='wash_fold_add'),
 	url(r'^wash_fold/(?P<pk>\d+)/$', WashFoldDetail.as_view(), name='wash_fold_detail'),
 	url(r'^wash_fold/$', WashFoldList.as_view(), name='wash_fold_list'),
-	#dry_clean urls
+	#dry clean urls
 	url(r'^dry_cleaning/add/(?P<pk>\d+)/$', DryCleaningUpdate.as_view(), name='dry_cleaning_update'),
 	url(r'^dry_cleaning/add/$', DryCleaningCreate.as_view(), name='dry_cleaning_add'),
 	url(r'^dry_cleaning/(?P<pk>\d+)/$', DryCleaningDetail.as_view(), name='dry_cleaning_detail'),

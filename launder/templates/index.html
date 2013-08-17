@@ -15,7 +15,7 @@
 {% url 'shirts_list' as shirts_url %}
 <a href="{{ dry_cleaning_url }}">View dry cleaning orders</a><br>
 <a href="{{ wash_fold_url }}">View wash and fold orders</a><br>
-<a href="{{ shirts_list }}">View shirt orders</a><br>
+<a href="{{ shirts_url }}">View shirt orders</a><br>
 
 {% for order in daily_orders_list %}
 	{{order}}</br>

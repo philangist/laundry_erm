@@ -1,20 +1,16 @@
 TODO:
 
-Use generic view to create an archived orders page
-
-
 Reread Felix's email
 Change models to more accurately reflect specifications
+
+Use generic view to create an archived orders page
+Add pagination
 Create base.html template
 Prettify list views
-Fix up index page
 Prettify forms
-Clean up language in templates (use url as opposed to hardcoded urls)
-Add user authentication and authorization
+Fix up index page
 Add user authentication and authorization
 Autofill based on name
-Add user tracking
-Archive of paid orders
 Wash and Fold - Total number of pounds
 Wash and Fold - Comments appears in Daily Ops Form
 Wash and Fold - Add Field for comforters ($10 per)
