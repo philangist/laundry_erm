@@ -2,7 +2,8 @@
 
 <head><title>Shirts -- Detailed Paged</title></head>
 <body>
-<a href="/shirts/"><h1>Shirts</h1></a>
+{% url 'shirts_list' as shirts_url %}
+<a href="{{ shirts_url}}"><h1>Shirts</h1></a>
 
 {% if shirts_order %}
     <h2>Order #{{ shirts_order.id }} Details:</h2>
@@ -22,7 +23,8 @@
         <li>Payment Date: {{ shirts_order.payment_date }}</br>
     {% endif %}
     </ul>
-    <a href="/shirts_form/{{ shirts_order.id }}">Edit order</a>
+    {% url 'shirts_add' as shirts_add_url %}
+    <a href="{{ shirts_add_url }}{{ shirts_order.id }}">Edit order</a>
 {% elif not shirts_order %}
     <p>No details are available.</p>
 {% endif %}

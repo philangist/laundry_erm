@@ -5,23 +5,12 @@ Use generic view to create an archived orders page
 
 Reread Felix's email
 Change models to more accurately reflect specifications
-Add edit link in details templates
-Reroute forms to created/modified instance 
-show creation date in details templates
-Add list view link to details page
 Create base.html template
 Prettify list views
 Fix up index page
-Ask Felix for necessary info
-Build daily operations form
 Prettify forms
-Clean up language in templates (replace bool values with more context appropriate words)
-Rewrite code to use Generic Views
-
+Clean up language in templates (use url as opposed to hardcoded urls)
 Add user authentication and authorization
-
---------------------------------------
-
 Add user authentication and authorization
 Autofill based on name
 Add user tracking

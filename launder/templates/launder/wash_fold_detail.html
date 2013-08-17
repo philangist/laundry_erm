@@ -2,7 +2,8 @@
 
 <head><title>Wash and Fold -- Detailed Paged</title></head>
 <body>
-<a href="/wash_fold/"><h1>Wash and Fold</h1></a>
+{% url 'wash_fold_list' as wash_fold_url %}
+<a href="{{ wash_fold_url}}"><h1>Wash and Fold</h1></a>
 
 {% if wash_fold_order %}
     <h2>Order #{{ wash_fold_order.id }} Details:</h2>
@@ -20,7 +21,8 @@
         <li>Payment Date: {{ wash_fold_order.payment_date }}</br>
     {% endif %}
     </ul>
-    <a href="/wash_fold_form/{{ wash_fold_order.id }}">Edit order</a>
+    {% url 'wash_fold_add' as wash_fold_add_url %}
+    <a href="{{ wash_fold_add_url }}{{ wash_fold_order.id }}">Edit order</a>
 {% elif not wash_fold_order %}
     <p>No details are available.</p>
 {% endif %}

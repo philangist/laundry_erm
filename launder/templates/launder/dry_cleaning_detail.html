@@ -2,7 +2,8 @@
 
 <head><title>Wash and Fold -- Detailed Paged</title></head>
 <body>
-<a href="/dry_cleaning/"><h1>Wash and Fold</h1></a>
+{% url 'dry_cleaning_list' as dry_cleaning_url %}
+<a href="{{ dry_cleaning_url}}"><h1>Dry Cleaning</h1></a>
 
 {% if dry_cleaning_order %}
     <h2>Order #{{ dry_cleaning_order.id }} Details:</h2>
@@ -20,7 +21,8 @@
         <li>Payment Date: {{ dry_cleaning_order.payment_date }}</br>
     {% endif %}
     </ul>
-    <a href="/wash_fold_form/{{ dry_cleaning_order.id }}">Edit order</a>
+    {% url 'dry_cleaning_add' as dry_cleaning_add_url %}
+    <a href="{{ dry_cleaning_add_url }}{{ dry_cleaning_order.id }}">Edit order</a>
 {% elif not dry_cleaning_order %}
     <p>No details are available.</p>
 {% endif %}
