@@ -1,0 +1,25 @@
+TODO:
+
+Use generic view to create an archived orders page
+
+
+Reread Felix's email
+Change models to more accurately reflect specifications
+Create base.html template
+Prettify list views
+Fix up index page
+Prettify forms
+Clean up language in templates (use url as opposed to hardcoded urls)
+Add user authentication and authorization
+Add user authentication and authorization
+Autofill based on name
+Add user tracking
+Archive of paid orders
+Wash and Fold - Total number of pounds
+Wash and Fold - Comments appears in Daily Ops Form
+Wash and Fold - Add Field for comforters ($10 per)
+Wash and Fold - $10 up to 10 lbs, .75c eeach additional pound
+Wash and Fold - Comments for customer -- on printout
+Wash and Fold - Comments for system
+Shirts - $1.75 per shirt, make total costs modifiable
+Print in smaller sizes?

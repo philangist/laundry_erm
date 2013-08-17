@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<head><title>Shirts -- Detailed Paged</title></head>
+<body>
+{% url 'shirts_list' as shirts_url %}
+<a href="{{ shirts_url}}"><h1>Shirts</h1></a>
+
+{% if shirts_order %}
+    <h2>Order #{{ shirts_order.id }} Details:</h2>
+    Created on {{ shirts_order.date }}
+    <ul>
+    <li>First name: {{ shirts_order.first_name }}</br>
+    <li>Last name: {{ shirts_order.last_name }}</br>
+    <li>Phone number: {{ shirts_order.phone_number }}</br>
+    <li>Address: {{ shirts_order.address }}</br>
+    <li>Amount: {{ shirts_order.shirts_amount }}</br>
+    <li>Price: {{ shirts_order.shirts_price }}</br>
+    <li>Starched: {{ shirts_order.starched }}</br>
+    <li>Total Cost: {{ shirts_order.total_cost }}</br>
+    <li>Payment Method: {{ shirts_order.payment_method }}</br>
+    <li>Payment Finalized: {{ shirts_order.payment_finalized }}</br>
+    {% if shirts_order.payment_finalized %}
+        <li>Payment Date: {{ shirts_order.payment_date }}</br>
+    {% endif %}
+    </ul>
+    {% url 'shirts_add' as shirts_add_url %}
+    <a href="{{ shirts_add_url }}{{ shirts_order.id }}">Edit order</a>
+{% elif not shirts_order %}
+    <p>No details are available.</p>
+{% endif %}
+
+</form>
+</body>
+</html>

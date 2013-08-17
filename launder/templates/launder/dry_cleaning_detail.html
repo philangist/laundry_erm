@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head><title>Wash and Fold -- Detailed Paged</title></head>
+<body>
+{% url 'dry_cleaning_list' as dry_cleaning_url %}
+<a href="{{ dry_cleaning_url}}"><h1>Dry Cleaning</h1></a>
+
+{% if dry_cleaning_order %}
+    <h2>Order #{{ dry_cleaning_order.id }} Details:</h2>
+    Created on {{ dry_cleaning_order.date }}
+    <ul>
+    <li>First name: {{ dry_cleaning_order.first_name }}</br>
+    <li>Last name: {{ dry_cleaning_order.last_name }}</br>
+    <li>Phone number: {{ dry_cleaning_order.phone_number }}</br>
+    <li>Address: {{ dry_cleaning_order.address }}</br>
+    <li>Total Cost: {{ dry_cleaning_order.total_cost }}</br>
+    <li>Payment Method: {{ dry_cleaning_order.payment_method }}</br>
+    <li>Payment Finalized: {{ dry_cleaning_order.payment_finalized }}</br>
+    <li>Comments: {{ dry_cleaning_order.comments }}</br>
+    {% if dry_cleaning_order.payment_finalized %}
+        <li>Payment Date: {{ dry_cleaning_order.payment_date }}</br>
+    {% endif %}
+    </ul>
+    {% url 'dry_cleaning_add' as dry_cleaning_add_url %}
+    <a href="{{ dry_cleaning_add_url }}{{ dry_cleaning_order.id }}">Edit order</a>
+{% elif not dry_cleaning_order %}
+    <p>No details are available.</p>
+{% endif %}
+
+</form>
+</body>
+</html>
