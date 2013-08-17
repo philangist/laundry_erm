@@ -35,6 +35,7 @@ import logger_factory
 logger = logger_factory.logger_factory('views')
 
 class DailyOperationsList(ListView):
+    template_name = 'index.html'
     context_object_name = 'daily_orders_list'
     wash_fold_set = WashFoldOrder.objects.all()
     dry_clean_set = DryCleaning.objects.all()
@@ -45,22 +46,40 @@ class DailyOperationsList(ListView):
         shirts_set,
         )
     )
-    template_name = 'index.html'
+    paginate_by = 5
 
 class DailyOperationsDryCleaningArchive(ArchiveIndexView):
     date_field = 'date'
     queryset = DryCleaning.objects.all().filter(payment_finalized=True)
     template_name = 'launder/daily_ops_archive.html'
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super(DailyOperationsDryCleaningArchive, self).get_context_data(**kwargs)
+        context['order_type'] = 'dry_cleaning'
+        return context
 
 class DailyOperationsLaundryShirtsArchive(ArchiveIndexView):
     date_field = 'date'
     queryset= LaundryShirtsOrder.objects.all().filter(payment_finalized=True)
     template_name = 'launder/daily_ops_archive.html'
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super(DailyOperationsLaundryShirtsArchive, self).get_context_data(**kwargs)
+        context['order_type'] = 'shirts'
+        return context
 
 class DailyOperationsWashFoldArchive(ArchiveIndexView):
     date_field = 'date'
     queryset = WashFoldOrder.objects.all().filter(payment_finalized=True)
     template_name = 'launder/daily_ops_archive.html'
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super(DailyOperationsWashFoldArchive, self).get_context_data(**kwargs)
+        context['order_type'] = 'wash_fold'
+        return context
 
 class WashFoldCreate(CreateView):
     model = WashFoldOrder
@@ -75,6 +94,7 @@ class WashFoldUpdate(UpdateView):
 class WashFoldList(ListView):
     queryset= WashFoldOrder.objects.all().filter(payment_finalized=True)
     template_name = 'launder/wash_fold_list.html'
+    paginate_by = 5
 
 class WashFoldDetail(DetailView):
     context_object_name = 'wash_fold_order'
@@ -94,6 +114,7 @@ class DryCleaningUpdate(UpdateView):
 class DryCleaningList(ListView):
     queryset= DryCleaning.objects.all().filter(payment_finalized=True)
     template_name = 'launder/dry_cleaning_list.html'
+    paginate_by = 5
 
 class DryCleaningDetail(DetailView):
     context_object_name = 'dry_cleaning_order'
@@ -113,6 +134,7 @@ class LaundryShirtsOrderUpdate(UpdateView):
 class LaundryShirtsOrderList(ListView):
     queryset= LaundryShirtsOrder.objects.all().filter(payment_finalized=True)
     template_name = 'launder/shirts_list.html'
+    paginate_by = 5
 
 class LaundryShirtsOrderDetail(DetailView):
     context_object_name = 'shirts_order'

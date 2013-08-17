@@ -9,6 +9,7 @@
 </head>
 <body>
 
+{% url 'dry_cleaning_list' as dry_cleaning_url %}
 {% block content %}
     <h2>Dry Cleaning Orders</h2>
 	{% if object_list %}
@@ -34,6 +35,21 @@
 				{% endfor %}
 			</tbody>
 		</table>
+		{% if is_paginated %}
+	        <div class="pagination">
+	            <span class="page-links">
+	                {% if page_obj.has_previous %}
+	                    <a href="{{ dry_cleaning_url}}?page={{ page_obj.previous_page_number }}">previous</a>
+	                {% endif %}
+	                <span class="page-current">
+	                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+	                </span>
+	                {% if page_obj.has_next %}
+	                    <a href="{{ dry_cleaning_url}}?page={{ page_obj.next_page_number }}">next</a>
+	                {% endif %}
+	            </span>
+	        </div>
+	    {% endif %}
 	{% else %}
 		<p>No orders are available.</p>
 	{% endif %}

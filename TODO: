@@ -5,8 +5,8 @@ Change models to more accurately reflect specifications
 Use generic view to create an archived orders page
 Add user authentication and authorization
 
-Add pagination
-Add links to archived orders page to index
+Add pagination to list views and archive views
+Add links to archived orders page on index
 Create base.html template
 Add 2 boys logo
 Prettify list views
@@ -23,3 +23,5 @@ Wash and Fold - Comments for system
 Shirts - $1.75 per shirt, make total costs modifiable
 Print in smaller sizes?
 Add logout view/links
+Improve Archived page links
+Improve form validation
