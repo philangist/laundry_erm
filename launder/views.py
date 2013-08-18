@@ -34,7 +34,20 @@ import logger_factory
 
 logger = logger_factory.logger_factory('views')
 
-class DailyOperationsList(ListView):
+class NavBarMixin(object):
+    def get_context_data(self, **kwargs):
+        context = super(NavBarMixin, self).get_context_data(**kwargs)
+        context.update({'active_tab' : self.get_active_tab()})
+        return context
+
+    def get_active_tab(self):
+        try:
+            active_tab = self.active_tab
+        except:
+            active_tab = 'home'
+        return active_tab
+
+class DailyOperationsList(NavBarMixin, ListView):
     template_name = 'index.html'
     context_object_name = 'daily_orders_list'
     wash_fold_set = WashFoldOrder.objects.all()
@@ -48,8 +61,9 @@ class DailyOperationsList(ListView):
     )
     paginate_by = 5
 
-class DailyOperationsDryCleaningArchive(ArchiveIndexView):
+class DailyOperationsDryCleaningArchive(NavBarMixin, ArchiveIndexView):
     date_field = 'date'
+    active_tab = 'dry_cleaning'
     queryset = DryCleaning.objects.all().filter(payment_finalized=True)
     template_name = 'launder/daily_ops_archive.html'
     paginate_by = 5
@@ -59,8 +73,9 @@ class DailyOperationsDryCleaningArchive(ArchiveIndexView):
         context['order_type'] = 'dry_cleaning'
         return context
 
-class DailyOperationsLaundryShirtsArchive(ArchiveIndexView):
+class DailyOperationsLaundryShirtsArchive(NavBarMixin, ArchiveIndexView):
     date_field = 'date'
+    active_tab = 'shirts'
     queryset= LaundryShirtsOrder.objects.all().filter(payment_finalized=True)
     template_name = 'launder/daily_ops_archive.html'
     paginate_by = 5
@@ -70,8 +85,9 @@ class DailyOperationsLaundryShirtsArchive(ArchiveIndexView):
         context['order_type'] = 'shirts'
         return context
 
-class DailyOperationsWashFoldArchive(ArchiveIndexView):
+class DailyOperationsWashFoldArchive(NavBarMixin, ArchiveIndexView):
     date_field = 'date'
+    active_tab = 'wash_fold'
     queryset = WashFoldOrder.objects.all().filter(payment_finalized=True)
     template_name = 'launder/daily_ops_archive.html'
     paginate_by = 5
@@ -91,7 +107,8 @@ class WashFoldUpdate(UpdateView):
     form_class = WashFoldOrderForm
     template_name = 'launder/wash_fold_form.html'
 
-class WashFoldList(ListView):
+class WashFoldList(NavBarMixin, ListView):
+    active_tab = 'wash_fold'
     queryset= WashFoldOrder.objects.all().filter(payment_finalized=True)
     template_name = 'launder/wash_fold_list.html'
     paginate_by = 5
@@ -111,7 +128,8 @@ class DryCleaningUpdate(UpdateView):
     form_class = DryCleaningForm
     template_name = 'launder/dry_cleaning_form.html'
 
-class DryCleaningList(ListView):
+class DryCleaningList(NavBarMixin, ListView):
+    active_tab = 'dry_cleaning'
     queryset= DryCleaning.objects.all().filter(payment_finalized=True)
     template_name = 'launder/dry_cleaning_list.html'
     paginate_by = 5
@@ -131,7 +149,8 @@ class LaundryShirtsOrderUpdate(UpdateView):
     form_class = LaundryShirtsOrderForm
     template_name = 'launder/shirts_form.html'
 
-class LaundryShirtsOrderList(ListView):
+class LaundryShirtsOrderList(NavBarMixin, ListView):
+    active_tab = 'shirts'
     queryset= LaundryShirtsOrder.objects.all().filter(payment_finalized=True)
     template_name = 'launder/shirts_list.html'
     paginate_by = 5
@@ -140,6 +159,3 @@ class LaundryShirtsOrderDetail(DetailView):
     context_object_name = 'shirts_order'
     template_name = 'launder/shirts_detail.html'
     model = LaundryShirtsOrder
-
-def index(request):
-    return render_to_response('index.html')

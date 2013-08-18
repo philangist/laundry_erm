@@ -97,8 +97,12 @@ urlpatterns = patterns('',
 	url(r'^shirts/$',
 		login_required(LaundryShirtsOrderList.as_view()),
 		name='shirts_list'),
-	#index
-	#url(r'^$', 'launder.views.index')
-	#auth example
-	url(r'^login/$', 'django.contrib.auth.views.login',name="my_login"),	
+	#user auth
+	url(r'^login/$',
+		'django.contrib.auth.views.login',
+		name="login"),
+	url(r'^logout/$',
+		'django.contrib.auth.views.logout',
+		{'next_page': '/'},
+		name="logout",)
 )
