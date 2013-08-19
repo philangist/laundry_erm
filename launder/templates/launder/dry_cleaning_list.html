@@ -1,52 +1,74 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% url 'dry_cleaning_list' as dry_cleaning_url %}
     <h2>Dry Cleaning Orders</h2>
+    {% url 'dry_cleaning_add' as add_dry_cleaning_url %}
+    <div class="btn-toolbar">
+        <a href="{{ add_dry_cleaning_url }}">
+        <button class="btn btn-primary">New Order</button>
+        </a>
+    </div>
     {% if object_list %}
-        <table class="table">  
-            <thead>  
-                <tr>  
-                <th>Order number</th>  
-                <th>Name</th>  
-                <th>Phone number</th>  
-                <th>Address</th>
-                <th>Total Cost</th>
-                </tr>  
-            </thead>
-            <tbody>
-                {% for order in object_list %}
-                    <tr>
-                    <td>{{ order.id }}</td>
-                    <td><a href="/dry_cleaning/{{order.id}}"> {{ order.first_name }} {{ order.last_name }}</a></td>
-                    <td>{{ order.phone_number }}</td>
-                    <td>{{ order.address }}</td>
-                    <td>${{ order.total_cost }}</td>
+        <div class="well">
+            <table class="table">  
+                <thead>  
+                    <tr>  
+                    <th>Order number</th>  
+                    <th>Name</th>  
+                    <th>Phone number</th>  
+                    <th>Address</th>
+                    <th>Total Cost</th>
+                    <th style="width: 36px;"></th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for order in object_list %}
+                        <tr>
+                        <td>{{ order.id }}</td>
+                        <td><a href="/dry_cleaning/{{order.id}}"> {{ order.first_name }} {{ order.last_name }}</a></td>
+                        <td>{{ order.phone_number }}</td>
+                        <td>{{ order.address }}</td>
+                        <td>${{ order.total_cost }}</td>
+                        <td>
+                            <a href="/dry_cleaning/add/{{order.id}}"><i class="icon-pencil"></i></a>
+                        </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
         {% if is_paginated %}
             <div class="pagination">
-                <span class="page-links">
+                <ul>
+                    {% url 'dry_cleaning_list' as dry_cleaning_url %}
                     {% if page_obj.has_previous %}
-                        <a href="{{ dry_cleaning_url}}?page={{ page_obj.previous_page_number }}">previous</a>
+                        <li>
+                        <a href="{{ dry_cleaning_url}}?page={{ page_obj.previous_page_number }}">Prev</a>
+                        </li>
+                    {%else%}
+                        <li>
+                        <a href="#" style="color:#808080">Prev</a>
+                        </li>
                     {% endif %}
-                    <span class="page-current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                    </span>
+                    <li>
+                        <a href="#">{{ page_obj.number }}</a>
+                    </li>
                     {% if page_obj.has_next %}
-                        <a href="{{ dry_cleaning_url}}?page={{ page_obj.next_page_number }}">next</a>
+                        <li>
+                        <a href="{{ dry_cleaning_url}}?page={{ page_obj.next_page_number }}">Next</a>
+                        </li>
+                    {%else%}
+                        <li>
+                        <a href="#" style="color:#808080">Next</a>
+                        </li>
                     {% endif %}
-                </span>
+                </ul>
             </div>
         {% endif %}
     {% else %}
         <p>No orders are available.</p>
     {% endif %}
 
-{% url 'dry_cleaning_add' as dry_cleaning_url %}
-<a href="{{ dry_cleaning_url }}">Add new order</a><br>
 {% url 'daily_ops_dry_cleaning_archive' as dry_cleaning_archive_url %}
 <a href="{{ dry_cleaning_archive_url }}">View archived dry cleaning orders</a><br>
 

@@ -4,8 +4,84 @@
 		"selected_items":
 		[
 			[
+				"w",
+				"wash_fold"
+			],
+			[
 				"s",
-				"string"
+				"shirts"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"sh",
+				"shirts"
+			],
+			[
+				"a",
+				"active_tab"
+			],
+			[
+				"c",
+				"context"
+			],
+			[
+				"ge",
+				"get_context_data"
+			],
+			[
+				"D",
+				"DailyOperationsList"
+			],
+			[
+				"lo",
+				"login_required"
+			],
+			[
+				"log",
+				"login_required"
+			],
+			[
+				"DailyOperations",
+				"DailyOperationsArchive"
+			],
+			[
+				"dat",
+				"dates"
+			],
+			[
+				"Da",
+				"DayArchiveView"
+			],
+			[
+				"da",
+				"date"
+			],
+			[
+				"d",
+				"django"
+			],
+			[
+				"wa",
+				"wash_fold_set"
+			],
+			[
+				"cl",
+				"class	New Class"
+			],
+			[
+				"sc",
+				"Scrud"
+			],
+			[
+				"date",
+				"datetime"
+			],
+			[
+				"M",
+				"Model"
 			],
 			[
 				"Re",
@@ -88,10 +164,6 @@
 				"wash_fold"
 			],
 			[
-				"re",
-				"recc"
-			],
-			[
 				"la",
 				"largest_element"
 			],
@@ -132,14 +204,6 @@
 				"make_dry_clean_instance"
 			],
 			[
-				"c",
-				"core"
-			],
-			[
-				"sh",
-				"shirt_id"
-			],
-			[
 				"shirt_",
 				"shirt_id"
 			],
@@ -148,16 +212,8 @@
 				"starched"
 			],
 			[
-				"d",
-				"dry_cleaning_instance"
-			],
-			[
 				"__",
 				"__dict__"
-			],
-			[
-				"wa",
-				"wash_fold_class_instance"
 			],
 			[
 				"N",
@@ -174,14 +230,6 @@
 			[
 				"dry",
 				"dry_cleaning_instance"
-			],
-			[
-				"cl",
-				"clause"
-			],
-			[
-				"lo",
-				"logger"
 			],
 			[
 				"payment_f",
@@ -226,29 +274,25 @@
 			[
 				"Mo",
 				"ModelForm"
-			],
-			[
-				"a",
-				"amount"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "http://stackoverflow.com/questions/5773724/how-do-i-use-createview-with-a-modelform\nhttp://catherinetenajeros.blogspot.com/2013/03/django-15-how-to-create-and-update-form.html\nhttp://blog.headspin.com/?p=581\nhttp://blog.headspin.com/?p=532\nhttp://catherinetenajeros.blogspot.com/2013/03/django-15-how-to-create-and-update-form.html",
+			"contents": "http://bootsnipp.com/snipps/table-with-users\nhttp://bootsnipp.com/snipps/navbar-example\nhttp://bootsnipp.com/snipps/condensed-table-example\n\nhttps://wrapbootstrap.com/theme/bizstrap-6-in-1-business-admin-WB0025522\nhttp://www.w3resource.com/twitter-bootstrap/nav-tabs-and-pills-tutorial.php",
 			"settings":
 			{
-				"buffer_size": 331,
+				"buffer_size": 289,
 				"line_ending": "Unix",
-				"name": "http://stackoverflow.com/questions/5773724/how-do-"
+				"name": "http://bootsnipp.com/snipps/table-with-users"
 			}
 		},
 		{
-			"file": "/home/ubuntu/golang/gowiki/wiki.go",
+			"file": "TODO.txt",
 			"settings":
 			{
-				"buffer_size": 2381,
+				"buffer_size": 1256,
 				"line_ending": "Unix"
 			}
 		}
@@ -256,7 +300,7 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 33.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
@@ -301,21 +345,60 @@
 	},
 	"file_history":
 	[
-		"/home/ubuntu/.config/sublime-text-3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/home/ubuntu/test/laundry/launder/templates/base.html",
+		"/home/ubuntu/test/laundry/launder/views.py",
+		"/home/ubuntu/test/laundry/launder/templates/archive.html",
+		"/home/ubuntu/test/laundry/launder/models.py",
+		"/home/ubuntu/test/laundry/laundry/urls.py",
+		"/home/ubuntu/test/laundry/launder/templates/launder/shirts_form.html",
+		"/home/ubuntu/test/laundry/launder/templates/launder/wash_fold_form.html",
+		"/home/ubuntu/test/laundry/launder/templates/index.html",
+		"/home/ubuntu/test/laundry/launder/forms.py",
+		"/home/ubuntu/test/laundry/launder/templates/launder/dry_cleaning_form.html",
+		"/home/ubuntu/test/laundry/launder/templates/launder/wash_fold_list.html",
+		"/home/ubuntu/test/laundry/launder/templates/launder/shirts_list.html",
+		"/home/ubuntu/test/laundry/launder/templates/launder/dry_cleaning_list.html",
+		"/home/ubuntu/test/laundry/diff.txt",
+		"/home/ubuntu/test/laundry/launder/templates/launder/daily_ops_archive.html",
+		"/home/ubuntu/test/laundry/launder/urls.py",
+		"/home/ubuntu/test/laundry/launder/templates/launder/wash_fold_update_form.html",
+		"/home/ubuntu/test/laundry/launder/templates/registration/login.html",
+		"/home/ubuntu/test/laundry/TODO:",
+		"/home/ubuntu/test/laundry/laundry/settings.py",
+		"/home/ubuntu/test/laundry/TODO.txt",
+		"/home/ubuntu/test/laundry/views.log",
 		"/home/ubuntu/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings",
+		"/home/ubuntu/test/laundry/launder/templates/launder/dry_cleaning_detail.html",
+		"/home/ubuntu/test/laundry/launder/templates/launder/daily_ops_archive_day.html",
+		"/home/ubuntu/test/laundry/launder/templates/launder/daily_operations_archive_day.html",
+		"/home/ubuntu/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/ubuntu/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/ubuntu/test/laundry/launder/templates/launder/wash_fold_detail.html",
+		"/home/ubuntu/test/laundry/launder/templates/launder/shirts_detail.html",
+		"/home/ubuntu/test/laundry/launder/templates/wash_fold.html",
+		"/home/ubuntu/test/laundry/.gitignore",
+		"/home/ubuntu/test/laundry/laundry-erm.sublime-project",
+		"/home/ubuntu/test/laundry/launder/admin.py",
+		"/home/ubuntu/test/django_blog/mysite/mysite/wsgi.py",
+		"/home/ubuntu/test/scrud/cbv_scrud/scrud/views.py",
+		"/home/ubuntu/test/scrud/cbv_scrud/scrud/templates/scrud/scrud_list.html",
+		"/home/ubuntu/test/scrud/cbv_scrud/cbv_scrud/urls.py",
+		"/home/ubuntu/test/scrud/cbv_scrud/scrud/models.py",
+		"/home/ubuntu/test/scrud/cbv_scrud/cbv_scrud/settings.py",
+		"/home/ubuntu/test/scrud/cbv_scrud/scrud/admin.py",
+		"/home/ubuntu/test/django_blog/mysite/mysite/urls.py",
+		"/home/ubuntu/test/scrud/cbv_scrud/scrud/scrud_detail.html",
+		"/home/ubuntu/test/scrud/cbv_scrud/scrud/scrud_confirm_delete.html",
+		"/home/ubuntu/test/scrud/cbv_scrud/scrud/scrud_form.html",
+		"/home/ubuntu/test/scrud/cbv_scrud/scrud/ scrud_list.html",
+		"/home/ubuntu/golang/gowiki/wiki.go",
+		"/home/ubuntu/test/django_blog/mysite/mysite/settings.py",
+		"/home/ubuntu/test/laundry/logger_factory.py",
+		"/home/ubuntu/.config/sublime-text-3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
 		"/home/ubuntu/golang/gowiki/view.html",
 		"/home/ubuntu/golang/gowiki/edit.html",
 		"/home/ubuntu/golang/gowiki/simple_http_server.go",
 		"/home/ubuntu/golang/gowiki/test.txt",
-		"/home/ubuntu/test/laundry/launder/templates/launder/wash_fold_form.html",
-		"/home/ubuntu/test/laundry/laundry/urls.py",
-		"/home/ubuntu/test/laundry/launder/templates/launder/wash_fold_list.html",
-		"/home/ubuntu/test/laundry/launder/forms.py",
-		"/home/ubuntu/test/laundry/launder/templates/launder/wash_fold_update_form.html",
-		"/home/ubuntu/test/laundry/launder/views.py",
-		"/home/ubuntu/test/laundry/launder/models.py",
-		"/home/ubuntu/test/laundry/views.log",
-		"/home/ubuntu/test/laundry/TODO:",
 		"/home/ubuntu/reccomender/cluster_utils.py",
 		"/home/ubuntu/reccomender/logger_factory.py",
 		"/home/ubuntu/reccomender/reccomendations.py",
@@ -327,28 +410,20 @@
 		"/home/ubuntu/test/laundry/launder/templates/shirts_form.html",
 		"/home/ubuntu/test/laundry/launder/templates/wash_fold_form.html",
 		"/home/ubuntu/test/laundry/launder/templates/wash_fold_detail.html",
-		"/home/ubuntu/test/laundry/launder/templates/base.html",
 		"/home/ubuntu/test/laundry/launder/templates/dry_clean_detail.html",
-		"/home/ubuntu/test/laundry/launder/templates/index.html",
 		"/home/ubuntu/test/laundry/launder/templates/shirts.html",
-		"/home/ubuntu/test/laundry/launder/templates/wash_fold.html",
 		"/home/ubuntu/test/laundry/launder/templates/dry_clean.html",
 		"/home/ubuntu/test/laundry/launder/templates/dry_clean_form.html",
-		"/home/ubuntu/test/laundry/laundry/settings.py",
 		"/home/ubuntu/test/laundry/static/css/bootstrap.css",
 		"/home/ubuntu/test/laundry/manage.py",
-		"/home/ubuntu/test/laundry/launder/urls.py",
 		"/home/ubuntu/test/laundry/launder/migrations/0002_auto__del_drycleaningform__add_drycleaning.py",
 		"/home/ubuntu/test/laundry/launder/migrations/0001_initial.py",
-		"/home/ubuntu/test/laundry/logger_factory.py",
 		"/home/ubuntu/test/laundry_project/laundry/settings.py",
 		"/home/ubuntu/laundry/schema.db",
 		"/home/ubuntu/test/laundry_project/schema.db",
 		"/home/ubuntu/test/django_blog/mysite/blog/models.py",
 		"/home/ubuntu/test/django_blog/mysite/blog/templates/blog.html",
-		"/home/ubuntu/test/django_blog/mysite/mysite/settings.py",
 		"/home/ubuntu/test/django_blog/mysite/blog/admin.py",
-		"/home/ubuntu/test/django_blog/mysite/mysite/urls.py",
 		"/home/ubuntu/test/django_blog/mysite/blog/urls.py",
 		"/home/ubuntu/test/django_blog/mysite/blog/templates/base.html",
 		"/home/ubuntu/test/laundry_project/launder/views.py",
@@ -357,11 +432,9 @@
 		"/home/ubuntu/test/laundry_project/launder/models.py",
 		"/home/ubuntu/test/laundry_project/launder/forms.py",
 		"/home/ubuntu/test/laundry_project/launder/admin.py",
-		"/home/ubuntu/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/ubuntu/test/laundry_project/laundry/wsgi.py",
 		"/home/ubuntu/test/laundry_project/laundry/urls.py",
 		"/home/ubuntu/test/laundry_project/laundry/__init__.py",
-		"/home/ubuntu/test/laundry/launder/admin.py",
 		"/home/ubuntu/test/laundry/schema.db",
 		"/home/ubuntu/test/laundry/__init__.py"
 	],
@@ -371,9 +444,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 107.0,
 		"where_history":
 		[
+			"/home/ubuntu/test/laundry",
 			"/home/ubuntu/reccomender",
 			"/home/ubuntu/test/laundry",
 			"/home/ubuntu/test/laundry/launder",
@@ -385,6 +459,119 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"10",
+			"<li><a href=\"/logout\"> Logout </a></li>",
+			"True",
+			"max_digits=5",
+			"5",
+			"True",
+			"ArchiveIndexView",
+			"DayArchiveView",
+			"\n\n        <div class=\"control-group\">\n            <label class=\"control-label\">Date</label>\n            <div class=\"controls\">\n                {{ form.date }}\n                <p class=\"help-block\"></p>\n            </div>\n        </div>",
+			"daily_operations = models.ForeignKey('DailyOperations', blank=True)",
+			"daily_operations",
+			"DailyOperations",
+			"daily_operations",
+			"DailyOperations",
+			"'DailyOperations'",
+			"}}#\"",
+			"index_url",
+			"{{ dry_cleaning_url}}",
+			"wash_fold",
+			"dry_cleaning",
+			"add_dry_cleaning_url",
+			"dry_cleaning_url",
+			"btn",
+			"btn-primary",
+			"def get_absolute_url(self):",
+			"reverse('wash_fold_detail', kwargs={'pk': self.pk})",
+			"\n        return '%s %s - %s' % (self.first_name, self.last_name, self.total_cost)",
+			"2",
+			"ArchiveIndexView",
+			"index",
+			"login",
+			"if",
+			"DryCleaningMixin",
+			"List(NavBarMixin, ListView)",
+			"List(ListView)",
+			"List",
+			"DryCleaningMixin",
+			"get_context_data",
+			", ",
+			"(?>[a-zA-Z\\$ ]+),",
+			"(?=[a-zA-Z\\$ ]+)",
+			"(:?[a-zA-Z\\$ ]+)",
+			"#",
+			"phone_number",
+			"last_name",
+			"first_name",
+			"form",
+			" = .+",
+			"form",
+			"shirts",
+			"order",
+			"dry_cleaning",
+			"super",
+			"template_name",
+			"10",
+			"cars",
+			"\\),",
+			" ",
+			"url",
+			"URL",
+			"cT_U",
+			"T_U",
+			"wash_fold",
+			"DailyOperationsArchive",
+			")",
+			") |",
+			"Q(",
+			"    #",
+			"article",
+			"DailyOperationsListView",
+			"DailyOperationsView",
+			"shirts",
+			"shirts_list",
+			"TextField",
+			"dry_cleaning",
+			"shirts",
+			"shirt_order",
+			"DryCleaning",
+			"dry_cleaning",
+			"DryCleaning",
+			"dry_cleaning",
+			"Detail.as_view()",
+			"wash_fold",
+			"WashFold",
+			"wash_fold",
+			"wash_fold_order",
+			"DryCleaningOrder",
+			", ",
+			"DryCleaning$",
+			"^DryCleaning$",
+			"g_",
+			"wash_fold",
+			"wash_fold_order",
+			"WashFold",
+			",",
+			" ",
+			"DailyOperations",
+			"datetime.date.",
+			"datetime",
+			"datetime.date.today",
+			"scrud",
+			"default=None",
+			"operations_form",
+			"ns')",
+			"ns'",
+			"auto_now_add=True",
+			"DailyOperations'",
+			"DailyOperations",
+			"app",
+			"List",
+			"_",
+			"save()",
+			"save",
 			"urllib",
 			"urllib2",
 			" title string",
@@ -399,115 +586,23 @@
 			"edit",
 			"error",
 			"err",
-			"fields",
-			"List",
-			"filter_clusters",
-			"[0]",
-			"smallest",
-			"dry_clean_add_f",
-			"template",
-			"\\n",
-			"dry_clean",
-			"wash_fold",
-			"HttpResponseRedirect",
-			"wash_fold_detail",
-			"reverse",
-			"payment_method",
-			"CASH",
-			"wash_fold_order",
-			"shirt_order",
-			"False",
-			"CREDIT",
-			"wash_fold_order",
-			"bool",
-			"wash_fold_instance",
-			"request.POST['payment_finalized']",
-			"logger.info('payment_finalized",
-			"payment_finalized",
-			"TextField",
-			"\\t\\t",
-			"-",
-			"wash_fold",
-			"_detail",
-			"wash_fold_detail",
-			"\"><br>",
-			"!= None",
-			"make_shirts_instance",
-			"reverse",
-			"wash_fold",
-			"wash_fold_instance(",
-			"wash_fold_instance edited",
-			"wash_fold",
-			"def wash_fold_add_form(request, wash_fold_order=None):\n	if wash_fold_order is not None:\n		wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)\n	return render(request, 'wash_fold_form.html', \n		{'wash_fold_order' : wash_fold_order}\n	)",
-			"def wash_fold_add_form(request, wash_fold_order=None):\n	if wash_fold_order is not None:\n		wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)\n	return render(request, 'wash_fold_form.html', \n		{'wash_fold_order' : wash_fold_order}\n	)\n",
-			"def wash_fold_add_form(request, wash_fold_order=None):\n	if wash_fold_order is not None:\n		wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)",
-			"def wash_fold_add_form(request, wash_fold_order=None):",
-			"shirts_",
-			"shirt_",
-			"shirt",
-			"shirts_add",
-			"return render_to_response(request, 'wash_fold_form.html', ",
-			"return render(request, 'wash_fold_form.html', ",
-			"wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)",
-			"def wash_fold_add_form(request, wash_fold_order=None):\n	if wash_fold_order is not None:\n		wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)\n	return render(request, 'wash_fold_form.html', \n		{'wash_fold_order' : wash_fold_order}\n	)",
-			"		wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)",
-			"	if wash_fold_order is not None:",
-			"def wash_fold_add_form(request, wash_fold_order=None):",
-			"def wash_fold_add_form(request, wash_fold_order=None):\n	if wash_fold_order is not None:\n		wash_fold_order = get_object_or_404(WashFoldOrder, pk=wash_fold_order)\n	return render(request, 'wash_fold_form.html', \n		{'wash_fold_order' : wash_fold_order}\n	)",
-			"\n		{'wash_fold_order' : wash_fold_order}\n	)",
-			"{'wash_fold_order' : wash_fold_order}",
-			"{'wash_fold_order' : wash_fold_order }\n	)",
-			"wash_fold_add_form",
-			"wash_fold_add_form(request, ",
-			"shirt_",
-			"shirts_",
-			"shirts_add_form",
-			"wash_fold_order",
-			"/add(?P<wash_fold_id>\\d+",
-			"shirts/add(?P<wash_fold_id>\\d+",
-			"wash_fold_instance",
-			"wash_fold_id",
-			"wash_fold_instance",
-			"queryd",
-			"edit_wash_fold_instance",
-			"entered edit_wash_fold_instance",
-			"edit_wash_fold_instance",
-			"make_wash_fold_instance",
-			"wash_fold_instance",
-			"make_dry_clean_instance",
-			"wash_fold_class_instance",
-			"make_wash_fold_class_instance",
-			"make_shirts_instance",
-			"_form.html",
-			"form.html",
-			"shirt_order",
-			"Shirts",
-			"dry_clean_order",
-			"Dry Cleaning",
-			"%}</br>",
-			"{% d",
-			"launder_drycleaningform",
-			"LaundryShirtsOrder",
-			"make_shirts_instance",
-			"make_wash_fold_order_instance",
-			"launder_shirts_add",
-			"\"",
-			"dry_clean_view",
-			"dry_clean_form",
-			"dry_clean_add_form",
-			"request.POST",
-			"\n",
-			"max_lengtfdhjhvbh",
-			"max_length",
-			"DryCleaningForm",
-			"DecimalField()"
+			"fields"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
+			"",
+			"\", \"",
+			", \"",
+			"\"",
+			"",
+			"),\\n\\t\\t",
+			"DailyOperationsList",
+			"DailyOperationsListView",
+			"DryCleaning",
 			", ",
 			"\\t",
 			"",
@@ -535,6 +630,11 @@
 	"groups":
 	[
 		{
+			"sheets":
+			[
+			]
+		},
+		{
 			"selected": 0,
 			"sheets":
 			[
@@ -543,20 +643,20 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 331,
+						"buffer_size": 289,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								331,
-								331
+								44,
+								44
 							]
 						],
 						"settings":
 						{
-							"auto_name": "http://stackoverflow.com/questions/5773724/how-do-",
+							"auto_name": "http://bootsnipp.com/snipps/table-with-users",
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -564,36 +664,30 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
+				},
 				{
 					"buffer": 1,
-					"file": "/home/ubuntu/golang/gowiki/wiki.go",
+					"file": "TODO.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2381,
+						"buffer_size": 1256,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1385,
-								1385
+								626,
+								626
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Go/Go.tmLanguage"
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 938.0,
+						"translation.y": 285.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -603,7 +697,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 27.0
 	},
 	"input":
 	{
@@ -634,7 +728,7 @@
 		"rows":
 		[
 			0.0,
-			0.449856984375,
+			0.519457803208,
 			1.0
 		]
 	},
@@ -654,6 +748,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"vie",
+				"laundry/launder/views.py"
+			]
 		],
 		"width": 0.0
 	},
@@ -684,7 +782,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 50.0,
+	"side_bar_width": 247.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

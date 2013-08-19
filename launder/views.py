@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404, render_to_response, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
+
 from django.views.generic.dates import (
     DayArchiveView,
     ArchiveIndexView,
@@ -47,21 +48,95 @@ class NavBarMixin(object):
             active_tab = 'home'
         return active_tab
 
-class DailyOperationsList(NavBarMixin, ListView):
+class LaundryIndex(NavBarMixin, ListView):
     template_name = 'index.html'
     context_object_name = 'daily_orders_list'
-    wash_fold_set = WashFoldOrder.objects.all()
-    dry_clean_set = DryCleaning.objects.all()
-    shirts_set = LaundryShirtsOrder.objects.all()
+    paginate_by = 5
+
+    def get_queryset(self):
+        wash_fold_set = WashFoldOrder.objects.filter(payment_finalized=False)
+        dry_clean_set = DryCleaning.objects.filter(payment_finalized=False)
+        shirts_set = LaundryShirtsOrder.objects.filter(payment_finalized=False)
+        queryset =  list(chain(
+            wash_fold_set,
+            dry_clean_set,
+            shirts_set,
+            )
+        )
+        queryset.sort(key = lambda o: o.date)
+        return queryset
+
+def extract_date_data():
+    seen_dates = {}
+    def process_order_list(order_list):
+        for order in order_list:
+            cur_date = order.date.date()
+            if cur_date not in seen_dates:
+                seen_dates[cur_date] = [0, 0]
+            seen_dates[cur_date][0] += 1
+            seen_dates[cur_date][1] += order.total_cost
+    dry_clean_list = DryCleaning.objects.all().order_by('-date')
+    shirts_list = LaundryShirtsOrder.objects.all().order_by('-date')
+    wash_fold_list = WashFoldOrder.objects.all().order_by('-date')
+    process_order_list(dry_clean_list)
+    process_order_list(shirts_list)
+    process_order_list(wash_fold_list)
+    context_objects_list = []
+    for date, date_info in seen_dates.iteritems():
+        date_tuple = (date.isoformat(), date_info[0], date_info[1])
+        context_objects_list.append(date_tuple)
+    return context_objects_list
+
+class DailyOperationsList(NavBarMixin, ListView):
+    template_name = 'launder/daily_ops_dates_list.html'
+    context_object_name = 'date_data'
+    paginate_by = 5
+    active_tab = 'daily_ops'
+    queryset = extract_date_data()
+
+class DailyOperationsDateView(NavBarMixin, ListView):
+    context_object_name = 'orders_list'
+    template_name = 'launder/daily_ops_date.html'
+    active_tab = 'daily_ops'
+        
+    def get_queryset(self):
+        self.date_string = '%s-%s-%s' % (
+            self.kwargs['year'],
+            self.kwargs['month'],
+            self.kwargs['day'],
+        )
+        wash_fold_set = WashFoldOrder.objects.filter(date=self.date_string)
+        dry_clean_set = DryCleaning.objects.filter(date=self.date_string)
+        shirts_set = LaundryShirtsOrder.objects.filter(date=self.date_string)
+        queryset =  list(chain(
+            wash_fold_set,
+            dry_clean_set,
+            shirts_set,
+            )
+        )
+        queryset.sort(key = lambda o: o.date)
+        logger.info('queryset: %s' % str(queryset))
+        return queryset
+
+
+class DailyOperationsArchive(NavBarMixin, ListView):
+    template_name = 'archive.html'
+    context_object_name = 'daily_orders_list'
+    active_tab = 'archive'
+    wash_fold_set = WashFoldOrder.objects.filter(payment_finalized=True)
+    dry_clean_set = DryCleaning.objects.filter(payment_finalized=True)
+    shirts_set = LaundryShirtsOrder.objects.filter(payment_finalized=True)
     queryset =  list(chain(
         wash_fold_set,
         dry_clean_set,
         shirts_set,
         )
     )
+    queryset.sort(key = lambda o: o.date)
     paginate_by = 5
+    logger.debug('queryset: %s' % str(queryset))
 
-class DailyOperationsDryCleaningArchive(NavBarMixin, ArchiveIndexView):
+class DailyOperationsDryCleaningArchive(NavBarMixin, ListView):
     date_field = 'date'
     active_tab = 'dry_cleaning'
     queryset = DryCleaning.objects.all().filter(payment_finalized=True)
@@ -73,7 +148,7 @@ class DailyOperationsDryCleaningArchive(NavBarMixin, ArchiveIndexView):
         context['order_type'] = 'dry_cleaning'
         return context
 
-class DailyOperationsLaundryShirtsArchive(NavBarMixin, ArchiveIndexView):
+class DailyOperationsLaundryShirtsArchive(NavBarMixin, ListView):
     date_field = 'date'
     active_tab = 'shirts'
     queryset= LaundryShirtsOrder.objects.all().filter(payment_finalized=True)
@@ -85,7 +160,7 @@ class DailyOperationsLaundryShirtsArchive(NavBarMixin, ArchiveIndexView):
         context['order_type'] = 'shirts'
         return context
 
-class DailyOperationsWashFoldArchive(NavBarMixin, ArchiveIndexView):
+class DailyOperationsWashFoldArchive(NavBarMixin, ListView):
     date_field = 'date'
     active_tab = 'wash_fold'
     queryset = WashFoldOrder.objects.all().filter(payment_finalized=True)
@@ -109,7 +184,7 @@ class WashFoldUpdate(UpdateView):
 
 class WashFoldList(NavBarMixin, ListView):
     active_tab = 'wash_fold'
-    queryset= WashFoldOrder.objects.all().filter(payment_finalized=True)
+    queryset= WashFoldOrder.objects.all().filter(payment_finalized=False)
     template_name = 'launder/wash_fold_list.html'
     paginate_by = 5
 
@@ -130,7 +205,7 @@ class DryCleaningUpdate(UpdateView):
 
 class DryCleaningList(NavBarMixin, ListView):
     active_tab = 'dry_cleaning'
-    queryset= DryCleaning.objects.all().filter(payment_finalized=True)
+    queryset= DryCleaning.objects.all().filter(payment_finalized=False)
     template_name = 'launder/dry_cleaning_list.html'
     paginate_by = 5
 
@@ -151,7 +226,7 @@ class LaundryShirtsOrderUpdate(UpdateView):
 
 class LaundryShirtsOrderList(NavBarMixin, ListView):
     active_tab = 'shirts'
-    queryset= LaundryShirtsOrder.objects.all().filter(payment_finalized=True)
+    queryset= LaundryShirtsOrder.objects.all().filter(payment_finalized=False)
     template_name = 'launder/shirts_list.html'
     paginate_by = 5
 
