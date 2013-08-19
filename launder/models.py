@@ -30,6 +30,9 @@ class WashFoldOrder(models.Model):
     def get_absolute_url(self):
         return reverse('wash_fold_detail', kwargs={'pk': self.pk})
 
+    @property
+    def order_type(self):
+        return 'Wash and Fold'
 
 class DryCleaning(models.Model):
 
@@ -77,6 +80,10 @@ class DryCleaning(models.Model):
     def get_absolute_url(self):
         return reverse('dry_cleaning_detail', kwargs={'pk': self.pk})
 
+    @property
+    def order_type(self):
+        return 'Dry Cleaning'
+
 
 
 class LaundryShirtsOrder(models.Model):
@@ -107,6 +114,10 @@ class LaundryShirtsOrder(models.Model):
 
     def get_absolute_url(self):
         return reverse('shirts_detail', kwargs={'pk': self.pk})
+
+    @property
+    def order_type(self):
+        return 'Shirt'
 
 class DailyOperations(models.Model):
     date = models.DateTimeField(default=datetime.datetime.today)

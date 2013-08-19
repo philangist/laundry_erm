@@ -1,9 +1,110 @@
-{% block title %}Wash and Fold Create Order{% endblock title %}
-
+{% extends "base.html" %}
 {% block content %}
-<form method="post">
+<center>
+<h3>New Wash and Fold Order</h3>
+</center>
+<form method="post" class="form-horizontal">
+    <fieldset>
+    {% if form.errors %}
+    <p>{{ form.errors }}</p>
+    {% endif %}
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
+
+        <div class="control-group">
+            <label class="control-label">First Name</label>
+            <div class="controls">
+                {{ form.first_name }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Last Name</label>
+            <div class="controls">
+                {{ form.last_name }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Phone Number</label>
+            <div class="controls">
+                {{ form.phone_number }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Address</label>
+            <div class="controls">
+                {{ form.address }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Date</label>
+            <div class="controls">
+                {{ form.date }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Total Cost</label>
+            <div class="controls">
+                {{ form.total_cost }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Payment Method</label>
+            <div class="controls">
+                {{ form.payment_method }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Payment Finalized</label>
+            <div class="controls">
+                {{ form.payment_finalized }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Payment Date</label>
+            <div class="controls">
+                {{ form.payment_date }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Comments</label>
+            <div class="controls">
+                {{ form.comments }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Daily Operations</label>
+            <div class="controls">
+                {{ form.daily_operations }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <input type="submit" value="Save">
+                <p class="help-block"></p>
+            </div>
+        </div>
+    </fieldset>
 </form>
 {% endblock content %}
+

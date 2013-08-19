@@ -3,10 +3,10 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-   <title>{% block title %}Two Boys Laundromat{% if title %} - {{ title }}{% endif %}{% endblock %}</title>
-   <link rel="stylesheet" type="text/css" href=" http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
-   <script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.min.js"></script>
-   {% block extrahead %}{% endblock %}
+    <title>{% block title %}Two Boys Laundromat{% if title %} - {{ title }}{% endif %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href=" http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
+    <script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+    {% block extrahead %}{% endblock %}
 </head>
 <body>
     {% url 'dry_cleaning_list' as dry_cleaning_url %}
