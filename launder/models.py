@@ -16,11 +16,14 @@ class WashFoldOrder(models.Model):
     phone_number = models.CharField(max_length=15, blank=False)
     address = models.CharField(max_length=50, blank=True)
     date = models.DateTimeField(default=datetime.datetime.today().date)
+    weight = models.IntegerField(default=0)
+    num_comforters = models.IntegerField(default=0, blank=True)
     total_cost = models.DecimalField(max_digits=8, decimal_places=2)
     payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
     payment_finalized = models.BooleanField(default=False)
     payment_date = models.DateTimeField(default=datetime.datetime.today)
     comments = models.TextField(default='', blank=True)
+    staff_comments = models.TextField(default='', blank=True)
 
     def __unicode__(self):
         return '%s %s - $%s - %s' % (self.first_name, self.last_name, self.total_cost, self.date.date())
