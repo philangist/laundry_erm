@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Laundry Management System</h1>
+<h2>Paid Orders</h2>
 
 {% if daily_orders_list %}
     <table class="table">  
@@ -29,7 +29,7 @@
     {% if is_paginated %}
         <div class="pagination">
             <ul>
-                {% url 'daily_ops_dates_list' as page_url %}
+                {% url 'archive' as page_url %}
                 {% if page_obj.has_previous %}
                     <li>
                     <a href="{{page_url}}?page={{ page_obj.previous_page_number }}">Prev</a>

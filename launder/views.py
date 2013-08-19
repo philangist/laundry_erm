@@ -66,33 +66,39 @@ class LaundryIndex(NavBarMixin, ListView):
         queryset.sort(key = lambda o: o.date)
         return queryset
 
+def extract_date_data():
+    seen_dates = {}
+    def process_order_list(order_list):
+        for order in order_list:
+            cur_date = order.date.date()
+            if cur_date not in seen_dates:
+                seen_dates[cur_date] = [0, 0]
+            seen_dates[cur_date][0] += 1
+            seen_dates[cur_date][1] += order.total_cost
+    dry_clean_list = DryCleaning.objects.all().order_by('-date')
+    shirts_list = LaundryShirtsOrder.objects.all().order_by('-date')
+    wash_fold_list = WashFoldOrder.objects.all().order_by('-date')
+    process_order_list(dry_clean_list)
+    process_order_list(shirts_list)
+    process_order_list(wash_fold_list)
+    context_objects_list = []
+    for date, date_info in seen_dates.iteritems():
+        date_tuple = (date.isoformat(), date_info[0], date_info[1])
+        context_objects_list.append(date_tuple)
+    return context_objects_list
 
-class DailyOperationsList(ListView):
+class DailyOperationsList(NavBarMixin, ListView):
     template_name = 'launder/daily_ops_dates_list.html'
-    context_object_name = 'dates_list'
-    wash_fold_set = list([str(order.date.date()) for order in WashFoldOrder.objects.all().order_by('-date')])
-    dry_clean_set = list([str(order.date.date()) for order in DryCleaning.objects.all().order_by('-date')])
-    shirts_set = list([str(order.date.date()) for order in LaundryShirtsOrder.objects.all().order_by('-date')])
+    context_object_name = 'date_data'
     paginate_by = 5
-    queryset =  list(set(list(chain(
-                wash_fold_set,
-                dry_clean_set,
-                shirts_set,
-                )
-            )
-        )
-    )
+    active_tab = 'daily_ops'
+    queryset = extract_date_data()
 
-    def get_context_data(self, **kwargs):
-        context = super(DailyOperationsList, self).get_context_data(**kwargs)
-        context['total_orders'] = len(self.wash_fold_set) + len(self.dry_clean_set) + len(self.shirts_set)
-        context['revenue'] = '500'
-        return context
-
-class DailyOperationsDateView(ListView):
+class DailyOperationsDateView(NavBarMixin, ListView):
     context_object_name = 'orders_list'
     template_name = 'launder/daily_ops_date.html'
-
+    active_tab = 'daily_ops'
+        
     def get_queryset(self):
         self.date_string = '%s-%s-%s' % (
             self.kwargs['year'],
@@ -128,6 +134,7 @@ class DailyOperationsArchive(NavBarMixin, ListView):
     )
     queryset.sort(key = lambda o: o.date)
     paginate_by = 5
+    logger.debug('queryset: %s' % str(queryset))
 
 class DailyOperationsDryCleaningArchive(NavBarMixin, ListView):
     date_field = 'date'

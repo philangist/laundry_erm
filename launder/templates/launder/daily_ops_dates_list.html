@@ -4,7 +4,7 @@
 
 <h1>Laundry Management System</h1>
 
-{% if dates_list %}
+{% if date_data %}
     <table class="table">  
         <thead>  
             <tr>  
@@ -14,11 +14,11 @@
             </tr>  
         </thead>
 		<tbody>
-			{% for date in dates_list %}
+			{% for date in date_data %}
 				<tr>
-				<td><a href="{{date}}">{{date}}</a></td>
-				<td>{{total_orders}}</td>
-				<td>{{revenue}}</td>
+				<td><a href="{{date.0}}">{{date.0}}</a></td>
+				<td>{{date.1}}</td>
+				<td>{{date.2}}</td>
 				</tr>
 			{% endfor %}
 		</tbody>
