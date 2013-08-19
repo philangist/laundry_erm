@@ -92,7 +92,12 @@ class DailyOperationsList(NavBarMixin, ListView):
     context_object_name = 'date_data'
     paginate_by = 5
     active_tab = 'daily_ops'
-    queryset = extract_date_data()
+    queryset = WashFoldOrder.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(DailyOperationsList, self).get_context_data(**kwargs)
+        context['date_data'] = extract_date_data()
+        return context
 
 class DailyOperationsDateView(NavBarMixin, ListView):
     context_object_name = 'orders_list'
