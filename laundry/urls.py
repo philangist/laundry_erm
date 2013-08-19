@@ -7,7 +7,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 from launder.views import (
+	LaundryIndex,
+	DailyOperationsArchive,
 	DailyOperationsList,
+	DailyOperationsDateView,
 	DailyOperationsDryCleaningArchive,
 	DailyOperationsLaundryShirtsArchive,
 	DailyOperationsWashFoldArchive,
@@ -32,8 +35,20 @@ urlpatterns = patterns('',
 	url(r'^admin/', include(admin.site.urls)),
 	#daily_operations urls
 	url(r'^$',
+		login_required(LaundryIndex.as_view()),
+		name='index'),
+
+	url(r'^archive/$',
+		login_required(DailyOperationsArchive.as_view()),
+		name='archive'),
+
+	url(r'^daily_ops/$',
 		login_required(DailyOperationsList.as_view()),
-		name='daily_ops_list'),
+		name='daily_ops_dates_list'),
+
+	url(r'^daily_ops/(?P<year>\d+)-(?P<month>\d+)-(?P<day>\d+)/$',
+		login_required(DailyOperationsDateView.as_view()),
+		name='daily_ops_date_view'),
 
 	url(r'^daily_ops/dry_cleaning/',
 		login_required(DailyOperationsDryCleaningArchive.as_view()),

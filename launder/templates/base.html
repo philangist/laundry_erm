@@ -12,41 +12,64 @@
     {% url 'dry_cleaning_list' as dry_cleaning_url %}
     {% url 'wash_fold_list' as wash_fold_url %}
     {% url 'shirts_list' as shirts_url %}
+    {% url 'archive' as archive_url %}
 
     <div class="container">  
         <div class="row">
             <ul class="nav nav-tabs">
-                {% ifequal active_tab 'home' %}
-                    <li class="active"><a href="/">Home</a> </li>
+                {% if active_tab %}
+                    {% ifequal active_tab 'home' %}
+                        <li class="active"><a href="/">Home</a> </li>
+                        <li><a href="{{ dry_cleaning_url }}">View dry cleaning orders</a></li>
+                        <li><a href="{{ wash_fold_url }}">View wash and fold orders</a></li>
+                        <li><a href="{{ shirts_url }}">View shirt orders</a></li>
+                        <li><a href="{{ archive_url }}">View Archived orders</a></li>
+                        <li><a href="/logout"> Logout </a></li>
+                    {% endifequal %}
+
+                    {% ifequal active_tab 'dry_cleaning' %}
+                        <li><a href="/">Home</a> </li>
+                        <li class="active"><a href="{{ dry_cleaning_url }}">View dry cleaning orders</a></li>
+                        <li><a href="{{ wash_fold_url }}">View wash and fold orders</a></li>
+                        <li><a href="{{ shirts_url }}">View shirt orders</a></li>
+                        <li><a href="{{ archive_url }}">View Archived orders</a></li>
+                        <li><a href="/logout"> Logout </a></li>
+                    {% endifequal %}
+
+                    {% ifequal active_tab 'wash_fold' %}
+                        <li><a href="/">Home</a> </li>
+                        <li><a href="{{ dry_cleaning_url }}">View dry cleaning orders</a></li>
+                        <li class="active"><a href="{{ wash_fold_url }}">View wash and fold orders</a></li>
+                        <li><a href="{{ shirts_url }}">View shirt orders</a></li>
+                        <li><a href="{{ archive_url }}">View Archived orders</a></li>
+                        <li><a href="/logout"> Logout </a></li>
+                    {% endifequal %}
+
+                    {% ifequal active_tab 'shirts' %}   
+                        <li><a href="/">Home</a> </li>
+                        <li><a href="{{ dry_cleaning_url }}">View dry cleaning orders</a></li>
+                        <li><a href="{{ wash_fold_url }}">View wash and fold orders</a></li>
+                        <li class="active"><a href="{{ shirts_url }}">View shirt orders</a></li>
+                        <li><a href="{{ archive_url }}">View Archived orders</a></li>
+                        <li><a href="/logout"> Logout </a></li>
+                    {% endifequal %}
+
+                    {% ifequal active_tab 'archive' %}   
+                        <li><a href="/">Home</a> </li>
+                        <li><a href="{{ dry_cleaning_url }}">View dry cleaning orders</a></li>
+                        <li><a href="{{ wash_fold_url }}">View wash and fold orders</a></li>
+                        <li><a href="{{ shirts_url }}">View shirt orders</a></li>
+                        <li class="active"><a href="{{ archive_url }}">View Archived orders</a></li>
+                        <li><a href="/logout"> Logout </a></li>
+                    {% endifequal %}
+                {% else %}
+                    <li><a href="/">Home</a> </li>
                     <li><a href="{{ dry_cleaning_url }}">View dry cleaning orders</a></li>
                     <li><a href="{{ wash_fold_url }}">View wash and fold orders</a></li>
                     <li><a href="{{ shirts_url }}">View shirt orders</a></li>
+                    <li><a href="{{ archive_url }}">View Archived orders</a></li>
                     <li><a href="/logout"> Logout </a></li>
-                {% endifequal %}
-
-                {% ifequal active_tab 'dry_cleaning' %}
-                    <li><a href="/">Home</a> </li>
-                    <li class="active"><a href="{{ dry_cleaning_url }}">View dry cleaning orders</a></li>
-                    <li><a href="{{ wash_fold_url }}">View wash and fold orders</a></li>
-                    <li><a href="{{ shirts_url }}">View shirt orders</a></li>
-                    <li><a href="/logout"> Logout </a></li>
-                {% endifequal %}
-
-                {% ifequal active_tab 'wash_fold' %}
-                    <li><a href="/">Home</a> </li>
-                    <li><a href="{{ dry_cleaning_url }}">View dry cleaning orders</a></li>
-                    <li class="active"><a href="{{ wash_fold_url }}">View wash and fold orders</a></li>
-                    <li><a href="{{ shirts_url }}">View shirt orders</a></li>
-                    <li><a href="/logout"> Logout </a></li>
-                {% endifequal %}
-
-                {% ifequal active_tab 'shirts' %}   
-                    <li><a href="/">Home</a> </li>
-                    <li><a href="{{ dry_cleaning_url }}">View dry cleaning orders</a></li>
-                    <li><a href="{{ wash_fold_url }}">View wash and fold orders</a></li>
-                    <li class="active"><a href="{{ shirts_url }}">View shirt orders</a></li>
-                    <li><a href="/logout"> Logout </a></li>
-                {% endifequal %}
+                {% endif %}
             </ul>
 
             {% block body %}

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+
 <center>
 <h3>New Wash and Fold Order</h3>
 </center>
@@ -43,14 +44,6 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label">Date</label>
-            <div class="controls">
-                {{ form.date }}
-                <p class="help-block"></p>
-            </div>
-        </div>
-
-        <div class="control-group">
             <label class="control-label">Total Cost</label>
             <div class="controls">
                 {{ form.total_cost }}
@@ -86,14 +79,6 @@
             <label class="control-label">Comments</label>
             <div class="controls">
                 {{ form.comments }}
-                <p class="help-block"></p>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label">Daily Operations</label>
-            <div class="controls">
-                {{ form.daily_operations }}
                 <p class="help-block"></p>
             </div>
         </div>

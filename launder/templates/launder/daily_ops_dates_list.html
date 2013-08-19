@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<h1>Laundry Management System</h1>
+
+{% if dates_list %}
+    <table class="table">  
+        <thead>  
+            <tr>  
+            <th>Date</th>
+            <th>Total Orders</th>
+            <th>Revenue</th>
+            </tr>  
+        </thead>
+		<tbody>
+			{% for date in dates_list %}
+				<tr>
+				<td><a href="{{date}}">{{date}}</a></td>
+				<td>{{total_orders}}</td>
+				<td>{{revenue}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% if is_paginated %}
+	    <div class="pagination">
+	        <ul>
+	            {% url 'daily_ops_dates_list' as page_url %}
+	            {% if page_obj.has_previous %}
+	                <li>
+	                <a href="{{page_url}}?page={{ page_obj.previous_page_number }}">Prev</a>
+	                </li>
+	            {%else%}
+	                <li>
+	                <a href="#"  style="color:#808080">Prev</a>
+	                </li>
+	            {% endif %}
+	            <li>
+	                <a href="#">{{ page_obj.number }}</a>
+	            </li>
+	            {% if page_obj.has_next %}
+	                <li>
+	                <a href="{{page_url}}?page={{ page_obj.next_page_number }}">Next</a>
+	                </li>
+	            {%else%}
+	                <li>
+	                <a href="#"  style="color:#808080">Next</a>
+	                </li>
+	            {% endif %}
+	        </ul>  
+	    </div>
+	{% endif %}
+{% endif %}
+
+{% endblock %}
