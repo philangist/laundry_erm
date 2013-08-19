@@ -1,22 +1,127 @@
-<!DOCTYPE html>
-
-<head><title>Shirt Order</title></head>
-<body>
-
-{% if shirt_order %}
-	<h1>Edit shirt order #{{ shirt_order.id }} here</h1>
-	<form action="/shirts/add/{{ shirt_order.id }}/" method="post">
-{% else %}
-	<h1>Add a new shirt order here</h1>
-	<form action="/shirts/add/" method="post">
-{% endif %}
-
-<form method="post">
+{% extends "base.html" %}
+{% block content %}
+<center>
+<h3>New Shirts Order</h3>
+</center>
+<form method="post" class="form-horizontal">
+    <fieldset>
+    {% if form.errors %}
+    <p>{{ form.errors }}</p>
+    {% endif %}
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
 
+        <div class="control-group">
+            <label class="control-label">First Name</label>
+            <div class="controls">
+                {{ form.first_name }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Last Name</label>
+            <div class="controls">
+                {{ form.last_name }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Phone Number</label>
+            <div class="controls">
+                {{ form.phone_number }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Address</label>
+            <div class="controls">
+                {{ form.address }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Date</label>
+            <div class="controls">
+                {{ form.date }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Amount</label>
+            <div class="controls">
+                {{ form.shirts_amount }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Price</label>
+            <div class="controls">
+                {{ form.shirts_price }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+
+        <div class="control-group">
+            <label class="control-label">Starched</label>
+            <div class="controls">
+                {{ form.starched }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Total Cost</label>
+            <div class="controls">
+                {{ form.total_cost }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Payment Method</label>
+            <div class="controls">
+                {{ form.payment_method }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Payment Finalized</label>
+            <div class="controls">
+                {{ form.payment_finalized }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Payment Date</label>
+            <div class="controls">
+                {{ form.payment_date }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Daily Operations</label>
+            <div class="controls">
+                {{ form.daily_operations }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <input type="submit" value="Save">
+                <p class="help-block"></p>
+            </div>
+        </div>
+    </fieldset>
 </form>
-</body>
-</html>
+{% endblock content %}
+
