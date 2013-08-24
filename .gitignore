@@ -4,6 +4,6 @@ TODO*
 *.log
 *.pyc
 *.db
-*.sublime-workspace
+*.sublime-*
 *.pyo
 launder/migrations/*
