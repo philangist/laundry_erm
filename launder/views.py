@@ -71,8 +71,13 @@ def extract_date_data():
     def process_order_list(order_list):
         for order in order_list:
             cur_date = order.date.date()
+            payment_date = order.payment_date.date()
             if cur_date not in seen_dates:
                 seen_dates[cur_date] = [0, 0]
+            if payment_date not in seen_dates:
+                seen_dates[payment_date] = [0, 0]
+            if payment_date != cur_date:
+                cur_date = payment_date
             seen_dates[cur_date][0] += 1
             seen_dates[cur_date][1] += order.total_cost
     dry_clean_list = DryCleaning.objects.all().order_by('-date')

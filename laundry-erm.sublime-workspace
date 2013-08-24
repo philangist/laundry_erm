@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"p",
+				"payment_date"
+			],
+			[
+				"pa",
+				"payment_date"
+			],
+			[
+				"date",
+				"date"
+			],
+			[
+				"se",
+				"self"
+			],
+			[
+				"c",
+				"cur_date"
+			],
+			[
+				"was",
+				"wash_fold_list"
+			],
+			[
+				"da",
+				"date_string"
+			],
+			[
+				"a",
+				"archive"
+			],
+			[
+				"tem",
+				"template_name"
+			],
+			[
+				"dail",
+				"daily_ops_archive"
+			],
+			[
+				"con",
+				"context_object_name"
+			],
+			[
 				"w",
 				"wash_fold"
 			],
@@ -18,14 +62,6 @@
 			[
 				"sh",
 				"shirts"
-			],
-			[
-				"a",
-				"active_tab"
-			],
-			[
-				"c",
-				"context"
 			],
 			[
 				"ge",
@@ -56,10 +92,6 @@
 				"DayArchiveView"
 			],
 			[
-				"da",
-				"date"
-			],
-			[
 				"d",
 				"django"
 			],
@@ -74,10 +106,6 @@
 			[
 				"sc",
 				"Scrud"
-			],
-			[
-				"date",
-				"datetime"
 			],
 			[
 				"M",
@@ -158,10 +186,6 @@
 			[
 				"io",
 				"ioutil"
-			],
-			[
-				"was",
-				"wash_fold"
 			],
 			[
 				"la",
@@ -252,20 +276,12 @@
 				"CASH"
 			],
 			[
-				"pa",
-				"payment_finalized"
-			],
-			[
 				"for",
 				"form	Tag"
 			],
 			[
 				"HTT",
 				"HttpResponseRedirect"
-			],
-			[
-				"p",
-				"phone_number"
 			],
 			[
 				"fi",
@@ -279,23 +295,6 @@
 	},
 	"buffers":
 	[
-		{
-			"contents": "http://bootsnipp.com/snipps/table-with-users\nhttp://bootsnipp.com/snipps/navbar-example\nhttp://bootsnipp.com/snipps/condensed-table-example\n\nhttps://wrapbootstrap.com/theme/bizstrap-6-in-1-business-admin-WB0025522\nhttp://www.w3resource.com/twitter-bootstrap/nav-tabs-and-pills-tutorial.php",
-			"settings":
-			{
-				"buffer_size": 289,
-				"line_ending": "Unix",
-				"name": "http://bootsnipp.com/snipps/table-with-users"
-			}
-		},
-		{
-			"file": "TODO.txt",
-			"settings":
-			{
-				"buffer_size": 1256,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -345,28 +344,30 @@
 	},
 	"file_history":
 	[
-		"/home/ubuntu/test/laundry/launder/templates/base.html",
+		"/home/ubuntu/test/laundry/TODO.txt",
 		"/home/ubuntu/test/laundry/launder/views.py",
-		"/home/ubuntu/test/laundry/launder/templates/archive.html",
-		"/home/ubuntu/test/laundry/launder/models.py",
-		"/home/ubuntu/test/laundry/laundry/urls.py",
-		"/home/ubuntu/test/laundry/launder/templates/launder/shirts_form.html",
+		"/home/ubuntu/test/laundry/launder/templates/launder/daily_ops_dates_list.html",
 		"/home/ubuntu/test/laundry/launder/templates/launder/wash_fold_form.html",
-		"/home/ubuntu/test/laundry/launder/templates/index.html",
+		"/home/ubuntu/test/laundry/launder/models.py",
+		"/home/ubuntu/test/laundry/launder/templates/base.html",
 		"/home/ubuntu/test/laundry/launder/forms.py",
-		"/home/ubuntu/test/laundry/launder/templates/launder/dry_cleaning_form.html",
+		"/home/ubuntu/test/laundry/laundry/settings.py",
+		"/home/ubuntu/test/laundry/launder/templates/archive.html",
+		"/home/ubuntu/test/laundry/launder/templates/launder/daily_ops_date.html",
+		"/home/ubuntu/test/laundry/laundry/urls.py",
+		"/home/ubuntu/test/laundry/views.log",
+		"/home/ubuntu/test/laundry/launder/templates/index.html",
 		"/home/ubuntu/test/laundry/launder/templates/launder/wash_fold_list.html",
+		"/home/ubuntu/test/laundry/launder/urls.py",
+		"/home/ubuntu/test/laundry/launder/templates/launder/daily_ops_archive.html",
+		"/home/ubuntu/test/laundry/launder/templates/launder/shirts_form.html",
+		"/home/ubuntu/test/laundry/launder/templates/launder/dry_cleaning_form.html",
 		"/home/ubuntu/test/laundry/launder/templates/launder/shirts_list.html",
 		"/home/ubuntu/test/laundry/launder/templates/launder/dry_cleaning_list.html",
 		"/home/ubuntu/test/laundry/diff.txt",
-		"/home/ubuntu/test/laundry/launder/templates/launder/daily_ops_archive.html",
-		"/home/ubuntu/test/laundry/launder/urls.py",
 		"/home/ubuntu/test/laundry/launder/templates/launder/wash_fold_update_form.html",
 		"/home/ubuntu/test/laundry/launder/templates/registration/login.html",
 		"/home/ubuntu/test/laundry/TODO:",
-		"/home/ubuntu/test/laundry/laundry/settings.py",
-		"/home/ubuntu/test/laundry/TODO.txt",
-		"/home/ubuntu/test/laundry/views.log",
 		"/home/ubuntu/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings",
 		"/home/ubuntu/test/laundry/launder/templates/launder/dry_cleaning_detail.html",
 		"/home/ubuntu/test/laundry/launder/templates/launder/daily_ops_archive_day.html",
@@ -459,6 +460,33 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"dates_list",
+			"app",
+			"daily_ops_dates_list",
+			"all archived orders</a></li>",
+			"shirt orders</a></li>",
+			"wash and fold orders</a></li>",
+			"dry cleaning orders</a>",
+			"dry",
+			"View ",
+			"daily_ops_wash_fold_archive",
+			"Archived",
+			"date",
+			"set ",
+			".today.date",
+			"date = models.DateTimeField(default=datetime.datetime.today",
+			"shirts_set",
+			"queryset",
+			"args",
+			"DailyOperationsDateView",
+			"+",
+			"self.total_cost",
+			"filter",
+			"DailyOperationsList",
+			"daily_ops_list",
+			"DailyOperationsList",
+			"DayArchiveView",
+			"ArchiveIndexView",
 			"10",
 			"<li><a href=\"/logout\"> Logout </a></li>",
 			"True",
@@ -559,34 +587,7 @@
 			"datetime.date.",
 			"datetime",
 			"datetime.date.today",
-			"scrud",
-			"default=None",
-			"operations_form",
-			"ns')",
-			"ns'",
-			"auto_now_add=True",
-			"DailyOperations'",
-			"DailyOperations",
-			"app",
-			"List",
-			"_",
-			"save()",
-			"save",
-			"urllib",
-			"urllib2",
-			" title string",
-			"Handler",
-			"view",
-			" ",
-			"\\",
-			"\"",
-			"%s",
-			"s",
-			"+",
-			"edit",
-			"error",
-			"err",
-			"fields"
+			"scrud"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -594,6 +595,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"daily_ops",
+			"LaundryIndex",
 			"",
 			"\", \"",
 			", \"",
@@ -635,63 +638,8 @@
 			]
 		},
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 289,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								44,
-								44
-							]
-						],
-						"settings":
-						{
-							"auto_name": "http://bootsnipp.com/snipps/table-with-users",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "TODO.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1256,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								626,
-								626
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 285.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -782,7 +730,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 247.0,
+	"side_bar_width": 133.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
