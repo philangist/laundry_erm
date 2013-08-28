@@ -201,7 +201,7 @@ class WashFoldList(NavBarMixin, ListView):
 class WashFoldDetail(DetailView):
     context_object_name = 'wash_fold_order'
     template_name = 'launder/wash_fold_detail.html'
-    model = DryCleaning
+    model = WashFoldOrder
 
 class DryCleaningCreate(CreateView):
     model = DryCleaning

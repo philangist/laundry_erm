@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
 
-<head><title>Wash and Fold -- Detailed Paged</title></head>
-<body>
 {% url 'wash_fold_list' as wash_fold_url %}
-<a href="{{ wash_fold_url}}"><h1>Wash and Fold</h1></a>
+<a href="{{ wash_fold_url}}"><h2>Wash and Fold</h2></a>
 
 {% if wash_fold_order %}
     <h2>Order #{{ wash_fold_order.id }} Details:</h2>
@@ -16,7 +15,8 @@
     <li>Total Cost: {{ wash_fold_order.total_cost }}</br>
     <li>Payment Method: {{ wash_fold_order.payment_method }}</br>
     <li>Payment Finalized: {{ wash_fold_order.payment_finalized }}</br>
-    <li>Comments: {{ wash_fold_order.comments }}</br>
+    <li>Comments (For customers): {{ wash_fold_order.comments }}</br>
+    <li>Staff Comments: {{ wash_fold_order.staff_comments }}</br>
     {% if wash_fold_order.payment_finalized %}
         <li>Payment Date: {{ wash_fold_order.payment_date }}</br>
     {% endif %}
@@ -27,6 +27,4 @@
     <p>No details are available.</p>
 {% endif %}
 
-</form>
-</body>
-</html>
+{% endblock %}
