@@ -1,6 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
 
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+
+        Number.prototype.format = function() {
+            return this.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+        };
+
+        $('input#id_weight, input#id_num_comforters').change(function(){
+            var weight = $('input#id_weight').val();
+            var additional_cost = 0;
+            var total_weight_cost = 0;
+            if (weight > 0){
+                total_weight_cost = 10;
+                if (weight > 10){
+                    total_weight_cost += (weight - 10) * 0.75;
+                }
+            }
+
+            var comforter_unit_price = 10;
+            var num_comforters = $('input#id_num_comforters').val();
+            var total_comforters_cost = comforter_unit_price * num_comforters;
+
+            var total_cost = total_weight_cost + total_comforters_cost;
+            console.debug("total_cost ", total_cost);
+
+            if (isNaN(total_cost) !== true ) {
+                $('input#id_total_cost').val("$" + total_cost.format());
+            }else{
+                $('input#id_total_cost').val("");
+            }
+        });
+    });
+
+</script>
+
 <center>
 <h3>New Wash and Fold Order</h3>
 </center>

@@ -19,4 +19,4 @@ class DryCleaningForm(ModelForm):
 class LaundryShirtsOrderForm(ModelForm):
 	class Meta:
 		model = LaundryShirtsOrder
-		exclude = ('date')
+		exclude = ('date', 'shirts_price')

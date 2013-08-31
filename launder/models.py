@@ -107,7 +107,7 @@ class LaundryShirtsOrder(models.Model):
     address = models.CharField(max_length=50, blank=True)
     date = models.DateTimeField(default=datetime.datetime.today().date)
     shirts_amount = models.IntegerField()
-    shirts_price = models.DecimalField(max_digits=8, decimal_places=2)
+    shirts_price = models.DecimalField(default=1.75, max_digits=8, decimal_places=2)
     starched = models.BooleanField()
     total_cost = models.DecimalField(max_digits=8, decimal_places=2)
     payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
@@ -127,6 +127,12 @@ class LaundryShirtsOrder(models.Model):
     @property
     def order_type_slug(self):
         return 'shirts'
+
+class Customer(models.Model):
+    first_name = models.CharField(max_length=50, blank=False)
+    last_name = models.CharField(max_length=50, blank=False)
+    phone_number = models.CharField(max_length=15, blank=False)
+    address = models.CharField(max_length=50, blank=True)
 
 class DailyOperations(models.Model):
     date = models.DateTimeField(default=datetime.datetime.today)

@@ -1,5 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+
+        Number.prototype.format = function() {
+            return this.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+        };
+
+        $('input#id_shirts_amount').change(function(){
+            var shirts_unit_price = 1.75;
+            var shirts_amount = $('input#id_shirts_amount').val();
+            var total_cost = shirts_unit_price * shirts_amount;
+
+            console.debug("total_cost ", total_cost);
+
+            if (isNaN(total_cost) !== true ) {
+                $('input#id_total_cost').val("$" + total_cost.format());
+            }else{
+                $('input#id_total_cost').val("");
+            }
+        });
+    });
+
+</script>
+
 <center>
 <h3>New Shirts Order</h3>
 </center>
@@ -49,15 +74,6 @@
                 <p class="help-block"></p>
             </div>
         </div>
-
-        <div class="control-group">
-            <label class="control-label">Price</label>
-            <div class="controls">
-                {{ form.shirts_price }}
-                <p class="help-block"></p>
-            </div>
-        </div>
-
 
         <div class="control-group">
             <label class="control-label">Starched</label>

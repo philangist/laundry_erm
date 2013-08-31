@@ -3,13 +3,49 @@
 <script type="text/javascript">
     
     $(document).ready(function () {
-        $('input#id_garment_type, input#id_garment_amount').change(function(){
-            var total_cost = 5 * $('input#id_garment_amount').val();
-            $('input#id_total_cost').val("$" + total_cost);
+
+        Number.prototype.format = function() {
+            return this.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+        };
+
+        var garment_price_mapping = {
+            'Neckties - Hats': 2.75,
+            'Trousers': 4.50 ,
+            'Shirts': 4.50 ,
+            'Silk Slacks': 4.50 ,
+            'Blouse': 4.50 ,
+            'Skirts': 4.50 ,
+            'Slacks': 4.50 ,
+            'Jacket': 5.00,
+            'Sweaters': 5.00,
+            'Men\'s Suits': 9.00,
+            'L Suits': 9.00,
+            'Dress': 9.00,
+            'Top 3/4 Coat': 10.50,
+            'Sports Coats': 15.50,
+            'Car Coat': 15.50,
+            'Top O Coat': 15.50,
+        };
+
+        $('select#id_garment_type, input#id_garment_amount').change(function(){
+            var garment = $('select#id_garment_type option:selected').text();
+            var garment_unit_price = garment_price_mapping[garment];
+            var garment_amount = $('input#id_garment_amount').val();
+            var total_cost = garment_unit_price * garment_amount;
+
+            console.debug("total_cost ", total_cost);
+            console.debug("garment ", garment);
+
+            if (isNaN(total_cost) !== true ) {
+                $('input#id_total_cost').val("$" + total_cost.format());
+            }else{
+                $('input#id_total_cost').val("");
+            }
         });
     });
 
 </script>
+
 <center>
 <h3>New Dry Cleaning Order</h3>
 </center>
@@ -109,4 +145,3 @@
     </fieldset>
 </form>
 {% endblock content %}
-
