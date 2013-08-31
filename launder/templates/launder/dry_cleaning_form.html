@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        $('input#id_garment_type, input#id_garment_amount').change(function(){
+            var total_cost = 5 * $('input#id_garment_amount').val();
+            $('input#id_total_cost').val("$" + total_cost);
+        });
+    });
+
+</script>
 <center>
 <h3>New Dry Cleaning Order</h3>
 </center>
