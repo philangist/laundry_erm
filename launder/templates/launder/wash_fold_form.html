@@ -28,7 +28,7 @@
             console.debug("total_cost ", total_cost);
 
             if (isNaN(total_cost) !== true ) {
-                $('input#id_total_cost').val("$" + total_cost.format());
+                $('input#id_total_cost').val(total_cost.format());
             }else{
                 $('input#id_total_cost').val("");
             }

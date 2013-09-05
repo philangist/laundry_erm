@@ -37,7 +37,7 @@
             console.debug("garment ", garment);
 
             if (isNaN(total_cost) !== true ) {
-                $('input#id_total_cost').val("$" + total_cost.format());
+                $('input#id_total_cost').val(total_cost.format());
             }else{
                 $('input#id_total_cost').val("");
             }
