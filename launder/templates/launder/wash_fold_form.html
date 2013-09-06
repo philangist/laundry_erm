@@ -4,10 +4,30 @@
 <script type="text/javascript">
     
     $(document).ready(function () {
-
         Number.prototype.format = function() {
             return this.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
         };
+
+        $('input#id_first_name, input#id_last_name').change(function(e) {
+            first_name = $('input#id_first_name').val();
+            last_name = $('input#id_last_name').val();
+            $.ajax({
+                url: "/get_customer_contact_info/",
+                type: "POST",
+                data: JSON.stringify({
+                    "first_name": first_name,
+                    "last_name": last_name,
+                }),
+                dataType: 'JSON',
+                success: function(data){
+                    phone_number = data.result[0];
+                    address = data.result[1];
+                    $("input#id_phone_number").val(phone_number);
+                    $("input#id_address").val(address);
+                    console.log('result', data.result);
+                },
+            });
+        });
 
         $('input#id_weight, input#id_num_comforters').change(function(){
             var weight = $('input#id_weight').val();
@@ -34,6 +54,31 @@
             }
         });
     });
+
+    $('.form-horizontal').submit(setTimeout(
+        function(e){
+            console.log('submitting form');
+            first_name = $('input#id_first_name').val();
+            last_name = $('input#id_last_name').val();
+            phone_number = $("input#id_phone_number").val();
+            address = $("input#id_address").val();
+            $.ajax({
+                url: "/set_customer_contact_info/",
+                type: "POST",
+                data: JSON.stringify({
+                    "first_name": first_name,
+                    "last_name": last_name,
+                    "phone_number": phone_number,
+                    "address": address,
+                }),
+                dataType: 'JSON',
+                success: function(data){
+                    console.log('submitted');
+                },
+            });
+            return true;
+        })
+    );
 
 </script>
 
