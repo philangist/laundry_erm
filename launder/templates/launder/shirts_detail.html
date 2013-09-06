@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
 
-<head><title>Shirts -- Detailed Paged</title></head>
-<body>
 {% url 'shirts_list' as shirts_url %}
 <a href="{{ shirts_url}}"><h1>Shirts</h1></a>
 
@@ -29,6 +28,4 @@
     <p>No details are available.</p>
 {% endif %}
 
-</form>
-</body>
-</html>
+{% endblock %}

@@ -1,15 +1,9 @@
-from datetime import datetime
-import datetime as dt
-from itertools import chain
-from django.shortcuts import get_object_or_404, render_to_response, render
-from django.http import HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse
-from django.template import RequestContext
+import json
+import logger_factory
 
-from django.views.generic.dates import (
-    DayArchiveView,
-    ArchiveIndexView,
-)
+from itertools import chain
+from django.http import HttpResponseRedirect, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from django.views.generic import (
     ListView,
@@ -31,9 +25,69 @@ from launder.models import (
     LaundryShirtsOrder,
     DailyOperations,
 )
-import logger_factory
+from redis_utils import (
+    get_redis_client,
+    set_contact_info,
+    get_contact_info,
+)
 
+redis_client = get_redis_client()
 logger = logger_factory.logger_factory('views')
+
+
+@csrf_exempt
+def get_customer_contact_info(request):
+    response_data = {}
+    logger.debug('request.body %s' % str(request.body))
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+        except ValueError:
+            data = None
+        if data:
+            contact_info = get_contact_info(
+                data['first_name'],
+                data['last_name'],
+                redis_client,
+            )
+            response_data['result'] = contact_info
+        else:
+            logger.debug('Data was not converted to JSON')
+            response_data['result'] = 'No info found for supplied data'
+    else:
+        logger.debug('Invalid Method')
+        response_data['result'] = 'Invalid Method'
+    response_data = json.dumps(response_data)
+    logger.debug('response_data %s' % str(response_data))
+    response = HttpResponse(response_data, mimetype="application/json")
+    logger.debug('response %s' % str(response))
+    return response
+
+@csrf_exempt
+def set_customer_contact_info(request):
+    response_content = {}
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+        except ValueError:
+            data = None
+        if data:
+            logger.info('set customer info data: %s' % str(data))
+            contact_info = set_contact_info(
+                data['first_name'],
+                data['last_name'],
+                [data['phone_number'], data['address']],
+                redis_client,
+            )
+        else:
+            response_content['error'] = 'Invalid JSON args'
+    else:
+        response_content['error'] = 'Invalid Method'
+    response_content = json.dumps(response_content)
+    logger.info('response_content: %s' % response_content)
+    response = HttpResponse(response_content, content_type="application/json")
+    logger.info('response: %s' % response.__dict__)
+    return response
 
 class NavBarMixin(object):
     def get_context_data(self, **kwargs):
@@ -125,7 +179,6 @@ class DailyOperationsDateView(NavBarMixin, ListView):
             )
         )
         queryset.sort(key = lambda o: o.date)
-        logger.info('queryset: %s' % str(queryset))
         return queryset
 
 
@@ -144,7 +197,6 @@ class DailyOperationsArchive(NavBarMixin, ListView):
     )
     queryset.sort(key = lambda o: o.date)
     paginate_by = 5
-    logger.debug('queryset: %s' % str(queryset))
 
 class DailyOperationsDryCleaningArchive(NavBarMixin, ListView):
     date_field = 'date'
@@ -201,7 +253,7 @@ class WashFoldList(NavBarMixin, ListView):
 class WashFoldDetail(DetailView):
     context_object_name = 'wash_fold_order'
     template_name = 'launder/wash_fold_detail.html'
-    model = DryCleaning
+    model = WashFoldOrder
 
 class DryCleaningCreate(CreateView):
     model = DryCleaning

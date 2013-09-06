@@ -1,5 +1,97 @@
 {% extends "base.html" %}
 {% block content %}
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+
+        Number.prototype.format = function() {
+            return this.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+        };
+
+        var garment_price_mapping = {
+            'Neckties - Hats': 2.75,
+            'Trousers': 4.50 ,
+            'Shirts': 4.50 ,
+            'Silk Slacks': 4.50 ,
+            'Blouse': 4.50 ,
+            'Skirts': 4.50 ,
+            'Slacks': 4.50 ,
+            'Jacket': 5.00,
+            'Sweaters': 5.00,
+            'Men\'s Suits': 9.00,
+            'L Suits': 9.00,
+            'Dress': 9.00,
+            'Top 3/4 Coat': 10.50,
+            'Sports Coats': 15.50,
+            'Car Coat': 15.50,
+            'Top O Coat': 15.50,
+        };
+
+        $('select#id_garment_type, input#id_garment_amount').change(function(){
+            var garment = $('select#id_garment_type option:selected').text();
+            var garment_unit_price = garment_price_mapping[garment];
+            var garment_amount = $('input#id_garment_amount').val();
+            var total_cost = garment_unit_price * garment_amount;
+
+            console.debug("total_cost ", total_cost);
+            console.debug("garment ", garment);
+
+            if (isNaN(total_cost) !== true ) {
+                $('input#id_total_cost').val(total_cost.format());
+            }else{
+                $('input#id_total_cost').val("");
+            }
+        });
+
+        $('input#id_first_name, input#id_last_name').change(function(e) {
+            first_name = $('input#id_first_name').val();
+            last_name = $('input#id_last_name').val();
+            $.ajax({
+                url: "/get_customer_contact_info/",
+                type: "POST",
+                data: JSON.stringify({
+                    "first_name": first_name,
+                    "last_name": last_name,
+                }),
+                dataType: 'JSON',
+                success: function(data){
+                    phone_number = data.result[0];
+                    address = data.result[1];
+                    $("input#id_phone_number").val(phone_number);
+                    $("input#id_address").val(address);
+                    console.log('result', data.result);
+                },
+            });
+        });
+    });
+
+    $('.form-horizontal').submit(setTimeout(
+        function(e){
+            console.log('submitting form');
+            first_name = $('input#id_first_name').val();
+            last_name = $('input#id_last_name').val();
+            phone_number = $("input#id_phone_number").val();
+            address = $("input#id_address").val();
+            $.ajax({
+                url: "/set_customer_contact_info/",
+                type: "POST",
+                data: JSON.stringify({
+                    "first_name": first_name,
+                    "last_name": last_name,
+                    "phone_number": phone_number,
+                    "address": address,
+                }),
+                dataType: 'JSON',
+                success: function(data){
+                    console.log('submitted');
+                },
+            });
+            return true;
+        })
+    );
+
+</script>
+
 <center>
 <h3>New Dry Cleaning Order</h3>
 </center>
@@ -99,4 +191,3 @@
     </fieldset>
 </form>
 {% endblock content %}
-

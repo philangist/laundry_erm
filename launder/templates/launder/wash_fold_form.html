@@ -1,6 +1,87 @@
 {% extends "base.html" %}
 {% block content %}
 
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        Number.prototype.format = function() {
+            return this.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+        };
+
+        $('input#id_weight, input#id_num_comforters').change(function(){
+            var weight = $('input#id_weight').val();
+            var additional_cost = 0;
+            var total_weight_cost = 0;
+            if (weight > 0){
+                total_weight_cost = 10;
+                if (weight > 10){
+                    total_weight_cost += (weight - 10) * 0.75;
+                }
+            }
+
+            var comforter_unit_price = 10;
+            var num_comforters = $('input#id_num_comforters').val();
+            var total_comforters_cost = comforter_unit_price * num_comforters;
+
+            var total_cost = total_weight_cost + total_comforters_cost;
+            console.debug("total_cost ", total_cost);
+
+            if (isNaN(total_cost) !== true ) {
+                $('input#id_total_cost').val(total_cost.format());
+            }else{
+                $('input#id_total_cost').val("");
+            }
+        });
+
+        $('input#id_first_name, input#id_last_name').change(function(e) {
+            first_name = $('input#id_first_name').val();
+            last_name = $('input#id_last_name').val();
+            $.ajax({
+                url: "/get_customer_contact_info/",
+                type: "POST",
+                data: JSON.stringify({
+                    "first_name": first_name,
+                    "last_name": last_name,
+                }),
+                dataType: 'JSON',
+                success: function(data){
+                    phone_number = data.result[0];
+                    address = data.result[1];
+                    $("input#id_phone_number").val(phone_number);
+                    $("input#id_address").val(address);
+                    console.log('result', data.result);
+                },
+            });
+        });
+    });
+
+    $('.form-horizontal').submit(setTimeout(
+        function(e){
+            console.log('submitting form');
+            first_name = $('input#id_first_name').val();
+            last_name = $('input#id_last_name').val();
+            phone_number = $("input#id_phone_number").val();
+            address = $("input#id_address").val();
+            $.ajax({
+                url: "/set_customer_contact_info/",
+                type: "POST",
+                data: JSON.stringify({
+                    "first_name": first_name,
+                    "last_name": last_name,
+                    "phone_number": phone_number,
+                    "address": address,
+                }),
+                dataType: 'JSON',
+                success: function(data){
+                    console.log('submitted');
+                },
+            });
+            return true;
+        })
+    );
+
+</script>
+
 <center>
 <h3>New Wash and Fold Order</h3>
 </center>
@@ -92,9 +173,17 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label">Comments</label>
+            <label class="control-label">Comments</br>(For customers)</label>
             <div class="controls">
                 {{ form.comments }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Staff Comments</label>
+            <div class="controls">
+                {{ form.staff_comments }}
                 <p class="help-block"></p>
             </div>
         </div>

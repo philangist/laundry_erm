@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
 
-<head><title>Wash and Fold -- Detailed Paged</title></head>
-<body>
 {% url 'dry_cleaning_list' as dry_cleaning_url %}
 <a href="{{ dry_cleaning_url}}"><h1>Dry Cleaning</h1></a>
 
@@ -27,6 +26,4 @@
     <p>No details are available.</p>
 {% endif %}
 
-</form>
-</body>
-</html>
+{% endblock %}
