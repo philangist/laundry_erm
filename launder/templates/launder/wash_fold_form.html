@@ -40,8 +40,8 @@
                 url: "/get_customer_contact_info/",
                 type: "POST",
                 data: JSON.stringify({
-                    "first_name": first_name,
-                    "last_name": last_name,
+                    "first_name": first_name.toLowerCase(),
+                    "last_name": last_name.toLowerCase(),
                 }),
                 dataType: 'JSON',
                 success: function(data){
@@ -66,10 +66,10 @@
                 url: "/set_customer_contact_info/",
                 type: "POST",
                 data: JSON.stringify({
-                    "first_name": first_name,
-                    "last_name": last_name,
+                    "first_name": first_name.toLowerCase(),
+                    "last_name": last_name.toLowerCase(),
                     "phone_number": phone_number,
-                    "address": address,
+                    "address": address.toLowerCase(),
                 }),
                 dataType: 'JSON',
                 success: function(data){

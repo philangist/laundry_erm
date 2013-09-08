@@ -46,8 +46,8 @@ def get_customer_contact_info(request):
             data = None
         if data:
             contact_info = get_contact_info(
-                data['first_name'],
-                data['last_name'],
+                json.dumps(data['first_name']),
+                json.dumps(data['last_name']),
                 redis_client,
             )
             response_data['result'] = contact_info
@@ -74,9 +74,9 @@ def set_customer_contact_info(request):
         if data:
             logger.info('set customer info data: %s' % str(data))
             contact_info = set_contact_info(
-                data['first_name'],
-                data['last_name'],
-                [data['phone_number'], data['address']],
+                    json.dumps(data['first_name']),
+                    json.dumps(data['last_name']),
+                    json.dumps([data['phone_number'], data['address']]),
                 redis_client,
             )
         else:
