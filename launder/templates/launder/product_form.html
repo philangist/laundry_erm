@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<center>
+<h3>New Product</h3>
+</center>
+<form method="post" class="form-horizontal">
+    <fieldset>
+    {% if form.errors %}
+    <p>{{ form.errors }}</p>
+    {% endif %}
+    {% csrf_token %}
+
+        <div class="control-group">
+            <label class="control-label">Product Name</label>
+            <div class="controls">
+                {{ form.name }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Price</label>
+            <div class="controls">
+                {{ form.price }}
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <input type="submit" value="Save">
+                <p class="help-block"></p>
+            </div>
+        </div>
+    </fieldset>
+</form>
+{% endblock %}

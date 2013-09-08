@@ -135,9 +135,6 @@ def extract_date_data():
         for order in order_list:
             cur_date = order.date.date()
             payment_date = order.payment_date.date()
-            products_sold = Product.objects.filter(date=cur_date)
-            logger.info('Current Date: {}'.format(str(cur_date)))
-            logger.info('Products Sold: {}'.format(str(products_sold)))
             if cur_date not in seen_dates:
                 seen_dates[cur_date] = [0, 0]
             if payment_date not in seen_dates:
