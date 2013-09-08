@@ -16,6 +16,7 @@ from launder.views import (
     DailyOperationsDryCleaningArchive,
     DailyOperationsLaundryShirtsArchive,
     DailyOperationsWashFoldArchive,
+    DailyOperationsProductsList,
     WashFoldCreate,
     WashFoldUpdate,
     WashFoldList,
@@ -28,6 +29,10 @@ from launder.views import (
     LaundryShirtsOrderUpdate,
     LaundryShirtsOrderList,
     LaundryShirtsOrderDetail,
+    ProductCreate,
+    ProductUpdate,
+    ProductDetail,
+    ProductList,
 )
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -72,6 +77,10 @@ urlpatterns = patterns('',
     url(r'^daily_ops/wash_fold/',
         login_required(DailyOperationsWashFoldArchive.as_view()),
         name='daily_ops_wash_fold_archive'),
+
+    url(r'^daily_ops/products/',
+        login_required(DailyOperationsProductsList.as_view()),
+        name='daily_ops_products_list'),
 
     #wash and fold urls
     url(r'^wash_fold/add/(?P<pk>\d+)/$',
@@ -123,6 +132,22 @@ urlpatterns = patterns('',
     url(r'^shirts/$',
         login_required(LaundryShirtsOrderList.as_view()),
         name='shirts_list'),
+
+    url(r'^product/add/(?P<pk>\d+)/$',
+        login_required(ProductUpdate.as_view()),
+        name='product_update'),
+
+    url(r'^product/add/$',
+        login_required(ProductCreate.as_view()),
+        name='product_add'),
+
+    url(r'^product/(?P<pk>\d+)/$',
+        login_required(ProductDetail.as_view()),
+        name='product_detail'),
+
+    url(r'^product/$',
+        login_required(ProductList.as_view()),
+        name='product_list'),
 
     #user auth
     url(r'^login/$',

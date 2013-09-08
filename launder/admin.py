@@ -4,9 +4,12 @@ from launder.models import(
     DryCleaning,
     LaundryShirtsOrder,
     DailyOperations,
+    Product,
 )
+
 
 admin.site.register(WashFoldOrder)
 admin.site.register(DryCleaning)
 admin.site.register(LaundryShirtsOrder)
 admin.site.register(DailyOperations)
+admin.site.register(Product)

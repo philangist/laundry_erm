@@ -12,6 +12,7 @@
     {% url 'dry_cleaning_list' as dry_cleaning_url %}
     {% url 'wash_fold_list' as wash_fold_url %}
     {% url 'shirts_list' as shirts_url %}
+    {% url 'product_list' as product_url %}
     {% url 'archive' as archive_url %}
     {% url 'daily_ops_dates_list' as daily_ops_url %}
 
@@ -24,6 +25,7 @@
                         <li><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
                         <li><a href="{{ wash_fold_url }}">Wash and fold orders</a></li>
                         <li><a href="{{ shirts_url }}">Shirt orders</a></li>
+                        <li><a href="{{ product_url }}">Products</a></li>
                         <li><a href="{{ archive_url }}">Archived orders</a></li>
                         <li><a href="{{ daily_ops_url }}">Daily Operations</a></li>
                         <li><a href="/logout"> Logout </a></li>
@@ -34,6 +36,7 @@
                         <li class="active"><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
                         <li><a href="{{ wash_fold_url }}">Wash and fold orders</a></li>
                         <li><a href="{{ shirts_url }}">Shirt orders</a></li>
+                        <li><a href="{{ product_url }}">Products</a></li>
                         <li><a href="{{ archive_url }}">Archived orders</a></li>
                         <li><a href="{{ daily_ops_url }}">Daily Operations</a></li>
                         <li><a href="/logout"> Logout </a></li>
@@ -44,6 +47,7 @@
                         <li><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
                         <li class="active"><a href="{{ wash_fold_url }}">Wash and fold orders</a></li>
                         <li><a href="{{ shirts_url }}">Shirt orders</a></li>
+                        <li><a href="{{ product_url }}">Products</a></li>
                         <li><a href="{{ archive_url }}">Archived orders</a></li>
                         <li><a href="{{ daily_ops_url }}">Daily Operations</a></li>
                         <li><a href="/logout"> Logout </a></li>
@@ -54,6 +58,7 @@
                         <li><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
                         <li><a href="{{ wash_fold_url }}">Wash and fold orders</a></li>
                         <li class="active"><a href="{{ shirts_url }}">Shirt orders</a></li>
+                        <li><a href="{{ product_url }}">Products</a></li>
                         <li><a href="{{ archive_url }}">Archived orders</a></li>
                         <li><a href="{{ daily_ops_url }}">Daily Operations</a></li>
                         <li><a href="/logout"> Logout </a></li>
@@ -64,7 +69,19 @@
                         <li><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
                         <li><a href="{{ wash_fold_url }}">Wash and fold orders</a></li>
                         <li><a href="{{ shirts_url }}">Shirt orders</a></li>
+                        <li><a href="{{ product_url }}">Products</a></li>
                         <li class="active"><a href="{{ archive_url }}">Archived orders</a></li>
+                        <li><a href="{{ daily_ops_url }}">Daily Operations</a></li>
+                        <li><a href="/logout"> Logout </a></li>
+                    {% endifequal %}
+
+                    {% ifequal active_tab 'products' %}   
+                        <li><a href="/">Home</a> </li>
+                        <li><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
+                        <li><a href="{{ wash_fold_url }}">Wash and fold orders</a></li>
+                        <li><a href="{{ shirts_url }}">Shirt orders</a></li>
+                        <li class="active"><a href="{{ product_url }}">Products</a></li>
+                        <li><a href="{{ archive_url }}">Archived orders</a></li>
                         <li><a href="{{ daily_ops_url }}">Daily Operations</a></li>
                         <li><a href="/logout"> Logout </a></li>
                     {% endifequal %}
@@ -74,6 +91,7 @@
                         <li><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
                         <li><a href="{{ wash_fold_url }}">Wash and fold orders</a></li>
                         <li><a href="{{ shirts_url }}">Shirt orders</a></li>
+                        <li><a href="{{ product_url }}">Products</a></li>
                         <li><a href="{{ archive_url }}">Archived orders</a></li>
                         <li class="active"><a href="{{ daily_ops_url }}">Daily Operations</a></li>
                         <li><a href="/logout"> Logout </a></li>
@@ -83,6 +101,7 @@
                     <li><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
                     <li><a href="{{ wash_fold_url }}">Wash and fold orders</a></li>
                     <li><a href="{{ shirts_url }}">Shirt orders</a></li>
+                        <li><a href="{{ product_url }}">Products</a></li>
                     <li><a href="{{ archive_url }}">Archived orders</a></li>
                         <li><a href="{{ daily_ops_url }}">Daily Operations</a></li>
                     <li><a href="/logout"> Logout </a></li>

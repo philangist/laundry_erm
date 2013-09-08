@@ -2,6 +2,7 @@ import datetime
 from django.core.urlresolvers import reverse
 from django.db import models
 
+
 class WashFoldOrder(models.Model):
 
     PAYMENT_METHODS = (
@@ -26,7 +27,7 @@ class WashFoldOrder(models.Model):
     staff_comments = models.TextField(default='', blank=True)
 
     def __unicode__(self):
-        return '%s %s - $%s - %s' % (self.first_name, self.last_name, self.total_cost, self.date.date())
+        return '{} {} - ${} - {}'.format(self.first_name, self.last_name, self.total_cost, self.date.date())
 
     def get_absolute_url(self):
         return reverse('wash_fold_detail', kwargs={'pk': self.pk})
@@ -38,6 +39,7 @@ class WashFoldOrder(models.Model):
     @property
     def order_type_slug(self):
         return 'wash_fold'
+
 
 class DryCleaning(models.Model):
 
@@ -78,7 +80,7 @@ class DryCleaning(models.Model):
     payment_date = models.DateTimeField(default=datetime.datetime.today)
 
     def __unicode__(self):
-        return '%s %s - $%s - %s' % (self.first_name, self.last_name, self.total_cost, self.date.date())
+        return '{} {} - ${} - {}'.format(self.first_name, self.last_name, self.total_cost, self.date.date())
 
     def get_absolute_url(self):
         return reverse('dry_cleaning_detail', kwargs={'pk': self.pk})
@@ -90,7 +92,6 @@ class DryCleaning(models.Model):
     @property
     def order_type_slug(self):
         return 'dry_cleaning'
-
 
 
 class LaundryShirtsOrder(models.Model):
@@ -115,7 +116,7 @@ class LaundryShirtsOrder(models.Model):
     payment_date = models.DateTimeField(default=datetime.datetime.today)
 
     def __unicode__(self):
-        return '%s %s - $%s - %s' % (self.first_name, self.last_name, self.total_cost, self.date.date())
+        return '{} {} - ${} - {}'.format(self.first_name, self.last_name, self.total_cost, self.date.date())
     
     def get_absolute_url(self):
         return reverse('shirts_detail', kwargs={'pk': self.pk})
@@ -128,14 +129,21 @@ class LaundryShirtsOrder(models.Model):
     def order_type_slug(self):
         return 'shirts'
 
-class Customer(models.Model):
-    first_name = models.CharField(max_length=50, blank=False)
-    last_name = models.CharField(max_length=50, blank=False)
-    phone_number = models.CharField(max_length=15, blank=False)
-    address = models.CharField(max_length=50, blank=True)
+
+class Product(models.Model):
+    name = models.CharField(max_length=50, blank=False)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    date = models.DateTimeField(default=datetime.datetime.today)
+
+    def __unicode__(self):
+        return '{} - ${}'.format(self.name, self.price)
+
+    def get_absolute_url(self):
+        return reverse('product_detail', kwargs={'pk': self.pk})
+
 
 class DailyOperations(models.Model):
     date = models.DateTimeField(default=datetime.datetime.today)
 
     def __unicode__(self):
-        return '%s' % str(self.date)
+        return '{}' .format(str(self.date))
