@@ -9,6 +9,7 @@ from django.views.generic import (
     ListView,
     DetailView,
 )
+
 from django.views.generic.edit import (
     CreateView,
     UpdateView,
@@ -18,13 +19,17 @@ from launder.forms import (
     WashFoldOrderForm,
     DryCleaningForm,
     LaundryShirtsOrderForm,
+    ProductForm,
 )
+
 from launder.models import (
     WashFoldOrder,
     DryCleaning,
     LaundryShirtsOrder,
     DailyOperations,
+    Product,
 )
+
 from redis_utils import (
     get_redis_client,
     set_contact_info,
@@ -63,6 +68,7 @@ def get_customer_contact_info(request):
     logger.debug('response %s' % str(response))
     return response
 
+
 @csrf_exempt
 def set_customer_contact_info(request):
     response_content = {}
@@ -89,6 +95,7 @@ def set_customer_contact_info(request):
     logger.info('response: %s' % response.__dict__)
     return response
 
+
 class NavBarMixin(object):
     def get_context_data(self, **kwargs):
         context = super(NavBarMixin, self).get_context_data(**kwargs)
@@ -101,6 +108,7 @@ class NavBarMixin(object):
         except:
             active_tab = 'home'
         return active_tab
+
 
 class LaundryIndex(NavBarMixin, ListView):
     template_name = 'index.html'
@@ -119,6 +127,7 @@ class LaundryIndex(NavBarMixin, ListView):
         )
         queryset.sort(key = lambda o: o.date)
         return queryset
+
 
 def extract_date_data():
     seen_dates = {}
@@ -146,6 +155,7 @@ def extract_date_data():
         context_objects_list.append(date_tuple)
     return context_objects_list
 
+
 class DailyOperationsList(NavBarMixin, ListView):
     template_name = 'launder/daily_ops_dates_list.html'
     context_object_name = 'date_data'
@@ -157,6 +167,7 @@ class DailyOperationsList(NavBarMixin, ListView):
         context = super(DailyOperationsList, self).get_context_data(**kwargs)
         context['date_data'] = extract_date_data()
         return context
+
 
 class DailyOperationsDateView(NavBarMixin, ListView):
     context_object_name = 'orders_list'
@@ -182,6 +193,48 @@ class DailyOperationsDateView(NavBarMixin, ListView):
         return queryset
 
 
+def extract_products_date_data():
+    from launder.models import Product
+    seen_dates = {}
+    all_dates = list(set(
+        [product.date.date() for product in Product.objects.all()]
+    ))
+    for each_date in all_dates:
+        each_date = str(each_date)
+        year, month, day = each_date.split('-')
+        filter_kwargs = {
+            'date__year': year,
+            'date__month': month,
+            'date__day': day,
+        }
+        total_sales = len(Product.objects.filter(**filter_kwargs))
+        total_revenue = sum([
+            each_product.price for each_product in Product.objects.all().filter(**filter_kwargs)
+        ])
+        seen_dates[each_date] = (total_sales, total_revenue)
+    context_objects_list = []
+    for date, date_info in seen_dates.iteritems():
+        date_tuple = (date, date_info[0], date_info[1])
+        context_objects_list.append(date_tuple)
+    context_objects_list.sort()
+    context_objects_list.reverse()
+    return context_objects_list
+
+
+class DailyOperationsProductsList(ListView):
+    template_name = 'launder/daily_ops_dates_list.html'
+    context_object_name = 'date_data'
+    paginate_by = 5
+    queryset = Product.objects.all()
+    model = Product
+    
+    def get_context_data(self, **kwargs):
+        context = super(DailyOperationsProductsList, self).get_context_data(**kwargs)
+        context['date_data'] = extract_products_date_data()
+        context['product_date_data'] = True
+        return context
+
+
 class DailyOperationsArchive(NavBarMixin, ListView):
     template_name = 'archive.html'
     context_object_name = 'daily_orders_list'
@@ -198,6 +251,7 @@ class DailyOperationsArchive(NavBarMixin, ListView):
     queryset.sort(key = lambda o: o.date)
     paginate_by = 5
 
+
 class DailyOperationsDryCleaningArchive(NavBarMixin, ListView):
     date_field = 'date'
     active_tab = 'dry_cleaning'
@@ -209,6 +263,7 @@ class DailyOperationsDryCleaningArchive(NavBarMixin, ListView):
         context = super(DailyOperationsDryCleaningArchive, self).get_context_data(**kwargs)
         context['order_type'] = 'dry_cleaning'
         return context
+
 
 class DailyOperationsLaundryShirtsArchive(NavBarMixin, ListView):
     date_field = 'date'
@@ -222,6 +277,7 @@ class DailyOperationsLaundryShirtsArchive(NavBarMixin, ListView):
         context['order_type'] = 'shirts'
         return context
 
+
 class DailyOperationsWashFoldArchive(NavBarMixin, ListView):
     date_field = 'date'
     active_tab = 'wash_fold'
@@ -234,15 +290,18 @@ class DailyOperationsWashFoldArchive(NavBarMixin, ListView):
         context['order_type'] = 'wash_fold'
         return context
 
+
 class WashFoldCreate(CreateView):
     model = WashFoldOrder
     form_class = WashFoldOrderForm
     template_name = 'launder/wash_fold_form.html'
 
+
 class WashFoldUpdate(UpdateView):
     model = WashFoldOrder
     form_class = WashFoldOrderForm
     template_name = 'launder/wash_fold_form.html'
+
 
 class WashFoldList(NavBarMixin, ListView):
     active_tab = 'wash_fold'
@@ -250,20 +309,24 @@ class WashFoldList(NavBarMixin, ListView):
     template_name = 'launder/wash_fold_list.html'
     paginate_by = 5
 
+
 class WashFoldDetail(DetailView):
     context_object_name = 'wash_fold_order'
     template_name = 'launder/wash_fold_detail.html'
     model = WashFoldOrder
+
 
 class DryCleaningCreate(CreateView):
     model = DryCleaning
     form_class = DryCleaningForm
     template_name = 'launder/dry_cleaning_form.html'
 
+
 class DryCleaningUpdate(UpdateView):
     model = DryCleaning
     form_class = DryCleaningForm
     template_name = 'launder/dry_cleaning_form.html'
+
 
 class DryCleaningList(NavBarMixin, ListView):
     active_tab = 'dry_cleaning'
@@ -271,20 +334,24 @@ class DryCleaningList(NavBarMixin, ListView):
     template_name = 'launder/dry_cleaning_list.html'
     paginate_by = 5
 
+
 class DryCleaningDetail(DetailView):
     context_object_name = 'dry_cleaning_order'
     template_name = 'launder/dry_cleaning_detail.html'
     model = DryCleaning
+
 
 class LaundryShirtsOrderCreate(CreateView):
     model = LaundryShirtsOrder
     form_class = LaundryShirtsOrderForm
     template_name = 'launder/shirts_form.html'
 
+
 class LaundryShirtsOrderUpdate(UpdateView):
     model = LaundryShirtsOrder
     form_class = LaundryShirtsOrderForm
     template_name = 'launder/shirts_form.html'
+
 
 class LaundryShirtsOrderList(NavBarMixin, ListView):
     active_tab = 'shirts'
@@ -292,7 +359,49 @@ class LaundryShirtsOrderList(NavBarMixin, ListView):
     template_name = 'launder/shirts_list.html'
     paginate_by = 5
 
+
 class LaundryShirtsOrderDetail(DetailView):
     context_object_name = 'shirts_order'
     template_name = 'launder/shirts_detail.html'
     model = LaundryShirtsOrder
+
+
+class ProductCreate(CreateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'launder/product_form.html'
+
+
+class ProductUpdate(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'launder/product_form.html'
+
+
+class ProductList(NavBarMixin, ListView):
+    model = Product
+    queryset = Product.objects.all()
+    template_name = 'launder/product_list.html'
+    paginate_by = 5
+    active_tab = 'products'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductList, self).get_context_data(**kwargs)
+        product_names = set([each_product.name for each_product in Product.objects.all()])
+        context['products'] = set([
+            Product.objects.filter(name=name)[:1].get() for name in product_names])
+        return context
+
+
+class ProductDetail(DetailView):
+    context_object_name = 'product'
+    template_name = 'launder/product_detail.html'
+    model = Product
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetail, self).get_context_data(**kwargs)
+        product_name = kwargs['object'].name
+        context['number_sales'] = len(Product.objects.all().filter(name=product_name))
+        context['total_revenue'] = sum([
+            each_product.price for each_product in Product.objects.all().filter(name=product_name)])
+        return context
