@@ -33,6 +33,7 @@ from launder.views import (
     ProductUpdate,
     ProductDetail,
     ProductList,
+    CustomerOrdersList,
 )
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -148,6 +149,10 @@ urlpatterns = patterns('',
     url(r'^product/$',
         login_required(ProductList.as_view()),
         name='product_list'),
+
+    url(r'^customers/(?P<customer_name_slug>.+)/$',
+        login_required(CustomerOrdersList.as_view()),
+        name='customer_order_list'),
 
     #user auth
     url(r'^login/$',

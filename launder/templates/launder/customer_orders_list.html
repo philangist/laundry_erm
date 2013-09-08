@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>{{first_name}} {{last_name}}'s Orders</h3>
+
+{% if orders_list %}
+    <table class="table">  
+        <thead>  
+            <tr>  
+            <th>Order Type</th>
+            <th>Order Number</th>  
+            <th>Order Cost</th> 
+            </tr>  
+        </thead>
+        <tbody>
+            {% for order in orders_list %}
+                <tr>
+                <td>{{ order.order_type }}</td>
+                <td>{{ order.id }}</td>
+                <td>${{ order.total_cost }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if is_paginated %}
+        <div class="pagination">
+            <ul>
+                {% url 'daily_ops_dates_list' as page_url %}
+                {% if page_obj.has_previous %}
+                    <li>
+                    <a href="{{page_url}}?page={{ page_obj.previous_page_number }}">Prev</a>
+                    </li>
+                {%else%}
+                    <li>
+                    <a href="#"  style="color:#808080">Prev</a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="#">{{ page_obj.number }}</a>
+                </li>
+                {% if page_obj.has_next %}
+                    <li>
+                    <a href="{{page_url}}?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                {%else%}
+                    <li>
+                    <a href="#"  style="color:#808080">Next</a>
+                    </li>
+                {% endif %}
+            </ul>  
+        </div>
+    {% endif %}
+{% endif %}
+{% endblock %}

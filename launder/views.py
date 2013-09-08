@@ -405,3 +405,37 @@ class ProductDetail(DetailView):
         context['total_revenue'] = sum([
             each_product.price for each_product in Product.objects.all().filter(name=product_name)])
         return context
+
+
+class CustomerOrdersList(DetailView):
+    context_object_name = 'orders_list'
+    template_name = 'launder/customer_orders_list.html'
+    slug_field = 'customer_name_slug'
+    model = WashFoldOrder
+
+    def get_object(self, *args, **kwargs):
+        return WashFoldOrder.objects.all()[0]
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(CustomerOrdersList, self).get_context_data(**kwargs)
+        first_name ,last_name = self.kwargs['customer_name_slug'].split('-')
+
+        filter_kwargs = {
+            'first_name': first_name,
+            'last_name': last_name,
+        }
+
+        wash_fold_set = WashFoldOrder.objects.filter(**filter_kwargs)
+        dry_clean_set = DryCleaning.objects.filter(**filter_kwargs)
+        shirts_set = LaundryShirtsOrder.objects.filter(**filter_kwargs)
+        order_list =  list(chain(
+            wash_fold_set,
+            dry_clean_set,
+            shirts_set,
+            )
+        )
+        order_list.sort(key = lambda o: o.date)
+        context['orders_list'] = order_list
+        context['first_name'] = first_name.capitalize()
+        context['last_name'] = last_name.capitalize()
+        return context
