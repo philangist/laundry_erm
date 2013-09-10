@@ -1,35 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 
-	<h2>Products</h2>
-	{% url 'product_add' as add_product_url %}
-	<div class="btn-toolbar">
-	    <a href="{{ add_product_url }}">
-	    <button class="btn btn-primary">New Product</button>
-	    </a>
-	</div>
-	{% if products %}
-	    <div class="well">
-			<table class="table">
-				<thead>
-					<tr>
-					<th>Name</th>
+    <h2>Products</h2>
+    {% url 'product_add' as add_product_url %}
+    <div class="btn-toolbar">
+        <a href="{{ add_product_url }}">
+        <button class="btn btn-primary">New Product</button>
+        </a>
+    </div>
+    {% if products %}
+        <div class="well">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th>Name</th>
                     <th>Unit Price</th>
                     <th style="width: 36px;"></th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for product in products %}
-						<tr>
-						<td><a href="/product/{{product.id}}">{{ product.name }}</a></td>
-						<td>{{ product.price }}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                        <tr>
+                        <td><a href="/product/{{product.id}}">{{ product.name }}</a></td>
+                        <td>{{ product.price }}</td>
                         <td>
                             <a href="/product/add/{{product.id}}"><i class="icon-pencil"></i></a>
                         </td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			 </table>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+             </table>
         </div>
         {% if is_paginated %}
             <div class="pagination">
@@ -58,9 +58,9 @@
                     {% endif %}
                 </ul>
             </div>
-		{% endif %}
-	{% else %}
-		<p>No products are available.</p>
-	{% endif %}
+        {% endif %}
+    {% else %}
+        <p>No products are available.</p>
+    {% endif %}
 
 {% endblock %}
