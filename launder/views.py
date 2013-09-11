@@ -153,6 +153,8 @@ def extract_date_data():
     for date, date_info in seen_dates.iteritems():
         date_tuple = (date.isoformat(), date_info[0], date_info[1])
         context_objects_list.append(date_tuple)
+    context_objects_list.sort()
+    context_objects_list.reverse()
     return context_objects_list
 
 
@@ -255,7 +257,7 @@ class DailyOperationsArchive(NavBarMixin, ListView):
 class DailyOperationsDryCleaningArchive(NavBarMixin, ListView):
     date_field = 'date'
     active_tab = 'dry_cleaning'
-    queryset = DryCleaning.objects.all().filter(payment_finalized=True)
+    queryset = DryCleaning.objects.all().filter(payment_finalized=True).order_by('-id')
     template_name = 'launder/daily_ops_archive.html'
     paginate_by = 5
 
@@ -268,7 +270,7 @@ class DailyOperationsDryCleaningArchive(NavBarMixin, ListView):
 class DailyOperationsLaundryShirtsArchive(NavBarMixin, ListView):
     date_field = 'date'
     active_tab = 'shirts'
-    queryset= LaundryShirtsOrder.objects.all().filter(payment_finalized=True)
+    queryset= LaundryShirtsOrder.objects.all().filter(payment_finalized=True).order_by('-id')
     template_name = 'launder/daily_ops_archive.html'
     paginate_by = 5
 
@@ -281,7 +283,7 @@ class DailyOperationsLaundryShirtsArchive(NavBarMixin, ListView):
 class DailyOperationsWashFoldArchive(NavBarMixin, ListView):
     date_field = 'date'
     active_tab = 'wash_fold'
-    queryset = WashFoldOrder.objects.all().filter(payment_finalized=True)
+    queryset = WashFoldOrder.objects.all().filter(payment_finalized=True).order_by('-id')
     template_name = 'launder/daily_ops_archive.html'
     paginate_by = 5
 
@@ -305,7 +307,7 @@ class WashFoldUpdate(UpdateView):
 
 class WashFoldList(NavBarMixin, ListView):
     active_tab = 'wash_fold'
-    queryset= WashFoldOrder.objects.all().filter(payment_finalized=False)
+    queryset= WashFoldOrder.objects.all().filter(payment_finalized=False).order_by('-id')
     template_name = 'launder/wash_fold_list.html'
     paginate_by = 5
 
@@ -330,7 +332,7 @@ class DryCleaningUpdate(UpdateView):
 
 class DryCleaningList(NavBarMixin, ListView):
     active_tab = 'dry_cleaning'
-    queryset= DryCleaning.objects.all().filter(payment_finalized=False)
+    queryset= DryCleaning.objects.all().filter(payment_finalized=False).order_by('-id')
     template_name = 'launder/dry_cleaning_list.html'
     paginate_by = 5
 
@@ -355,7 +357,7 @@ class LaundryShirtsOrderUpdate(UpdateView):
 
 class LaundryShirtsOrderList(NavBarMixin, ListView):
     active_tab = 'shirts'
-    queryset= LaundryShirtsOrder.objects.all().filter(payment_finalized=False)
+    queryset= LaundryShirtsOrder.objects.all().filter(payment_finalized=False).order_by('-id')
     template_name = 'launder/shirts_list.html'
     paginate_by = 5
 
