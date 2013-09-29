@@ -173,7 +173,7 @@ class DailyOperationsDateView(NavBarMixin, ListView):
     context_object_name = 'orders_list'
     template_name = 'launder/daily_ops_date.html'
     active_tab = 'daily_ops'
-        
+
     def get_queryset(self):
         self.date_string = '%s-%s-%s' % (
             self.kwargs['year'],
@@ -227,7 +227,7 @@ class DailyOperationsProductsList(ListView):
     paginate_by = 5
     queryset = Product.objects.all()
     model = Product
-    
+
     def get_context_data(self, **kwargs):
         context = super(DailyOperationsProductsList, self).get_context_data(**kwargs)
         context['date_data'] = extract_products_date_data()
