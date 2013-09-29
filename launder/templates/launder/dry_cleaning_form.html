@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <script type="text/javascript">
-    
+
     $(document).ready(function () {
 
         Number.prototype.format = function() {
@@ -97,9 +97,18 @@
 </center>
 <form method="post" class="form-horizontal">
     <fieldset>
+
     {% if form.errors %}
-    <p>{{ form.errors }}</p>
+        <p><h3>Errors:</h3></p>
+        {% for field in form %}
+            {% if field.errors %}
+                {{ field.label|striptags }} is required</br>
+            {% endif %}
+        {% endfor %}
+        <hr>
+        <br>
     {% endif %}
+
     {% csrf_token %}
 
         <div class="control-group">
