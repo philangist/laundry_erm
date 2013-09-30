@@ -2,6 +2,7 @@ import json
 import logger_factory
 
 from itertools import chain
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -13,6 +14,7 @@ from django.views.generic import (
 from django.views.generic.edit import (
     CreateView,
     UpdateView,
+    FormView,
 )
 
 from launder.forms import (
@@ -20,6 +22,7 @@ from launder.forms import (
     DryCleaningForm,
     LaundryShirtsOrderForm,
     ProductForm,
+    UserForm,
 )
 
 from launder.models import (
@@ -441,3 +444,22 @@ class CustomerOrdersList(DetailView):
         context['first_name'] = first_name.capitalize()
         context['last_name'] = last_name.capitalize()
         return context
+
+
+class UserCreate(FormView):
+    model = User
+    form_class = UserForm
+    template_name = 'registration/add_user.html'
+    success_url = '/'
+
+    def form_valid(self, form):
+        user = User.objects.create_user(
+            username=form.cleaned_data['username'],
+            first_name=form.cleaned_data['first_name'],
+            last_name=form.cleaned_data['last_name'],
+        )
+        user.set_password(form.cleaned_data['password'])
+        user.is_active = True
+        user.is_staff = True
+        user.save()
+        return super(UserCreate, self).form_valid(form)

@@ -34,8 +34,9 @@ from launder.views import (
     ProductDetail,
     ProductList,
     CustomerOrdersList,
+    UserCreate,
 )
-# Uncomment the next two lines to enable the admin:
+
 from django.contrib import admin
 admin.autodiscover()
 
@@ -157,10 +158,15 @@ urlpatterns = patterns('',
     #user auth
     url(r'^login/$',
         'django.contrib.auth.views.login',
-        name="login"),
+        name='login'),
 
     url(r'^logout/$',
         'django.contrib.auth.views.logout',
         {'next_page': '/'},
-        name="logout",),
+        name='logout',),
+
+    url(r'^user/create/$',
+        login_required(UserCreate.as_view()),
+        name='user_create',),
+
 )

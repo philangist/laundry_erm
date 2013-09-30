@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+    {% csrf_token %}
+<form class="form-horizontal" action='' method="POST">
+    {% csrf_token %}
+    <fieldset>
+    <div id="legend">
+    <legend class="">Add New User</legend>
+    </div>
+    <div class="control-group">
+    <!-- Username -->
+    <label class="control-label" for="username">Username: </label>
+    <div class="controls">
+    <input type="text" id="id_username" name="username" placeholder="" class="input-xlarge">
+    </div>
+    </div>
+    <div class="control-group">
+    <!-- Password-->
+    <label class="control-label" for="password">Password: </label>
+    <div class="controls">
+    <input type="password" id="id_password" name="password" placeholder="" class="input-xlarge">
+    </div>
+    </div>
+    <div class="control-group">
+    <!-- First Name-->
+    <label class="control-label" for="first_name">First Name: </label>
+    <div class="controls">
+    <input type="first_name" id="id_first_name" name="first_name" placeholder="" class="input-xlarge">
+    </div>
+    </div>
+    <div class="control-group">
+    <!-- Last Name-->
+    <label class="control-label" for="last_name">Last Name: </label>
+    <div class="controls">
+    <input type="last_name" id="id_last_name" name="last_name" placeholder="" class="input-xlarge">
+    </div>
+    </div>
+    <div class="control-group">
+    <!-- Button -->
+    <div class="controls">
+    <button class="btn btn-success">Login</button>
+    </div>
+    </div>
+    </fieldset>
+    </form>
+{% endblock %}
