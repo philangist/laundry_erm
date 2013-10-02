@@ -22,6 +22,7 @@
     {% endif %}
     </ul>
     {% url 'wash_fold_add' as wash_fold_add_url %}
+    <a href="/print/wash_fold/{{ wash_fold_order.id }}">Print order</a></br>
     <a href="{{ wash_fold_add_url }}{{ wash_fold_order.id }}">Edit order</a>
 {% elif not wash_fold_order %}
     <p>No details are available.</p>

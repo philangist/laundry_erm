@@ -23,6 +23,7 @@
     {% endif %}
     </ul>
     {% url 'shirts_add' as shirts_add_url %}
+    <a href="/print/shirts/{{ shirts_order.id }}">Print order</a></br>
     <a href="{{ shirts_add_url }}{{ shirts_order.id }}">Edit order</a>
 {% elif not shirts_order %}
     <p>No details are available.</p>

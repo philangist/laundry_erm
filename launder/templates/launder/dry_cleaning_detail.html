@@ -21,6 +21,7 @@
     {% endif %}
     </ul>
     {% url 'dry_cleaning_add' as dry_cleaning_add_url %}
+    <a href="/print/dry_cleaning/{{ dry_cleaning_order.id }}">Print order</a></br>
     <a href="{{ dry_cleaning_add_url }}{{ dry_cleaning_order.id }}">Edit order</a>
 {% elif not dry_cleaning_order %}
     <p>No details are available.</p>
