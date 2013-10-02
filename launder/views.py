@@ -463,3 +463,32 @@ class UserCreate(FormView):
         user.is_staff = True
         user.save()
         return super(UserCreate, self).form_valid(form)
+
+class PrintOrder(ListView):
+    model = WashFoldOrder
+    context_object_name = 'order'
+    template_name = 'launder/print_order.html'
+
+    def get_context_data(self, **kwargs):
+        logger.info('args: {}'.format(str(self.args)))
+        context = super(PrintOrder, self).get_context_data(**kwargs)
+        if self.args[0] == 'dry_cleaning':
+            order = DryCleaning
+        elif self.args[0] == 'wash_fold':
+            order = WashFoldOrder
+        else:
+            order = LaundryShirtsOrder
+
+        try:
+            order = order.objects.get(pk=self.args[1])
+        except:
+            order = None
+        else:
+            context['order_first_name'] = order.first_name
+            context['order_last_name'] = order.last_name
+            context['order_type'] = order.order_type
+            context['order_date'] = order.date
+            context['order_total_cost'] = order.total_cost
+            context['order_payment_finalized'] = order.payment_finalized
+            context['order_comments'] = order.comments
+        return context

@@ -4,14 +4,14 @@
 <h3>Daily Operations</h3>
 
 {% if orders_list %}
-    <table class="table">  
-        <thead>  
-            <tr>  
-            <th>Order number</th>  
+    <table class="table">
+        <thead>
+            <tr>
+            <th>Order number</th>
             <th>Name</th>
-            <th>Total Cost</th> 
+            <th>Total Cost</th>
             <th>Order Type</th>
-            </tr>  
+            </tr>
         </thead>
         <tbody>
             {% for order in orders_list %}
@@ -49,8 +49,10 @@
                     <a href="#"  style="color:#808080">Next</a>
                     </li>
                 {% endif %}
-            </ul>  
+            </ul>
         </div>
     {% endif %}
+{% else %}
+    <p>No orders are available.</p>
 {% endif %}
 {% endblock %}

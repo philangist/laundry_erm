@@ -35,6 +35,7 @@ from launder.views import (
     ProductList,
     CustomerOrdersList,
     UserCreate,
+    PrintOrder,
 )
 
 from django.contrib import admin
@@ -154,6 +155,10 @@ urlpatterns = patterns('',
     url(r'^customers/(?P<customer_name_slug>.+)/$',
         login_required(CustomerOrdersList.as_view()),
         name='customer_order_list'),
+
+    url(r'^print/([a-zA-Z0-9_]+)/(\d+)/$',
+        login_required(PrintOrder.as_view()),
+        name='print_order'),
 
     #user auth
     url(r'^login/$',

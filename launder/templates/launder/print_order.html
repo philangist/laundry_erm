@@ -1,0 +1,21 @@
+<h3> 2 Boys Laundromat </h3>
+85 Reservior Avenue </br>
+201-984-2643 </br>
+www.2boyslaundromat.com </br>
+<p>
+-------------------------------------
+</p>
+{{ order_first_name }} {{ order_last_name }} - {{ order_type }} </br>
+
+{{ order_date }} </br>
+Total cost: ${{ order_total_cost }} </br>
+
+{% if order_payment_finalized %}
+    Order paid
+{% else %}
+    Order not paid
+{% endif %}
+</br>
+{% if order_comments %}
+    {{ order_comments }} </br>
+{% endif %}

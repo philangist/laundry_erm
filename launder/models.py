@@ -117,7 +117,7 @@ class LaundryShirtsOrder(models.Model):
 
     def __unicode__(self):
         return '{} {} - ${} - {}'.format(self.first_name, self.last_name, self.total_cost, self.date.date())
-    
+
     def get_absolute_url(self):
         return reverse('shirts_detail', kwargs={'pk': self.pk})
 
