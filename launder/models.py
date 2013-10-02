@@ -78,6 +78,8 @@ class DryCleaning(models.Model):
     payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
     payment_finalized = models.BooleanField()
     payment_date = models.DateTimeField(default=datetime.datetime.today)
+    comments = models.TextField(default='', blank=True)
+    staff_comments = models.TextField(default='', blank=True)
 
     def __unicode__(self):
         return '{} {} - ${} - {}'.format(self.first_name, self.last_name, self.total_cost, self.date.date())
@@ -114,6 +116,8 @@ class LaundryShirtsOrder(models.Model):
     payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
     payment_finalized = models.BooleanField()
     payment_date = models.DateTimeField(default=datetime.datetime.today)
+    comments = models.TextField(default='', blank=True)
+    staff_comments = models.TextField(default='', blank=True)
 
     def __unicode__(self):
         return '{} {} - ${} - {}'.format(self.first_name, self.last_name, self.total_cost, self.date.date())
