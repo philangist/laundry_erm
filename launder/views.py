@@ -388,7 +388,7 @@ class ProductUpdate(UpdateView):
 
 class ProductList(NavBarMixin, ListView):
     model = Product
-    queryset = Product.objects.all()
+    queryset = list(set(product.name for product in Product.objects.all()))
     template_name = 'launder/product_list.html'
     paginate_by = 5
     active_tab = 'products'

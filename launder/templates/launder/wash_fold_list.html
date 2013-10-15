@@ -10,16 +10,16 @@
 	</div>
 	{% if object_list %}
 	    <div class="well">
-			<table class="table">  
-				<thead>  
-					<tr>  
-					<th>Order number</th>  
-					<th>Name</th>  
-					<th>Phone number</th>  
+			<table class="table">
+				<thead>
+					<tr>
+					<th>Order number</th>
+					<th>Name</th>
+					<th>Phone number</th>
 					<th>Address</th>
 					<th>Total Cost</th>
                     <th style="width: 36px;"></th>
-					</tr>  
+					</tr>
 				</thead>
 				<tbody>
 					{% for order in object_list %}
@@ -64,7 +64,7 @@
                     {% endif %}
                 </ul>
             </div>
-		{% endif %}
+	{% endif %}
 	{% else %}
 		<p>No orders are available.</p>
 	{% endif %}
