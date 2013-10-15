@@ -14,6 +14,14 @@ framework.
 
 """
 import os
+import sys
+
+
+sys.path.insert(0, '/home/philangist/webapps/laundry_erm/laundryproject/laundry')
+sys.path.append('/home/philangist/webapps/laundry_erm')
+sys.path.append('/home/philangist/webapps/laundry_erm/laundryproject')
+sys.path.append('/home/philangist/webapps/laundry_erm/laundryproject/launder')
+
 
 # We defer to a DJANGO_SETTINGS_MODULE already in the environment. This breaks
 # if running multiple sites in the same mod_wsgi process. To fix this, use
