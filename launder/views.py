@@ -180,6 +180,15 @@ class DailyOperationsDateView(NavBarMixin, ListView):
     template_name = 'launder/daily_ops_date.html'
     active_tab = 'daily_ops'
 
+    def get_context_data(self, **kwargs):
+        context = super(DailyOperationsDateView, self).get_context_data(**kwargs)
+        context['current_date'] = '%s-%s-%s' % (
+            self.kwargs['year'],
+            self.kwargs['month'],
+            self.kwargs['day'],
+        )
+        return context
+
     def get_queryset(self):
         self.date_string = '%s-%s-%s' % (
             self.kwargs['year'],
@@ -230,6 +239,7 @@ def extract_products_date_data():
 
 class DailyOperationsProductsList(ListView):
     template_name = 'launder/daily_ops_dates_list.html'
+    active_tab = 'product'
     context_object_name = 'date_data'
     paginate_by = 5
     queryset = Product.objects.all()
@@ -240,6 +250,34 @@ class DailyOperationsProductsList(ListView):
         context['date_data'] = extract_products_date_data()
         context['product_date_data'] = True
         return context
+
+
+class DailyOperationsProductsDateList(ListView):
+    template_name = 'launder/daily_ops_product_dates_list.html'
+    context_object_name = 'products'
+    paginate_by = 5
+    active_tab = 'product'
+    model = Product
+
+    def get_context_data(self, **kwargs):
+        context = super(DailyOperationsProductsDateList, self).get_context_data(**kwargs)
+        context['current_date'] = '%s-%s-%s' % (
+            self.kwargs['year'],
+            self.kwargs['month'],
+            self.kwargs['day'],
+        )
+        return context
+
+    def get_queryset(self):
+        self.date_string = '%s-%s-%s' % (
+            self.kwargs['year'],
+            self.kwargs['month'],
+            self.kwargs['day'],
+        )
+        queryset = Products.objects.filter(date=self.date_string)
+        queryset.sort(key = lambda o: o.date)
+        queryset.reverse()
+        return queryset
 
 
 class DailyOperationsArchive(NavBarMixin, ListView):

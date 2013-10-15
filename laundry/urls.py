@@ -17,6 +17,7 @@ from launder.views import (
     DailyOperationsLaundryShirtsArchive,
     DailyOperationsWashFoldArchive,
     DailyOperationsProductsList,
+    DailyOperationsProductsDateList,
     WashFoldCreate,
     WashFoldUpdate,
     WashFoldList,
@@ -61,9 +62,9 @@ urlpatterns = patterns('',
         login_required(DailyOperationsArchive.as_view()),
         name='archive'),
 
-    url(r'^daily_ops/$',
-        login_required(DailyOperationsList.as_view()),
-        name='daily_ops_dates_list'),
+    url(r'^daily_ops/products/(?P<year>\d+)-(?P<month>\d+)-(?P<day>\d+)/$',
+        login_required(DailyOperationsProductsDateList.as_view()),
+        name='daily_ops_products_list_by_date'),
 
     url(r'^daily_ops/(?P<year>\d+)-(?P<month>\d+)-(?P<day>\d+)/$',
         login_required(DailyOperationsDateView.as_view()),
@@ -84,6 +85,12 @@ urlpatterns = patterns('',
     url(r'^daily_ops/products/',
         login_required(DailyOperationsProductsList.as_view()),
         name='daily_ops_products_list'),
+
+
+    url(r'^daily_ops/$',
+        login_required(DailyOperationsList.as_view()),
+        name='daily_ops_dates_list'),
+
 
     #wash and fold urls
     url(r'^wash_fold/add/(?P<pk>\d+)/$',

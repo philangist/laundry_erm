@@ -6,16 +6,15 @@
 
 
 <h3>Daily Operations</h3>
-<a href="{{daily_ops_dates_url}}">Orders</a> | <a href="{{daily_ops_products_url}}">Product Sales</a>
 
 {% if date_data %}
-    <table class="table">  
-        <thead>  
-            <tr>  
+    <table class="table">
+        <thead>
+            <tr>
             <th>Date</th>
             <th>Total Transactions</th>
             <th>Revenue</th>
-            </tr>  
+            </tr>
         </thead>
 		<tbody>
 			{% for date in date_data %}
@@ -56,7 +55,7 @@
 	                <a href="#" style="color:#808080">Next</a>
 	                </li>
 	            {% endif %}
-	        </ul>  
+	        </ul>
 	    </div>
 	{% endif %}
 {% endif %}
