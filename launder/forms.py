@@ -12,19 +12,19 @@ from models import (
 class WashFoldOrderForm(ModelForm):
     class Meta:
         model = WashFoldOrder
-        exclude = ('date')
+        exclude = ('date', 'payment_date')
 
 
 class DryCleaningForm(ModelForm):
     class Meta:
         model = DryCleaning
-        exclude = ('date')
+        exclude = ('date' 'payment_date')
 
 
 class LaundryShirtsOrderForm(ModelForm):
     class Meta:
         model = LaundryShirtsOrder
-        exclude = ('date', 'shirts_price')
+        exclude = ('date', 'shirts_price', 'payment_date')
 
 
 class ProductForm(ModelForm):

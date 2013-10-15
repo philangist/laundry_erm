@@ -129,6 +129,7 @@ class LaundryIndex(NavBarMixin, ListView):
             )
         )
         queryset.sort(key = lambda o: o.date)
+        queryset.reverse()
         return queryset
 
 
@@ -195,6 +196,7 @@ class DailyOperationsDateView(NavBarMixin, ListView):
             )
         )
         queryset.sort(key = lambda o: o.date)
+        queryset.reverse()
         return queryset
 
 
@@ -254,6 +256,7 @@ class DailyOperationsArchive(NavBarMixin, ListView):
         )
     )
     queryset.sort(key = lambda o: o.date)
+    queryset.reverse()
     paginate_by = 5
 
 
