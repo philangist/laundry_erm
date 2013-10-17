@@ -14,7 +14,7 @@
         {% url 'customer_order_list' as customer_url %}
         {% for order in object_list %}
             <tr>
-            <td><a href="/{{order.order_type_slug}}{{order.id}}">{{ order.id }}</a></td>
+            <td><a href="/{{order.order_type_slug}}/{{order.id}}">{{ order.id }}</a></td>
             <td><a href="/customers/{{ order.first_name }}-{{ order.last_name }}">{{ order.first_name }} {{ order.last_name }}</a></td>
             <td>{{ order.phone_number }}</td>
             <td>{{ order.address }}</td>
