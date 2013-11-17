@@ -195,9 +195,9 @@ class DailyOperationsDateView(NavBarMixin, ListView):
             self.kwargs['month'],
             self.kwargs['day'],
         )
-        wash_fold_set = WashFoldOrder.objects.filter(date=self.date_string)
-        dry_clean_set = DryCleaning.objects.filter(date=self.date_string)
-        shirts_set = LaundryShirtsOrder.objects.filter(date=self.date_string)
+        wash_fold_set = WashFoldOrder.objects.filter(date__startswith=self.date_string)
+        dry_clean_set = DryCleaning.objects.filter(date__startswith=self.date_string)
+        shirts_set = LaundryShirtsOrder.objects.filter(date__startswith=self.date_string)
         queryset =  list(chain(
             wash_fold_set,
             dry_clean_set,
