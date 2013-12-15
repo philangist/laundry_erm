@@ -30,7 +30,7 @@ class LaundryShirtsOrderForm(ModelForm):
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        exclude = ('date')
+        exclude = ('date',)
 
 
 class UserForm(ModelForm):
