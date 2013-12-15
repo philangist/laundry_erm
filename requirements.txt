@@ -5,5 +5,6 @@ argparse==1.2.1
 distribute==0.6.34
 django-autocomplete-light==2.0.0a6
 mysql-connector-python==1.0.12
+redis==2.8.0
 six==1.4.1
 wsgiref==0.1.2
