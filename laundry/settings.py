@@ -122,6 +122,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Autocomplete for customers model
+    'autocomplete_light',
     'launder',
     'south',
     # Uncomment the next line to enable the admin:
