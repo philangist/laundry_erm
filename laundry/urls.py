@@ -1,10 +1,11 @@
+import autocomplete_light
+autocomplete_light.autodiscover()
+
 from django.contrib.auth.decorators import(
     login_required,
     permission_required
 )
 from django.conf.urls import patterns, include, url
-from django.contrib import admin
-admin.autodiscover()
 
 from launder.views import (
     get_customer_contact_info,
@@ -40,9 +41,11 @@ from launder.views import (
 )
 
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^autocomplete/', include('autocomplete_light.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^get_customer_contact_info/$',
