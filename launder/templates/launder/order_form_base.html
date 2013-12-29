@@ -21,6 +21,7 @@
             var customer_name = data[0].split('&-&')
             $("input#id_first_name").val(customer_name[0]);
             $("input#id_last_name").val(customer_name[1]);
+            $("input#id_address").val(customer_name[2]);
         }
     }
     {% block order_specific_js %}{% endblock %}

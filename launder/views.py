@@ -36,7 +36,7 @@ from launder.models import (
 logger = logger_factory.logger_factory('views')
 
 
-def _filter_customers_by_phone_number(phone_number):
+def _filter_orders_by_phone_number(phone_number):
     shirts_qs = list(LaundryShirtsOrder.objects.filter(phone_number=phone_number))
     wash_fold_qs = WashFoldOrder.objects.filter(phone_number=phone_number)
     dry_cleaning_qs = DryCleaning.objects.filter(phone_number=phone_number)
@@ -62,8 +62,8 @@ def get_customer_contact_info(request):
     finally:
         if phone_number:
             customers = list(set([
-                '%s&-&%s' % (customer.first_name, customer.last_name)
-                for customer in _filter_customers_by_phone_number(phone_number)
+                '%s&-&%s&-&%s' % (o.first_name, o.last_name, o.address)
+                for o in _filter_orders_by_phone_number(phone_number)
             ]))
 
             logger.debug('Customers: %s', customers)
