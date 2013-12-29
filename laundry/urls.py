@@ -1,6 +1,3 @@
-import autocomplete_light
-autocomplete_light.autodiscover()
-
 from django.contrib.auth.decorators import(
     login_required,
     permission_required
