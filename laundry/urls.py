@@ -9,7 +9,6 @@ from django.conf.urls import patterns, include, url
 
 from launder.views import (
     get_customer_contact_info,
-    set_customer_contact_info,
     LaundryIndex,
     DailyOperationsArchive,
     DailyOperationsList,
@@ -45,16 +44,12 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^autocomplete/', include('autocomplete_light.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
+    #autocomplete url
     url(r'^get_customer_contact_info/$',
         get_customer_contact_info,
         name='get_customer_contact_info'),
-
-    url(r'^set_customer_contact_info/$',
-        set_customer_contact_info,
-        name='set_customer_contact_info'),
 
     #daily_operations urls
     url(r'^$',
@@ -146,6 +141,7 @@ urlpatterns = patterns('',
         login_required(LaundryShirtsOrderList.as_view()),
         name='shirts_list'),
 
+    #product urls
     url(r'^product/add/(?P<pk>\d+)/$',
         login_required(ProductUpdate.as_view()),
         name='product_update'),
@@ -166,11 +162,12 @@ urlpatterns = patterns('',
         login_required(CustomerOrdersList.as_view()),
         name='customer_order_list'),
 
+    #receipt urls
     url(r'^print/([a-zA-Z0-9_]+)/(\d+)/$',
         login_required(PrintOrder.as_view()),
         name='print_order'),
 
-    #user auth
+    #user auth urls
     url(r'^login/$',
         'django.contrib.auth.views.login',
         name='login'),
