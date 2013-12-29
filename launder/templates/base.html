@@ -1,12 +1,15 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>{% block title %}Two Boys Laundromat{% if title %} - {{ title }}{% endif %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href=" http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
+    {% block header %}
+    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"/>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    {% block extrahead %}{% endblock %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    {% block extra_header %}{% endblock %}
+{% endblock %}
 </head>
 <body>
     {% url 'dry_cleaning_list' as dry_cleaning_url %}
@@ -15,7 +18,6 @@
     {% url 'product_list' as product_url %}
     {% url 'archive' as archive_url %}
     {% url 'daily_ops_dates_list' as daily_ops_url %}
-
     <div class="container">  
         <div class="row">
             <ul class="nav nav-tabs">
@@ -30,7 +32,6 @@
                         <li><a href="{{ daily_ops_url }}">Daily Operations</a></li>
                         <li><a href="/logout"> Logout </a></li>
                     {% endifequal %}
-
                     {% ifequal active_tab 'dry_cleaning' %}
                         <li><a href="/">Home</a> </li>
                         <li class="active"><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
@@ -41,7 +42,6 @@
                         <li><a href="{{ daily_ops_url }}">Daily Operations</a></li>
                         <li><a href="/logout"> Logout </a></li>
                     {% endifequal %}
-
                     {% ifequal active_tab 'wash_fold' %}
                         <li><a href="/">Home</a> </li>
                         <li><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
@@ -52,7 +52,6 @@
                         <li><a href="{{ daily_ops_url }}">Daily Operations</a></li>
                         <li><a href="/logout"> Logout </a></li>
                     {% endifequal %}
-
                     {% ifequal active_tab 'shirts' %}   
                         <li><a href="/">Home</a> </li>
                         <li><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
@@ -63,7 +62,6 @@
                         <li><a href="{{ daily_ops_url }}">Daily Operations</a></li>
                         <li><a href="/logout"> Logout </a></li>
                     {% endifequal %}
-
                     {% ifequal active_tab 'archive' %}   
                         <li><a href="/">Home</a> </li>
                         <li><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
@@ -74,7 +72,6 @@
                         <li><a href="{{ daily_ops_url }}">Daily Operations</a></li>
                         <li><a href="/logout"> Logout </a></li>
                     {% endifequal %}
-
                     {% ifequal active_tab 'products' %}   
                         <li><a href="/">Home</a> </li>
                         <li><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
@@ -85,7 +82,6 @@
                         <li><a href="{{ daily_ops_url }}">Daily Operations</a></li>
                         <li><a href="/logout"> Logout </a></li>
                     {% endifequal %}
-
                     {% ifequal active_tab 'daily_ops' %}   
                         <li><a href="/">Home</a> </li>
                         <li><a href="{{ dry_cleaning_url }}">Dry cleaning orders</a></li>
@@ -107,13 +103,9 @@
                     <li><a href="/logout"> Logout </a></li>
                 {% endif %}
             </ul>
-
             {% block body %}
-
             {% block content %}{% endblock %}
-
             {% endblock %}
-
         </div>
     </div>
 </body>

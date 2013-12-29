@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block extra_header %}
+    <script type="text/javascript">
+
+    function searchOpen() {
+        var phone_number = $("input#id_phone_number").val();
+        return $.ajax({
+            url: "/get_customer_contact_info/",
+            data: JSON.stringify({
+                'phone_number': phone_number
+            }),
+            dataType: 'json',
+            type: 'POST',
+            success: searchResult
+        });
+    }
+
+    function searchResult(data) {
+        console.log('data', data);
+        if (data.length != 0){
+            var customer_name = data[0].split('&-&')
+            $("input#id_first_name").val(customer_name[0]);
+            $("input#id_last_name").val(customer_name[1]);
+        }
+    }
+    {% block order_specific_js %}{% endblock %}
+    </script>
+{% endblock %}
