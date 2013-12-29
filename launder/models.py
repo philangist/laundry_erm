@@ -151,3 +151,28 @@ class DailyOperations(models.Model):
 
     def __unicode__(self):
         return '{}' .format(str(self.date))
+
+
+class Customer(models.Model):
+    first_name = models.CharField(max_length=50, blank=False)
+    last_name = models.CharField(max_length=50, blank=False)
+    phone_number = models.CharField(max_length=15, blank=False)
+    address = models.CharField(max_length=50, blank=True)
+
+    def __unicode__(self):
+        return '{} - {} {}'.format(
+            self.__class__.__name__,
+            self.first_name,
+            self.last_name,
+        )
+
+    @property
+    def slug(self):
+        return 'customers'
+
+    def get_absolute_url(self):
+        return reverse(
+            'customer_order_list',
+            kwargs={'customer_name_slug':
+                        '%s-%s' % (self.first_name, self.last_name)}
+        )
