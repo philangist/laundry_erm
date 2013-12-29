@@ -140,20 +140,44 @@ class Product(models.Model):
     date = models.DateTimeField(default=datetime.datetime.today)
 
     def __unicode__(self):
-        return '{} - ${}'.format(self.name, self.price)
+        return '{}: {} - ${}'.format(self.__class__.__name__, self.name, self.date)
 
     def get_absolute_url(self):
         return reverse('product_detail', kwargs={'pk': self.pk})
 
 
-class DailyOperations(models.Model):
-    date = models.DateTimeField(default=datetime.datetime.today)
+class Transaction(models.Model):
+
+    TRANSACTION_TYPES = (
+        ('DRY_CLEANING', 'Dry Cleaning Order'),
+        ('WASH_FOLD', 'Wash and Fold Order'),
+        ('SHIRT', 'Shirt Order'),
+        ('PRODUCT', 'Product Order'),
+    )
+
+    id = models.AutoField(primary_key=True)
+    customer = models.ForeignKey('Customer')
+    transaction_type = models.CharField(
+        max_length=20, choices=TRANSACTION_TYPES)
+    date_opened = models.DateTimeField(
+        blank=False, default=datetime.datetime.now)
+    date_closed = models.DateTimeField(
+        blank=True, default=datetime.datetime.now)
+    total_cost = models.DecimalField(
+        blank=False, max_digits=8, decimal_places=2)
+    order_completed = models.BooleanField()
 
     def __unicode__(self):
-        return '{}' .format(str(self.date))
+        return '{}: {} - {} -{}' .format(
+            self.__class__.__name__,
+            self.transaction_type,
+            self.total_cost,
+            self.date
+        )
 
 
 class Customer(models.Model):
+    id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=50, blank=False)
     last_name = models.CharField(max_length=50, blank=False)
     phone_number = models.CharField(max_length=15, blank=False)
