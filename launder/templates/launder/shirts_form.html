@@ -1,7 +1,5 @@
-{% extends "base.html" %}
-{% block content %}
-<script type="text/javascript">
-
+{% extends "launder/order_form_base.html" %}
+{% block order_specific_js %}
     $(document).ready(function () {
 
         Number.prototype.format = function() {
@@ -23,54 +21,8 @@
         });
     });
 
-    $('input#id_first_name, input#id_last_name').change(function(e) {
-        first_name = $('input#id_first_name').val();
-        last_name = $('input#id_last_name').val();
-        $.ajax({
-            url: "/get_customer_contact_info/",
-            type: "POST",
-            data: JSON.stringify({
-                "first_name": first_name,
-                "last_name": last_name,
-            }),
-            dataType: 'JSON',
-            success: function(data){
-                phone_number = data.result[0];
-                address = data.result[1];
-                $("input#id_phone_number").val(phone_number);
-                $("input#id_address").val(address);
-                console.log('result', data.result);
-            },
-        });
-    });
-
-    $('.form-horizontal').submit(setTimeout(
-        function(e){
-            console.log('submitting form');
-            first_name = $('input#id_first_name').val();
-            last_name = $('input#id_last_name').val();
-            phone_number = $("input#id_phone_number").val();
-            address = $("input#id_address").val();
-            $.ajax({
-                url: "/set_customer_contact_info/",
-                type: "POST",
-                data: JSON.stringify({
-                    "first_name": first_name,
-                    "last_name": last_name,
-                    "phone_number": phone_number,
-                    "address": address,
-                }),
-                dataType: 'JSON',
-                success: function(data){
-                    console.log('submitted');
-                },
-            });
-            return true;
-        })
-    );
-
-</script>
-
+{% endblock %}
+{% block content %}
 <center>
 <h3>New Shirts Order</h3>
 </center>
@@ -109,7 +61,7 @@
         <div class="control-group">
             <label class="control-label">Phone Number</label>
             <div class="controls">
-                {{ form.phone_number }}
+                <input id="id_phone_number" maxlength="15" name="phone_number" type="text" onchange="searchOpen()">
                 <p class="help-block"></p>
             </div>
         </div>
@@ -170,4 +122,4 @@
         </div>
     </fieldset>
 </form>
-{% endblock content %}
+{% endblock %}

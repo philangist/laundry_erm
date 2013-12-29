@@ -33,69 +33,45 @@ from launder.models import (
     Product,
 )
 
-from redis_utils import (
-    get_redis_client,
-    set_contact_info,
-    get_contact_info,
-)
-
-redis_client = get_redis_client()
 logger = logger_factory.logger_factory('views')
+
+
+def _filter_customers_by_phone_number(phone_number):
+    shirts_qs = list(LaundryShirtsOrder.objects.filter(phone_number=phone_number))
+    wash_fold_qs = WashFoldOrder.objects.filter(phone_number=phone_number)
+    dry_cleaning_qs = DryCleaning.objects.filter(phone_number=phone_number)
+    concatenated_qs = shirts_qs
+    concatenated_qs.extend(wash_fold_qs)
+    concatenated_qs.extend(dry_cleaning_qs)
+    return concatenated_qs
 
 
 @csrf_exempt
 def get_customer_contact_info(request):
-    response_data = {}
-    logger.debug('request.body %s' % str(request.body))
-    if request.method == "POST":
-        try:
-            data = json.loads(request.body)
-        except ValueError:
-            data = None
-        if data:
-            contact_info = get_contact_info(
-                json.dumps(data['first_name']),
-                json.dumps(data['last_name']),
-                redis_client,
-            )
-            response_data['result'] = contact_info
-        else:
-            logger.debug('Data was not converted to JSON')
-            response_data['result'] = 'No info found for supplied data'
-    else:
-        logger.debug('Invalid Method')
-        response_data['result'] = 'Invalid Method'
-    response_data = json.dumps(response_data)
-    logger.debug('response_data %s' % str(response_data))
-    response = HttpResponse(response_data, mimetype="application/json")
-    logger.debug('response %s' % str(response))
-    return response
+    response_content = None
+    logger.debug('request: %s', request)
+    request_body = json.loads(request.raw_post_data)
+    logger.debug('request_body: %s', request_body)
 
+    try:
+        phone_number = request_body.get('phone_number')
+    except TypeError, KeyError:
+        logger.warning('Invalid phone number used for autocomplete',
+                    exc_info=True)
+        response_content = None
+    finally:
+        if phone_number:
+            customers = list(set([
+                '%s&-&%s' % (customer.first_name, customer.last_name)
+                for customer in _filter_customers_by_phone_number(phone_number)
+            ]))
 
-@csrf_exempt
-def set_customer_contact_info(request):
-    response_content = {}
-    if request.method == "POST":
-        try:
-            data = json.loads(request.body)
-        except ValueError:
-            data = None
-        if data:
-            logger.info('set customer info data: %s' % str(data))
-            contact_info = set_contact_info(
-                    json.dumps(data['first_name']),
-                    json.dumps(data['last_name']),
-                    json.dumps([data['phone_number'], data['address']]),
-                redis_client,
-            )
-        else:
-            response_content['error'] = 'Invalid JSON args'
-    else:
-        response_content['error'] = 'Invalid Method'
-    response_content = json.dumps(response_content)
-    logger.info('response_content: %s' % response_content)
-    response = HttpResponse(response_content, content_type="application/json")
-    logger.info('response: %s' % response.__dict__)
+            logger.debug('Customers: %s', customers)
+            response_content = json.dumps(customers)
+
+        response = HttpResponse(
+            response_content, content_type="application/json")
+
     return response
 
 
