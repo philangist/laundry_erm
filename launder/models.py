@@ -3,7 +3,14 @@ from django.core.urlresolvers import reverse
 from django.db import models
 
 
-class WashFoldOrder(models.Model):
+class Order(models.Model):
+    """
+    Base class for all orders.
+
+    """
+
+    class Meta:
+        abstract = True
 
     PAYMENT_METHODS = (
         ('CASH', 'Cash'),
@@ -17,14 +24,38 @@ class WashFoldOrder(models.Model):
     phone_number = models.CharField(max_length=15, blank=False)
     address = models.CharField(max_length=50, blank=True)
     date = models.DateTimeField(default=datetime.datetime.today)
-    weight = models.IntegerField(default=0)
-    num_comforters = models.IntegerField(default=0, blank=True)
     total_cost = models.DecimalField(max_digits=8, decimal_places=2)
     payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
-    payment_finalized = models.BooleanField(default=False)
+    payment_finalized = models.BooleanField()
     payment_date = models.DateTimeField(default=datetime.datetime.today)
     comments = models.TextField(default='', blank=True)
     staff_comments = models.TextField(default='', blank=True)
+
+    def save(self):
+        """
+        Get or create a Transaction object for this order, and update it with
+        payment status and cost
+
+        """
+
+        transaction = Transaction.objects.get_or_create(
+            transaction_type=self.order_type,
+            date_opened=self.date.time(),
+            customer_name='{} {}'.format(self.first_name, self.last_name)
+        )
+
+        transaction.total_cost = self.total_cost
+        transaction.payment_finalized = self.payment_finalized
+        transaction.payment_date = self.payment_date
+
+        transaction.save()
+        super(Order, self).save()
+
+
+class WashFoldOrder(Order):
+
+    weight = models.IntegerField(default=0)
+    num_comforters = models.IntegerField(default=0, blank=True)
 
     def __unicode__(self):
         return '{} {} - ${} - {}'.format(self.first_name, self.last_name, self.total_cost, self.date.date())
@@ -41,13 +72,7 @@ class WashFoldOrder(models.Model):
         return 'wash_fold'
 
 
-class DryCleaning(models.Model):
-
-    PAYMENT_METHODS = (
-        ('CASH', 'Cash'),
-        ('CREDIT', 'Credit'),
-        ('CHECK', 'Check')
-    )
+class DryCleaning(Order):
 
     GARMENT_OPTIONS = (
         ('TROUSERS', 'Trousers'),
@@ -66,20 +91,8 @@ class DryCleaning(models.Model):
         ('SLACKS', 'Slacks')
     )
 
-    id = models.AutoField(primary_key=True)
-    first_name = models.CharField(max_length=50, blank=False)
-    last_name = models.CharField(max_length=50, blank=False)
-    phone_number = models.CharField(max_length=15, blank=False)
-    address = models.CharField(max_length=50, blank=True)
-    date = models.DateTimeField(default=datetime.datetime.today)
     garment_type = models.CharField(max_length=12, choices=GARMENT_OPTIONS)
     garment_amount = models.IntegerField()
-    total_cost = models.DecimalField(max_digits=8, decimal_places=2)
-    payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
-    payment_finalized = models.BooleanField()
-    payment_date = models.DateTimeField(default=datetime.datetime.today)
-    comments = models.TextField(default='', blank=True)
-    staff_comments = models.TextField(default='', blank=True)
 
     def __unicode__(self):
         return '{} {} - ${} - {}'.format(self.first_name, self.last_name, self.total_cost, self.date.date())
@@ -96,28 +109,11 @@ class DryCleaning(models.Model):
         return 'dry_cleaning'
 
 
-class LaundryShirtsOrder(models.Model):
+class LaundryShirtsOrder(Order):
 
-    PAYMENT_METHODS = (
-        ('CASH', 'Cash'),
-        ('CREDIT', 'Credit'),
-        ('CHECK', 'Check')
-    )
-    id = models.AutoField(primary_key=True)
-    first_name = models.CharField(max_length=50, blank=False)
-    last_name = models.CharField(max_length=50, blank=False)
-    phone_number = models.CharField(max_length=15, blank=False)
-    address = models.CharField(max_length=50, blank=True)
-    date = models.DateTimeField(default=datetime.datetime.today)
     shirts_amount = models.IntegerField()
     shirts_price = models.DecimalField(default=1.75, max_digits=8, decimal_places=2)
     starched = models.BooleanField()
-    total_cost = models.DecimalField(max_digits=8, decimal_places=2)
-    payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS)
-    payment_finalized = models.BooleanField()
-    payment_date = models.DateTimeField(default=datetime.datetime.today)
-    comments = models.TextField(default='', blank=True)
-    staff_comments = models.TextField(default='', blank=True)
 
     def __unicode__(self):
         return '{} {} - ${} - {}'.format(self.first_name, self.last_name, self.total_cost, self.date.date())
@@ -147,6 +143,13 @@ class Product(models.Model):
 
 
 class Transaction(models.Model):
+    """
+    Represents an individual transaction on a particular date by
+    a particular customer. Defaults to 'Two Boys' as customer for
+    sales that don't directly involve storing the customer, i.e
+    buying laundry detergent or fabric softener
+
+    """
 
     TRANSACTION_TYPES = (
         ('DRY_CLEANING', 'Dry Cleaning Order'),
@@ -156,16 +159,16 @@ class Transaction(models.Model):
     )
 
     id = models.AutoField(primary_key=True)
-    customer = models.ForeignKey('Customer')
+    customer_name = models.CharField(max_length=50, default='Two Boys')
     transaction_type = models.CharField(
         max_length=20, choices=TRANSACTION_TYPES)
     date_opened = models.DateTimeField(
         blank=False, default=datetime.datetime.now)
-    date_closed = models.DateTimeField(
+    payment_date = models.DateTimeField(
         blank=True, default=datetime.datetime.now)
     total_cost = models.DecimalField(
         blank=False, max_digits=8, decimal_places=2)
-    order_completed = models.BooleanField()
+    payment_finalized = models.BooleanField()
 
     def __unicode__(self):
         return '{}: {} - {} -{}' .format(
