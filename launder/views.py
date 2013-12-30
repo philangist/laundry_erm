@@ -29,7 +29,6 @@ from launder.models import (
     WashFoldOrder,
     DryCleaning,
     LaundryShirtsOrder,
-    DailyOperations,
     Product,
 )
 

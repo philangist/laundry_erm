@@ -37,13 +37,11 @@ class Order(models.Model):
         payment status and cost
 
         """
-        customer_name='{} {}'.format(self.first_name, self.last_name)
 
         transaction = Transaction.objects.get_or_create(
             transaction_type=self.order_type,
             date_opened=self.date,
-            #total_cost=self.total_cost,
-            customer_name=customer_name
+            transaction_id=self.id
         )
 
         if transaction[1]:
@@ -163,7 +161,7 @@ class Transaction(models.Model):
     )
 
     id = models.AutoField(primary_key=True)
-    customer_name = models.CharField(max_length=50, default='Two Boys')
+    transaction_id = models.IntegerField(default=0)
     transaction_type = models.CharField(
         max_length=20, choices=TRANSACTION_TYPES)
     date_opened = models.DateTimeField(
