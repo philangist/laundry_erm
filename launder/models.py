@@ -138,6 +138,7 @@ class LaundryShirtsOrder(Order):
 
 
 class Product(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, blank=False)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     date = models.DateTimeField(default=datetime.datetime.today)
@@ -148,6 +149,35 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('product_detail', kwargs={'pk': self.pk})
 
+    @property
+    def order_type(self):
+        return 'Product'
+
+    def save(self):
+        """
+        Get or create a Transaction object for this sale
+
+        """
+
+        super(Product, self).save()
+
+        try:
+            transaction = Transaction.objects.get(
+                transaction_type=self.order_type,
+                transaction_id=self.id
+            )
+        except Transaction.DoesNotExist:
+            transaction = Transaction.objects.create(
+                transaction_id=self.id,
+                transaction_type=self.order_type,
+                date_opened=self.date,
+                total_cost=self.price
+            )
+
+        transaction.total_cost = self.price
+        transaction.payment_finalized = True
+        transaction.payment_date = self.date
+        transaction.save()
 
 class Transaction(models.Model):
     """
