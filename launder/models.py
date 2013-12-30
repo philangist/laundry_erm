@@ -38,20 +38,25 @@ class Order(models.Model):
 
         """
 
-        transaction = Transaction.objects.get_or_create(
-            transaction_type=self.order_type,
-            date_opened=self.date,
-            transaction_id=self.id
-        )
-
-        if transaction[1]:
-            transaction = transaction[0]
-            transaction.total_cost = self.total_cost
-            transaction.payment_finalized = self.payment_finalized
-            transaction.payment_date = self.payment_date
-            transaction.save()
-
         super(Order, self).save()
+
+        try:
+            transaction = Transaction.objects.get(
+                transaction_type=self.order_type,
+                transaction_id=self.id
+            )
+        except Transaction.DoesNotExist:
+            transaction = Transaction.objects.create(
+                transaction_id=self.id,
+                transaction_type=self.order_type,
+                date_opened=self.date,
+                total_cost=self.total_cost
+            )
+
+        transaction.total_cost = self.total_cost
+        transaction.payment_finalized = self.payment_finalized
+        transaction.payment_date = self.payment_date
+        transaction.save()
 
 
 class WashFoldOrder(Order):
@@ -152,6 +157,9 @@ class Transaction(models.Model):
     buying laundry detergent or fabric softener
 
     """
+
+    class Meta:
+        unique_together = (('transaction_type', 'transaction_id'))
 
     TRANSACTION_TYPES = (
         ('DRY_CLEANING', 'Dry Cleaning'),
