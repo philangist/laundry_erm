@@ -37,18 +37,22 @@ class Order(models.Model):
         payment status and cost
 
         """
+        customer_name='{} {}'.format(self.first_name, self.last_name)
 
         transaction = Transaction.objects.get_or_create(
             transaction_type=self.order_type,
-            date_opened=self.date.time(),
-            customer_name='{} {}'.format(self.first_name, self.last_name)
+            date_opened=self.date,
+            #total_cost=self.total_cost,
+            customer_name=customer_name
         )
 
-        transaction.total_cost = self.total_cost
-        transaction.payment_finalized = self.payment_finalized
-        transaction.payment_date = self.payment_date
+        if transaction[1]:
+            transaction = transaction[0]
+            transaction.total_cost = self.total_cost
+            transaction.payment_finalized = self.payment_finalized
+            transaction.payment_date = self.payment_date
+            transaction.save()
 
-        transaction.save()
         super(Order, self).save()
 
 
@@ -152,10 +156,10 @@ class Transaction(models.Model):
     """
 
     TRANSACTION_TYPES = (
-        ('DRY_CLEANING', 'Dry Cleaning Order'),
-        ('WASH_FOLD', 'Wash and Fold Order'),
-        ('SHIRT', 'Shirt Order'),
-        ('PRODUCT', 'Product Order'),
+        ('DRY_CLEANING', 'Dry Cleaning'),
+        ('WASH_FOLD', 'Wash and Fold'),
+        ('SHIRT', 'Shirt'),
+        ('PRODUCT', 'Product'),
     )
 
     id = models.AutoField(primary_key=True)
@@ -167,15 +171,14 @@ class Transaction(models.Model):
     payment_date = models.DateTimeField(
         blank=True, default=datetime.datetime.now)
     total_cost = models.DecimalField(
-        blank=False, max_digits=8, decimal_places=2)
+        blank=True, max_digits=8, decimal_places=2)
     payment_finalized = models.BooleanField()
 
     def __unicode__(self):
-        return '{}: {} - {} -{}' .format(
-            self.__class__.__name__,
+        return '{} - {} -{}' .format(
             self.transaction_type,
             self.total_cost,
-            self.date
+            self.date_opened
         )
 
 
