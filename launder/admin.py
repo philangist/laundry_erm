@@ -3,7 +3,7 @@ from launder.models import(
     WashFoldOrder,
     DryCleaning,
     LaundryShirtsOrder,
-    DailyOperations,
+    Transaction,
     Product,
 )
 
@@ -11,5 +11,5 @@ from launder.models import(
 admin.site.register(WashFoldOrder)
 admin.site.register(DryCleaning)
 admin.site.register(LaundryShirtsOrder)
-admin.site.register(DailyOperations)
+admin.site.register(Transaction)
 admin.site.register(Product)

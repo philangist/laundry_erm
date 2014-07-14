@@ -13,7 +13,7 @@
     <li>Total revenue: ${{ total_revenue }}</br>
     </ul>
     {% url 'product_add' as product_add_url %}
-    <a href="{{ product_add_url }}/{{ product.id }}">Edit Product</a>
+    <a href="{{ product_add_url }}{{ product.id }}">Edit Product</a>
 {% elif not product %}
     <p>No details are available.</p>
 {% endif %}
